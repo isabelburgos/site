@@ -1,0 +1,21 @@
+site_name: "beam/shift"
+extra_css: ["styles.css"]
+theme:
+  name: material
+  features:
+    - navigation.expand
+    - navigation.tabs
+    - toc.integrate
+plugins:
+  - search
+  - roamlinks
+  - mermaid2
+  - minify
+
+nav:
+  - Home: index.md
+  - Guides:
+      - Intro: guides/intro.md
+      - Advanced: guides/advanced.md
+  - Reference:
+      - API: reference/api.md
