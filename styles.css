@@ -1,0 +1,381 @@
+
+/* ===============================
+   Eliminate Material default blue
+   =============================== */
+
+/* Override Material primary colors */
+:root {
+  --md-primary-fg-color: var(--deep-green);
+  --md-primary-bg-color: var(--bg-alt);
+}
+
+/* Header and tabs */
+.md-header,
+.md-tabs {
+  background-color: var(--bg-alt) !important;
+}
+
+/* Header text */
+.md-header__title,
+.md-header__topic,
+.md-header__button {
+  color: var(--fg) !important;
+}
+
+/* Tabs */
+.md-tabs__link {
+  color: var(--fg-dim) !important;
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  color: var(--accent) !important;
+  border-bottom-color: var(--accent) !important;
+}
+
+.md-nav__title {
+  color: var(--accent) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Icons (Material loves to sneak blue SVGs in) */
+.md-header svg,
+.md-tabs svg {
+  fill: currentColor !important;
+}
+
+/* Focus rings */
+:focus-visible {
+  outline-color: var(--accent-dim);
+}
+
+
+/* =========================
+   Terminal / Hacker Theme
+   ========================= */
+
+/* Color palette */
+:root {
+  /* Core brand colors (do not change) */
+  --phosphor: #B3FF01;   /* bright TEM phosphor */
+  --deep-green: #2E5F04; /* instrument housing / logo green */
+
+  /* Lavender accent */
+  --lavender: #c6b7ff;
+
+  /* Dark-mode defaults */
+  --bg: #060907;         /* darker for contrast against phosphor */
+  --bg-alt: #0d140f;     /* panel background */
+  --fg: #e9f5ec;         /* high-contrast body text */
+  --fg-dim: #bcd0c3;     /* secondary text */
+
+  --accent: var(--phosphor);
+  --accent-dim: #5fae2a; /* lifted mid-green for headings */
+
+  --border: #223526;
+  --code-bg: #0b120d;
+
+  --warning: #ffd166;
+  --danger: #ff5c5c;
+}
+
+/* Material theme variable overrides for DARK mode */
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: var(--bg);
+  --md-default-fg-color: var(--fg);
+  --md-default-fg-color--light: var(--fg-dim);
+  --md-primary-fg-color: var(--deep-green);
+  --md-accent-fg-color: var(--phosphor);
+  --md-code-bg-color: var(--code-bg);
+}
+
+/* LIGHT mode palette tuned for scientific readability */
+[data-md-color-scheme="light"] {
+  --bg: #f6faf7;         /* paper-like background */
+  --bg-alt: #e8f1ea;     /* panel / sidebar */
+  --fg: #102014;         /* dark instrument text */
+  --fg-dim: #3b5a42;
+
+  --accent: var(--deep-green);
+  --accent-dim: #1f4a03;
+
+  --border: #c9dacd;
+  --code-bg: #eef6f0;
+
+  --md-default-bg-color: var(--bg);
+  --md-default-fg-color: var(--fg);
+  --md-default-fg-color--light: var(--fg-dim);
+  --md-primary-fg-color: var(--deep-green);
+  --md-accent-fg-color: var(--phosphor);
+  --md-code-bg-color: var(--code-bg);
+}
+
+/* Global background + text */
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: "JetBrains Mono", "Fira Code", "IBM Plex Mono",
+               ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  line-height: 1.6;
+}
+
+/* Main content area */
+.md-main__inner {
+  background-color: var(--bg);
+}
+
+/* Header / top nav */
+.md-header {
+  background-color: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.md-header__title {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* Sidebar navigation */
+.md-sidebar {
+  background-color: var(--bg-alt);
+  border-right: 1px solid var(--border);
+}
+
+/* Sidebar navigation */
+.md-nav__link {
+  color: var(--fg-dim);
+}
+
+/* Sidebar active item: remove fill, add accent border */
+.md-nav__item .md-nav__link--active {
+  background: none !important;
+  box-shadow: none !important;
+  color: var(--accent) !important;
+  border-left: 2px solid var(--accent);
+  padding-left: calc(1rem - 2px);
+}
+
+/* Hover state should stay subtle and non-filled */
+
+.md-nav__item .md-nav__link:hover {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Force sidebar link hover/focus to use TEM palette, not Material accent */
+.md-nav__link[for]:hover,
+.md-nav__link[for]:focus,
+.md-nav__link[href]:hover,
+.md-nav__link[href]:focus {
+  color: var(--accent) !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.md-nav__link--active::before,
+.md-nav__link--active::after {
+  display: none !important;
+}
+
+/* Page headings */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  color: var(--accent-dim);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.md-typeset h1::before {
+  content: "▸ ";
+  color: var(--accent-dim);
+}
+
+/* Links */
+.md-typeset a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.md-typeset a:hover,
+.md-typeset a:focus,
+.md-typeset a:active {
+  color: var(--accent) !important;
+  text-decoration: underline;
+}
+
+/* Strengthen link contrast in light mode */
+[data-md-color-scheme="light"] .md-typeset a {
+  color: var(--accent);
+  text-decoration-thickness: 1.5px;
+}
+
+/* Lavender metadata / analytical accents */
+.md-typeset em,
+.md-typeset small {
+  color: var(--lavender);
+}
+
+.md-typeset figcaption {
+  color: var(--lavender);
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+}
+
+/* Horizontal rules */
+.md-typeset hr {
+  border: none;
+  height: 1px;
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      var(--accent-dim),
+      transparent
+    );
+  opacity: 0.6;
+}
+
+/* Code blocks */
+.md-typeset pre {
+  background-color: var(--code-bg);
+  border: 1px solid var(--border);
+  box-shadow: inset 0 0 0 1px rgba(76, 255, 122, 0.05);
+}
+
+.md-typeset code {
+  background-color: rgba(76, 255, 122, 0.08);
+  color: var(--fg);
+  padding: 0.15em 0.3em;
+  border-radius: 4px;
+}
+
+/* Blockquotes */
+.md-typeset blockquote {
+  border-left: 3px solid var(--lavender);
+  background-color: var(--bg-alt);
+  color: var(--fg-dim);
+}
+
+/* Tables */
+.md-typeset table {
+  border: 1px solid var(--border);
+}
+
+.md-typeset th {
+  background-color: var(--bg-alt);
+  color: var(--accent);
+}
+
+.md-typeset td {
+  border-top: 1px solid var(--border);
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+.md-typeset tbody tr:hover td {
+  background-color: var(--bg-alt);
+}
+
+/* callouts / admonitions */
+.md-typeset .admonition,
+.md-typeset details {
+  background-color: #0a120e; /* darker panel background */
+  border: 2px solid var(--phosphor); /* phosphor green border */
+  color: var(--fg); /* readable text */
+  border-left: 4px solid var(--phosphor); /* “indicator bar” style */
+  border-radius: 2px;
+  box-shadow: inset 0 0 5px rgba(76, 255, 122, 0.1); /* subtle glow */
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Callout title / header */
+.md-typeset .admonition-title {
+  color: var(--phosphor); /* bright green for instrument readout */
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5em;
+}
+
+/* Search box */
+.md-search__input {
+  background-color: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+}
+
+/* Footer */
+.md-footer {
+  background-color: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  color: var(--fg-dim);
+}
+
+
+/* Ensure main containers render above the grid overlay */
+.md-container,
+.md-header,
+.md-sidebar,
+.md-main,
+.md-footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* TEM-style instrument panel grid overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(46, 95, 4, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 95, 4, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.12;
+  z-index: 0;
+}
+
+/* Publication-style body text */
+.md-typeset {
+  color: var(--fg);
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+
+/* =========================
+   Admonition Type Colors
+   ========================= */
+
+/* Note (blue) */
+.md-typeset .admonition.note {
+  border-left-color: #2196f3; /* default Material accent */
+}
+
+/* Tip (cyan) */
+.md-typeset .admonition.tip {
+  border-left-color: #00bcd4;
+}
+
+/* Info (blue) */
+.md-typeset .admonition.info {
+  border-left-color: #2196f3;
+}
+
+/* Caution (amber) */
+.md-typeset .admonition.caution {
+  border-left-color: #ffca28;
+}
+
+/* Warning (orange/gold) */
+.md-typeset .admonition.warning {
+  border-left-color: #ff9800;
+}
+
+/* Danger (red) */
+.md-typeset .admonition.danger {
+  border-left-color: #f44336;
+}
