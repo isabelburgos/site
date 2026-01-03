@@ -6,6 +6,8 @@ theme:
     - navigation.expand
     - navigation.tabs
     - toc.integrate
+  logo: icon.png
+  favicon: icon.png
 plugins:
   - search
   - roamlinks
