@@ -5,7 +5,7 @@ description = "Default template for PDM package"
 authors = [
     {name = "isabelburgos", email = "isabelmburgos01@gmail.com"},
 ]
-dependencies = ["mkdocs-material>=9.7.1", "mkdocs-roamlinks-plugin>=0.3.2", "mkdocs-minify-plugin>=0.8.0", "mkdocs-mermaid2-plugin>=1.2.3"]
+dependencies = ["mkdocs-material>=9.7.1", "mkdocs-roamlinks-plugin>=0.3.2", "mkdocs-minify-plugin>=0.8.0", "mkdocs-mermaid2-plugin>=1.2.3", "pyyaml>=6.0.3", "mkdocs-include-dir-to-nav>=1.2.0"]
 requires-python = ">=3.13"
 readme = "README.md"
 license = {text = "MIT"}

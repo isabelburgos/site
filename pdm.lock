@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:908af0410e59612fc3e5369dde38a08eb96ae98531eb83b743b0f9dde8dcd489"
+content_hash = "sha256:5751c9e2a946c794301996d8487424d122a5c22428c39e0621ab96184822dcf9"
 
 [[metadata.targets]]
 requires_python = ">=3.13"
@@ -338,6 +338,20 @@ dependencies = [
 files = [
     {file = "mkdocs_get_deps-0.2.0-py3-none-any.whl", hash = "sha256:2bf11d0b133e77a0dd036abeeb06dec8775e46efa526dc70667d8863eefc6134"},
     {file = "mkdocs_get_deps-0.2.0.tar.gz", hash = "sha256:162b3d129c7fad9b19abfdcb9c1458a651628e4b1dea628ac68790fb3061c60c"},
+]
+
+[[package]]
+name = "mkdocs-include-dir-to-nav"
+version = "1.2.0"
+requires_python = ">=3.6"
+summary = "A MkDocs plugin include all file in dir to navigation"
+groups = ["default"]
+dependencies = [
+    "mkdocs>=1.0.4",
+]
+files = [
+    {file = "mkdocs_include_dir_to_nav-1.2.0-py3-none-any.whl", hash = "sha256:b09de17ad754aa93aec7ba64acf8fdd53f7a2ceb92e8cffe21646b0e97f4ddf0"},
+    {file = "mkdocs_include_dir_to_nav-1.2.0.tar.gz", hash = "sha256:2d7b0bb581471fce6f215b6381f1f4d90a3a069829281b7f5d01a5b7abee15d0"},
 ]
 
 [[package]]

@@ -33,6 +33,12 @@
   border-bottom-color: var(--accent) !important;
 }
 
+.md-nav__title {
+  color: var(--accent) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 /* Icons (Material loves to sneak blue SVGs in) */
 .md-header svg,
 .md-tabs svg {
@@ -151,7 +157,18 @@ body {
 }
 
 /* Hover state should stay subtle and non-filled */
+
 .md-nav__item .md-nav__link:hover {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Force sidebar link hover/focus to use TEM palette, not Material accent */
+.md-nav__link[for]:hover,
+.md-nav__link[for]:focus,
+.md-nav__link[href]:hover,
+.md-nav__link[href]:focus {
+  color: var(--accent) !important;
   background: none !important;
   box-shadow: none !important;
 }
@@ -262,16 +279,24 @@ body {
   background-color: var(--bg-alt);
 }
 
-/* Callouts / admonitions */
+/* callouts / admonitions */
 .md-typeset .admonition,
 .md-typeset details {
-  background-color: var(--bg-alt);
-  border: 1px solid var(--border);
+  background-color: #0a120e; /* darker panel background */
+  border: 2px solid var(--phosphor); /* phosphor green border */
+  color: var(--fg); /* readable text */
+  border-left: 4px solid var(--phosphor); /* “indicator bar” style */
+  border-radius: 2px;
+  box-shadow: inset 0 0 5px rgba(76, 255, 122, 0.1); /* subtle glow */
+  font-family: "JetBrains Mono", monospace;
 }
 
+/* Callout title / header */
 .md-typeset .admonition-title {
-  color: var(--accent);
-  font-family: inherit;
+  color: var(--phosphor); /* bright green for instrument readout */
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5em;
 }
 
 /* Search box */
@@ -318,4 +343,39 @@ body::before {
   color: var(--fg);
   font-size: 0.95rem;
   letter-spacing: 0.01em;
+}
+
+
+/* =========================
+   Admonition Type Colors
+   ========================= */
+
+/* Note (blue) */
+.md-typeset .admonition.note {
+  border-left-color: #2196f3; /* default Material accent */
+}
+
+/* Tip (cyan) */
+.md-typeset .admonition.tip {
+  border-left-color: #00bcd4;
+}
+
+/* Info (blue) */
+.md-typeset .admonition.info {
+  border-left-color: #2196f3;
+}
+
+/* Caution (amber) */
+.md-typeset .admonition.caution {
+  border-left-color: #ffca28;
+}
+
+/* Warning (orange/gold) */
+.md-typeset .admonition.warning {
+  border-left-color: #ff9800;
+}
+
+/* Danger (red) */
+.md-typeset .admonition.danger {
+  border-left-color: #f44336;
 }

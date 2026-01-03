@@ -4,20 +4,27 @@ theme:
   name: material
   features:
     - navigation.expand
-    - navigation.tabs
     - toc.integrate
   logo: icon.png
   favicon: icon.png
+  extra_javascript:
+    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 plugins:
   - search
   - roamlinks
   - mermaid2
   - minify
+  - include_dir_to_nav:
+      flat: false
+      include_empty_dir : true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
 
 nav:
-  - Home: index.md
-  - Guides:
-      - Intro: guides/intro.md
-      - Advanced: guides/advanced.md
-  - Reference:
-      - API: reference/api.md
+  - ✸: index.md
+  - 2100F: JEM-2100F.md
