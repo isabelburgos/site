@@ -1,4 +1,3 @@
-
 /* ===============================
    Eliminate Material default blue
    =============================== */
@@ -136,10 +135,12 @@ body {
   letter-spacing: 0.04em;
 }
 
-/* Sidebar navigation */
-.md-sidebar {
-  background-color: var(--bg-alt);
-  border-right: 1px solid var(--border);
+/* Sidebar visual styling ONLY (no layout primitives) */
+@media (min-width: 76.1875em) {
+  .md-sidebar {
+    background-color: var(--bg-alt);
+    border-right: 1px solid var(--border);
+  }
 }
 
 /* Sidebar navigation */
@@ -314,16 +315,6 @@ body {
 }
 
 
-/* Ensure main containers render above the grid overlay */
-.md-container,
-.md-header,
-.md-sidebar,
-.md-main,
-.md-footer {
-  position: relative;
-  z-index: 1;
-}
-
 /* TEM-style instrument panel grid overlay */
 body::before {
   content: "";
@@ -378,4 +369,112 @@ body::before {
 /* Danger (red) */
 .md-typeset .admonition.danger {
   border-left-color: #f44336;
+}
+
+
+/* =========================
+   Mobile layout + nav fixes
+   ========================= */
+
+/* Reset desktop sidebar assumptions on mobile */
+@media (max-width: 76.1875em) {
+  .md-main__inner {
+    margin-left: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .md-container {
+    padding-left: 0 !important;
+  }
+}
+
+/* Hamburger / drawer toggle — instrument-style button */
+.md-header__button.md-icon {
+  background-color: var(--bg-alt) !important;
+  color: var(--fg) !important;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  opacity: 1 !important;
+}
+
+.md-header__button.md-icon:hover,
+.md-header__button.md-icon:focus-visible {
+  background-color: var(--bg);
+  border-color: var(--accent-dim);
+}
+
+/* Ensure hamburger SVG is visible */
+.md-header__button.md-icon svg {
+  fill: currentColor !important;
+  opacity: 1 !important;
+}
+
+/* Fix mobile drawer background (was translucent white) */
+@media (max-width: 76.1875em) {
+  .md-sidebar--primary {
+    background-color: var(--bg-alt) !important;
+  }
+}
+
+/* Sidebar container wrapper background (Material inner container) */
+@media (max-width: 76.1875em) {
+  .md-sidebar--primary .md-sidebar__inner,
+  .md-sidebar--primary .md-nav {
+    background-color: var(--bg-alt) !important;
+  }
+}
+
+@media (min-width: 76.1875em) {
+  .md-sidebar .md-sidebar__inner {
+    background-color: var(--bg-alt);
+  }
+}
+
+/* Remove unintended translucent overlay artifacts */
+.md-overlay {
+  background-color: rgba(0, 0, 0, 0.45) !important;
+}
+
+
+/* Desktop: keep custom sidebar styling */
+@media (min-width: 76.1875em) {
+  .md-sidebar {
+    width: var(--md-sidebar-width, 15rem);
+  }
+}
+
+/* Mobile drawer: allow Material to control layout, only style visuals */
+@media (max-width: 76.1875em) {
+  .md-sidebar--primary {
+    background-color: var(--bg-alt);
+  }
+}
+
+/* Ensure nav links can lay out */
+.md-nav {
+  width: 100%;
+}
+/* Sidebar scroll wrapper and logo section background */
+@media (max-width: 76.1875em) {
+  .md-sidebar--primary .md-sidebar__scrollwrap {
+    background-color: var(--bg-alt) !important;
+  }
+}
+
+@media (min-width: 76.1875em) {
+  .md-sidebar .md-sidebar__scrollwrap {
+    background-color: var(--bg-alt);
+  }
+}
+/* Sidebar link list background */
+@media (max-width: 76.1875em) {
+  .md-sidebar--primary .md-nav__list {
+    background-color: var(--bg-alt) !important;
+  }
+}
+
+@media (min-width: 76.1875em) {
+  .md-sidebar .md-nav__list {
+    background-color: var(--bg-alt);
+  }
 }
