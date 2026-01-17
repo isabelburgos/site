@@ -1,141 +1,167 @@
 /* ===============================
-   Eliminate Material default blue
+   beam/shift — TEM Hacker Theme
    =============================== */
 
-/* Override Material primary colors */
+/* =========================
+   Color Palette
+   ========================= */
+
 :root {
+  /* Core TEM phosphor colors */
+  --phosphor: #B3FF01;        /* bright phosphor screen */
+  --phosphor-dim: #7ab800;    /* dimmed phosphor */
+  --phosphor-glow: rgba(179, 255, 1, 0.4);
+  --deep-green: #2E5F04;      /* instrument housing */
+
+  /* Accent colors */
+  --lavender: #c6b7ff;
+  --cyan: #00ffd5;
+  --amber: #ffb800;
+  --magenta: #ff00aa;
+
+  /* Dark-mode defaults */
+  --bg: #050807;              /* CRT off-black */
+  --bg-alt: #0a110c;          /* panel background */
+  --bg-code: #060a08;         /* code block background */
+  --fg: #d8f0dd;              /* phosphor text */
+  --fg-dim: #8fa894;          /* secondary text */
+
+  --accent: var(--phosphor);
+  --accent-dim: #5fae2a;
+
+  --border: #1a2b1e;
+  --border-glow: rgba(179, 255, 1, 0.15);
+
+  --warning: #ffd166;
+  --danger: #ff5c5c;
+  --info: #00b4d8;
+  --success: var(--phosphor);
+
+  /* Material overrides */
   --md-primary-fg-color: var(--deep-green);
   --md-primary-bg-color: var(--bg-alt);
+  --md-default-bg-color: var(--bg);
+  --md-default-fg-color: var(--fg);
+  --md-default-fg-color--light: var(--fg-dim);
+  --md-accent-fg-color: var(--phosphor);
+  --md-code-bg-color: var(--bg-code);
 }
 
-/* Header and tabs */
+/* =========================
+   CRT / Scanline Effects
+   ========================= */
+
+/* Subtle scanline overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+  z-index: 9999;
+}
+
+/* Instrument panel grid */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(46, 95, 4, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 95, 4, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* =========================
+   Base Styles
+   ========================= */
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: "JetBrains Mono", "Fira Code", "IBM Plex Mono",
+               ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  line-height: 1.7;
+}
+
+/* Phosphor glow on selection */
+::selection {
+  background: var(--phosphor);
+  color: var(--bg);
+}
+
+/* =========================
+   Header / Navigation
+   ========================= */
+
 .md-header,
 .md-tabs {
   background-color: var(--bg-alt) !important;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Header text */
-.md-header__title,
-.md-header__topic,
-.md-header__button {
+.md-header__title {
+  color: var(--phosphor) !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px var(--phosphor-glow);
+}
+
+.md-header__button,
+.md-header__topic {
   color: var(--fg) !important;
 }
 
-/* Tabs */
 .md-tabs__link {
   color: var(--fg-dim) !important;
 }
 
 .md-tabs__link--active,
 .md-tabs__link:hover {
-  color: var(--accent) !important;
-  border-bottom-color: var(--accent) !important;
+  color: var(--phosphor) !important;
+  text-shadow: 0 0 8px var(--phosphor-glow);
 }
 
 .md-nav__title {
-  color: var(--accent) !important;
+  color: var(--phosphor) !important;
   background: transparent !important;
   box-shadow: none !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
 }
 
-/* Icons (Material loves to sneak blue SVGs in) */
+/* Icons */
 .md-header svg,
 .md-tabs svg {
   fill: currentColor !important;
 }
 
-/* Focus rings */
 :focus-visible {
-  outline-color: var(--accent-dim);
+  outline: 2px solid var(--phosphor);
+  outline-offset: 2px;
 }
-
 
 /* =========================
-   Terminal / Hacker Theme
+   Sidebar
    ========================= */
 
-/* Color palette */
-:root {
-  /* Core brand colors (do not change) */
-  --phosphor: #B3FF01;   /* bright TEM phosphor */
-  --deep-green: #2E5F04; /* instrument housing / logo green */
-
-  /* Lavender accent */
-  --lavender: #c6b7ff;
-
-  /* Dark-mode defaults */
-  --bg: #060907;         /* darker for contrast against phosphor */
-  --bg-alt: #0d140f;     /* panel background */
-  --fg: #e9f5ec;         /* high-contrast body text */
-  --fg-dim: #bcd0c3;     /* secondary text */
-
-  --accent: var(--phosphor);
-  --accent-dim: #5fae2a; /* lifted mid-green for headings */
-
-  --border: #223526;
-  --code-bg: #0b120d;
-
-  --warning: #ffd166;
-  --danger: #ff5c5c;
-}
-
-/* Material theme variable overrides for DARK mode */
-[data-md-color-scheme="default"] {
-  --md-default-bg-color: var(--bg);
-  --md-default-fg-color: var(--fg);
-  --md-default-fg-color--light: var(--fg-dim);
-  --md-primary-fg-color: var(--deep-green);
-  --md-accent-fg-color: var(--phosphor);
-  --md-code-bg-color: var(--code-bg);
-}
-
-/* LIGHT mode palette tuned for scientific readability */
-[data-md-color-scheme="light"] {
-  --bg: #f6faf7;         /* paper-like background */
-  --bg-alt: #e8f1ea;     /* panel / sidebar */
-  --fg: #102014;         /* dark instrument text */
-  --fg-dim: #3b5a42;
-
-  --accent: var(--deep-green);
-  --accent-dim: #1f4a03;
-
-  --border: #c9dacd;
-  --code-bg: #eef6f0;
-
-  --md-default-bg-color: var(--bg);
-  --md-default-fg-color: var(--fg);
-  --md-default-fg-color--light: var(--fg-dim);
-  --md-primary-fg-color: var(--deep-green);
-  --md-accent-fg-color: var(--phosphor);
-  --md-code-bg-color: var(--code-bg);
-}
-
-/* Global background + text */
-body {
-  background-color: var(--bg);
-  color: var(--fg);
-  font-family: "JetBrains Mono", "Fira Code", "IBM Plex Mono",
-               ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  line-height: 1.6;
-}
-
-/* Main content area */
 .md-main__inner {
   background-color: var(--bg);
 }
 
-/* Header / top nav */
-.md-header {
-  background-color: var(--bg-alt);
-  border-bottom: 1px solid var(--border);
-}
-
-.md-header__title {
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
-/* Sidebar visual styling ONLY (no layout primitives) */
 @media (min-width: 76.1875em) {
   .md-sidebar {
     background-color: var(--bg-alt);
@@ -143,33 +169,31 @@ body {
   }
 }
 
-/* Sidebar navigation */
 .md-nav__link {
   color: var(--fg-dim);
+  transition: all 0.2s ease;
 }
 
-/* Sidebar active item: remove fill, add accent border */
 .md-nav__item .md-nav__link--active {
   background: none !important;
   box-shadow: none !important;
-  color: var(--accent) !important;
-  border-left: 2px solid var(--accent);
+  color: var(--phosphor) !important;
+  border-left: 2px solid var(--phosphor);
   padding-left: calc(1rem - 2px);
+  text-shadow: 0 0 8px var(--phosphor-glow);
 }
-
-/* Hover state should stay subtle and non-filled */
 
 .md-nav__item .md-nav__link:hover {
   background: none !important;
   box-shadow: none !important;
+  color: var(--phosphor) !important;
 }
 
-/* Force sidebar link hover/focus to use TEM palette, not Material accent */
 .md-nav__link[for]:hover,
 .md-nav__link[for]:focus,
 .md-nav__link[href]:hover,
 .md-nav__link[href]:focus {
-  color: var(--accent) !important;
+  color: var(--phosphor) !important;
   background: none !important;
   box-shadow: none !important;
 }
@@ -179,125 +203,281 @@ body {
   display: none !important;
 }
 
-/* Page headings */
-.md-typeset h1,
-.md-typeset h2,
-.md-typeset h3,
-.md-typeset h4 {
-  color: var(--accent-dim);
-  font-weight: 600;
-  letter-spacing: 0.03em;
+/* =========================
+   Typography
+   ========================= */
+
+.md-typeset {
+  color: var(--fg);
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+}
+
+/* Headings with terminal prompt style */
+.md-typeset h1 {
+  color: var(--phosphor);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px var(--phosphor-glow);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
 }
 
 .md-typeset h1::before {
-  content: "▸ ";
-  color: var(--accent-dim);
+  content: "» ";
+  color: var(--phosphor-dim);
 }
 
-/* Links */
+.md-typeset h2 {
+  color: var(--accent-dim);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-top: 2rem;
+}
+
+.md-typeset h2::before {
+  content: "› ";
+  color: var(--phosphor-dim);
+}
+
+.md-typeset h3,
+.md-typeset h4 {
+  color: var(--fg);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.md-typeset h3::before {
+  content: "▸ ";
+  color: var(--phosphor-dim);
+}
+
+/* Links with glow effect */
 .md-typeset a {
-  color: var(--accent);
+  color: var(--cyan);
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 .md-typeset a:hover,
-.md-typeset a:focus,
-.md-typeset a:active {
-  color: var(--accent) !important;
-  text-decoration: underline;
+.md-typeset a:focus {
+  color: var(--phosphor) !important;
+  text-shadow: 0 0 8px var(--phosphor-glow);
+  text-decoration: none;
 }
 
-/* Strengthen link contrast in light mode */
-[data-md-color-scheme="light"] .md-typeset a {
-  color: var(--accent);
-  text-decoration-thickness: 1.5px;
-}
-
-/* Lavender metadata / analytical accents */
-.md-typeset em,
-.md-typeset small {
+/* Emphasis and metadata */
+.md-typeset em {
   color: var(--lavender);
+  font-style: italic;
+}
+
+.md-typeset strong {
+  color: var(--phosphor);
+  font-weight: 600;
+}
+
+.md-typeset small {
+  color: var(--fg-dim);
 }
 
 .md-typeset figcaption {
   color: var(--lavender);
   font-size: 0.85em;
   letter-spacing: 0.02em;
+  font-style: italic;
 }
 
-/* Horizontal rules */
+/* Horizontal rules — electron beam divider */
 .md-typeset hr {
   border: none;
   height: 1px;
-  background:
-    linear-gradient(
-      to right,
-      transparent,
-      var(--accent-dim),
-      transparent
-    );
-  opacity: 0.6;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--phosphor-dim) 20%,
+    var(--phosphor) 50%,
+    var(--phosphor-dim) 80%,
+    transparent
+  );
+  margin: 2rem 0;
+  box-shadow: 0 0 10px var(--phosphor-glow);
 }
 
-/* Code blocks */
+/* =========================
+   Code Blocks — Terminal Style
+   ========================= */
+
+/* Code block container */
 .md-typeset pre {
-  background-color: var(--code-bg);
+  background-color: var(--bg-code);
   border: 1px solid var(--border);
-  box-shadow: inset 0 0 0 1px rgba(76, 255, 122, 0.05);
-}
-
-.md-typeset code {
-  background-color: rgba(76, 255, 122, 0.08);
-  color: var(--fg);
-  padding: 0.15em 0.3em;
+  border-left: 3px solid var(--phosphor);
   border-radius: 4px;
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Blockquotes */
+/* Terminal header effect */
+.md-typeset pre::before {
+  content: "terminal";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 12px;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  color: var(--fg-dim);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.md-typeset pre > code {
+  padding-top: 2rem;
+  display: block;
+}
+
+/* Inline code */
+.md-typeset code {
+  background-color: rgba(179, 255, 1, 0.1);
+  color: var(--phosphor);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  font-size: 0.9em;
+}
+
+/* Syntax highlighting colors */
+.highlight .c,
+.highlight .c1,
+.highlight .cm { color: #6a9955; }          /* comments — dim green */
+.highlight .k,
+.highlight .kn,
+.highlight .kd { color: var(--magenta); }   /* keywords — magenta */
+.highlight .s,
+.highlight .s1,
+.highlight .s2 { color: var(--amber); }     /* strings — amber */
+.highlight .n { color: var(--fg); }          /* names */
+.highlight .nf,
+.highlight .nb { color: var(--cyan); }      /* functions — cyan */
+.highlight .nn { color: var(--lavender); }  /* namespaces — lavender */
+.highlight .mi,
+.highlight .mf { color: var(--phosphor); }  /* numbers — phosphor */
+.highlight .o { color: var(--fg-dim); }      /* operators */
+.highlight .p { color: var(--fg-dim); }      /* punctuation */
+
+/* Copy button */
+.md-clipboard {
+  color: var(--fg-dim) !important;
+}
+
+.md-clipboard:hover {
+  color: var(--phosphor) !important;
+}
+
+/* =========================
+   Blockquotes
+   ========================= */
+
 .md-typeset blockquote {
   border-left: 3px solid var(--lavender);
-  background-color: var(--bg-alt);
+  background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
   color: var(--fg-dim);
+  font-style: italic;
+  position: relative;
 }
 
-/* Tables */
+.md-typeset blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 3rem;
+  color: var(--lavender);
+  opacity: 0.3;
+}
+
+/* =========================
+   Tables — Data Readout Style
+   ========================= */
+
 .md-typeset table {
   border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .md-typeset th {
-  background-color: var(--bg-alt);
-  color: var(--accent);
+  background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+  color: var(--phosphor);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+  border-bottom: 2px solid var(--phosphor);
 }
 
 .md-typeset td {
   border-top: 1px solid var(--border);
   background-color: var(--bg);
   color: var(--fg);
+  font-size: 0.9rem;
 }
 
 .md-typeset tbody tr:hover td {
   background-color: var(--bg-alt);
+  color: var(--phosphor);
 }
 
-/* callouts / admonitions */
+/* =========================
+   Admonitions — Instrument Panels
+   ========================= */
+
 .md-typeset .admonition,
 .md-typeset details {
-  background-color: #0a120e; /* darker panel background */
-  border: 2px solid var(--phosphor); /* phosphor green border */
-  color: var(--fg); /* readable text */
-  border-left: 4px solid var(--phosphor); /* “indicator bar” style */
-  border-radius: 2px;
-  box-shadow: inset 0 0 5px rgba(76, 255, 122, 0.1); /* subtle glow */
-  font-family: "JetBrains Mono", monospace;
+  background: linear-gradient(135deg, #0a120e 0%, #060a08 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--phosphor);
+  border-radius: 4px;
+  box-shadow:
+    inset 0 0 20px rgba(0, 0, 0, 0.3),
+    0 4px 15px rgba(0, 0, 0, 0.2);
+  color: var(--fg);
+  margin: 1.5rem 0;
+  overflow: hidden;
 }
 
-/* Callout title / header */
-.md-typeset .admonition-title {
-  color: var(--phosphor); /* bright green for instrument readout */
+.md-typeset .admonition-title,
+.md-typeset details summary {
+  background: var(--bg-alt);
+  color: var(--phosphor);
   font-weight: 700;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-shadow: 0 0 10px var(--phosphor-glow);
+}
+
+.md-typeset .admonition-title::before,
+.md-typeset details summary::before {
+  margin-right: 0.5rem;
+}
+
+/* Admonition content */
+.md-typeset .admonition > :not(.admonition-title),
+.md-typeset details > :not(summary) {
+  padding: 0 1rem;
 }
 
 /* Search box */
@@ -305,6 +485,12 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.md-search__input:focus {
+  border-color: var(--phosphor);
+  box-shadow: 0 0 10px var(--phosphor-glow);
 }
 
 /* Footer */
@@ -315,60 +501,213 @@ body {
 }
 
 
-/* TEM-style instrument panel grid overlay */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(46, 95, 4, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(46, 95, 4, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.12;
-  z-index: 0;
-}
-
-/* Publication-style body text */
-.md-typeset {
-  color: var(--fg);
-  font-size: 0.95rem;
-  letter-spacing: 0.01em;
-}
-
-
 /* =========================
    Admonition Type Colors
    ========================= */
 
-/* Note (blue) */
+/* Note — cyan data readout */
 .md-typeset .admonition.note {
-  border-left-color: #2196f3; /* default Material accent */
+  border-left-color: var(--cyan);
+}
+.md-typeset .admonition.note .admonition-title {
+  color: var(--cyan);
+  text-shadow: 0 0 10px rgba(0, 255, 213, 0.4);
 }
 
-/* Tip (cyan) */
+/* Tip — phosphor success */
 .md-typeset .admonition.tip {
-  border-left-color: #00bcd4;
+  border-left-color: var(--phosphor);
+}
+.md-typeset .admonition.tip .admonition-title {
+  color: var(--phosphor);
 }
 
-/* Info (blue) */
+/* Info — lavender */
 .md-typeset .admonition.info {
-  border-left-color: #2196f3;
+  border-left-color: var(--lavender);
+}
+.md-typeset .admonition.info .admonition-title {
+  color: var(--lavender);
+  text-shadow: 0 0 10px rgba(198, 183, 255, 0.4);
 }
 
-/* Caution (amber) */
+/* Warning — amber caution */
+.md-typeset .admonition.warning,
 .md-typeset .admonition.caution {
-  border-left-color: #ffca28;
+  border-left-color: var(--amber);
+}
+.md-typeset .admonition.warning .admonition-title,
+.md-typeset .admonition.caution .admonition-title {
+  color: var(--amber);
+  text-shadow: 0 0 10px rgba(255, 184, 0, 0.4);
 }
 
-/* Warning (orange/gold) */
-.md-typeset .admonition.warning {
-  border-left-color: #ff9800;
+/* Danger — red alert */
+.md-typeset .admonition.danger,
+.md-typeset .admonition.error {
+  border-left-color: var(--danger);
+}
+.md-typeset .admonition.danger .admonition-title,
+.md-typeset .admonition.error .admonition-title {
+  color: var(--danger);
+  text-shadow: 0 0 10px rgba(255, 92, 92, 0.4);
 }
 
-/* Danger (red) */
-.md-typeset .admonition.danger {
-  border-left-color: #f44336;
+/* Abstract / Summary — magenta */
+.md-typeset .admonition.abstract,
+.md-typeset .admonition.summary {
+  border-left-color: var(--magenta);
+}
+.md-typeset .admonition.abstract .admonition-title,
+.md-typeset .admonition.summary .admonition-title {
+  color: var(--magenta);
+  text-shadow: 0 0 10px rgba(255, 0, 170, 0.4);
+}
+
+/* Example / Quote */
+.md-typeset .admonition.example,
+.md-typeset .admonition.quote {
+  border-left-color: var(--fg-dim);
+}
+.md-typeset .admonition.example .admonition-title,
+.md-typeset .admonition.quote .admonition-title {
+  color: var(--fg);
+}
+
+/* =========================
+   Mermaid Diagrams
+   ========================= */
+
+.mermaid {
+  background: transparent !important;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Override Mermaid's default colors */
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon {
+  fill: var(--bg-alt) !important;
+  stroke: var(--phosphor) !important;
+  stroke-width: 2px !important;
+}
+
+.mermaid .node .label {
+  color: var(--fg) !important;
+  fill: var(--fg) !important;
+}
+
+.mermaid .edgePath .path {
+  stroke: var(--phosphor-dim) !important;
+  stroke-width: 2px !important;
+}
+
+.mermaid .arrowheadPath {
+  fill: var(--phosphor) !important;
+}
+
+.mermaid .cluster rect {
+  fill: var(--bg-code) !important;
+  stroke: var(--border) !important;
+}
+
+.mermaid .label {
+  font-family: "JetBrains Mono", monospace !important;
+  color: var(--fg) !important;
+}
+
+/* =========================
+   LaTeX / Math
+   ========================= */
+
+.MathJax {
+  color: var(--phosphor) !important;
+}
+
+mjx-container[jax="CHTML"] {
+  color: var(--phosphor);
+}
+
+/* Block math — centered with subtle glow */
+.md-typeset .arithmatex > .MathJax,
+mjx-container[display="true"] {
+  padding: 1rem;
+  background: var(--bg-code);
+  border-radius: 4px;
+  border-left: 3px solid var(--lavender);
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+/* =========================
+   Images
+   ========================= */
+
+.md-typeset img {
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.md-typeset img:hover {
+  border-color: var(--phosphor);
+  box-shadow: 0 0 20px var(--phosphor-glow);
+}
+
+/* =========================
+   Lists
+   ========================= */
+
+.md-typeset ul,
+.md-typeset ol {
+  color: var(--fg);
+}
+
+.md-typeset li::marker {
+  color: var(--phosphor-dim);
+}
+
+/* Task lists */
+.md-typeset .task-list-item input[type="checkbox"] {
+  accent-color: var(--phosphor);
+}
+
+/* =========================
+   Keyboard keys
+   ========================= */
+
+.md-typeset kbd {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-bottom: 3px solid var(--border);
+  border-radius: 4px;
+  color: var(--phosphor);
+  font-size: 0.85em;
+  padding: 0.2em 0.5em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================
+   Mark / Highlight
+   ========================= */
+
+.md-typeset mark {
+  background: rgba(179, 255, 1, 0.3);
+  color: var(--fg);
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+}
+
+/* =========================
+   Strikethrough
+   ========================= */
+
+.md-typeset del {
+  color: var(--fg-dim);
+  text-decoration-color: var(--danger);
 }
 
 

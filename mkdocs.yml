@@ -1,14 +1,18 @@
 site_name: "beam/shift"
 extra_css: ["styles.css"]
+
 theme:
   name: material
   features:
     - navigation.expand
     - toc.integrate
+    - content.code.copy
+    - content.code.annotate
   logo: icon.png
   favicon: icon.png
-  extra_javascript:
-    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  palette:
+    scheme: default
+
 plugins:
   - search
   - roamlinks
@@ -16,15 +20,32 @@ plugins:
   - minify
   - include_dir_to_nav:
       flat: false
-      include_empty_dir : true
+      include_empty_dir: true
 
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.mark
+  - pymdownx.tilde
+  - attr_list
+  - md_in_html
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
   - ✸: index.md
   - 2100F: JEM-2100F.md
+  - test: test.md
