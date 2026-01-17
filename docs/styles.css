@@ -1,17 +1,18 @@
 /* ===============================
    beam/shift — TEM Hacker Theme
+   Bulletproof Material Override
    =============================== */
 
 /* =========================
-   Color Palette
+   Color Palette Variables
    ========================= */
 
 :root {
   /* Core TEM phosphor colors */
-  --phosphor: #B3FF01;        /* bright phosphor screen */
-  --phosphor-dim: #7ab800;    /* dimmed phosphor */
+  --phosphor: #B3FF01;
+  --phosphor-dim: #7ab800;
   --phosphor-glow: rgba(179, 255, 1, 0.4);
-  --deep-green: #2E5F04;      /* instrument housing */
+  --deep-green: #2E5F04;
 
   /* Accent colors */
   --lavender: #c6b7ff;
@@ -19,12 +20,12 @@
   --amber: #ffb800;
   --magenta: #ff00aa;
 
-  /* Dark-mode defaults */
-  --bg: #050807;              /* CRT off-black */
-  --bg-alt: #0a110c;          /* panel background */
-  --bg-code: #060a08;         /* code block background */
-  --fg: #d8f0dd;              /* phosphor text */
-  --fg-dim: #8fa894;          /* secondary text */
+  /* Dark-mode backgrounds */
+  --bg: #050807;
+  --bg-alt: #0a110c;
+  --bg-code: #060a08;
+  --fg: #d8f0dd;
+  --fg-dim: #8fa894;
 
   --accent: var(--phosphor);
   --accent-dim: #5fae2a;
@@ -36,22 +37,114 @@
   --danger: #ff5c5c;
   --info: #00b4d8;
   --success: var(--phosphor);
+}
 
-  /* Material overrides */
-  --md-primary-fg-color: var(--deep-green);
-  --md-primary-bg-color: var(--bg-alt);
-  --md-default-bg-color: var(--bg);
-  --md-default-fg-color: var(--fg);
-  --md-default-fg-color--light: var(--fg-dim);
-  --md-accent-fg-color: var(--phosphor);
-  --md-code-bg-color: var(--bg-code);
+/* =========================
+   Material Theme Overrides
+   Complete color takeover
+   ========================= */
+
+/* Override ALL Material color variables at root level */
+:root,
+[data-md-color-scheme],
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"],
+[data-md-color-primary],
+[data-md-color-primary="custom"],
+[data-md-color-accent],
+[data-md-color-accent="custom"] {
+  /* Primary colors - used for header, buttons, links */
+  --md-primary-fg-color: var(--deep-green) !important;
+  --md-primary-fg-color--light: var(--phosphor-dim) !important;
+  --md-primary-fg-color--dark: #1a4a00 !important;
+  --md-primary-bg-color: var(--bg-alt) !important;
+  --md-primary-bg-color--light: var(--bg) !important;
+
+  /* Accent colors - used for hover states, focus, highlights */
+  --md-accent-fg-color: var(--phosphor) !important;
+  --md-accent-fg-color--transparent: rgba(179, 255, 1, 0.1) !important;
+  --md-accent-bg-color: var(--bg) !important;
+  --md-accent-bg-color--light: var(--bg-alt) !important;
+
+  /* Default foreground/background */
+  --md-default-fg-color: var(--fg) !important;
+  --md-default-fg-color--light: var(--fg-dim) !important;
+  --md-default-fg-color--lighter: #6a8a70 !important;
+  --md-default-fg-color--lightest: #3a5a40 !important;
+  --md-default-bg-color: var(--bg) !important;
+  --md-default-bg-color--light: var(--bg-alt) !important;
+  --md-default-bg-color--lighter: #0d140f !important;
+  --md-default-bg-color--lightest: #101a13 !important;
+
+  /* Code colors */
+  --md-code-fg-color: var(--phosphor) !important;
+  --md-code-bg-color: var(--bg-code) !important;
+  --md-code-hl-color: rgba(179, 255, 1, 0.2) !important;
+  --md-code-hl-color--light: rgba(179, 255, 1, 0.1) !important;
+
+  /* Syntax highlighting */
+  --md-code-hl-number-color: var(--phosphor) !important;
+  --md-code-hl-special-color: var(--magenta) !important;
+  --md-code-hl-function-color: var(--cyan) !important;
+  --md-code-hl-constant-color: var(--lavender) !important;
+  --md-code-hl-keyword-color: var(--magenta) !important;
+  --md-code-hl-string-color: var(--amber) !important;
+  --md-code-hl-name-color: var(--fg) !important;
+  --md-code-hl-operator-color: var(--fg-dim) !important;
+  --md-code-hl-punctuation-color: var(--fg-dim) !important;
+  --md-code-hl-comment-color: #6a9955 !important;
+  --md-code-hl-generic-color: var(--fg-dim) !important;
+  --md-code-hl-variable-color: var(--cyan) !important;
+
+  /* Typography */
+  --md-typeset-color: var(--fg) !important;
+  --md-typeset-a-color: var(--cyan) !important;
+  --md-typeset-kbd-color: var(--bg-alt) !important;
+  --md-typeset-kbd-border-color: var(--border) !important;
+  --md-typeset-kbd-accent-color: var(--phosphor) !important;
+  --md-typeset-mark-color: rgba(179, 255, 1, 0.3) !important;
+  --md-typeset-del-color: rgba(255, 92, 92, 0.3) !important;
+  --md-typeset-ins-color: rgba(179, 255, 1, 0.3) !important;
+  --md-typeset-table-color: var(--border) !important;
+
+  /* Admonitions */
+  --md-admonition-fg-color: var(--fg) !important;
+  --md-admonition-bg-color: var(--bg-alt) !important;
+
+  /* Footer */
+  --md-footer-fg-color: var(--fg-dim) !important;
+  --md-footer-fg-color--light: var(--fg-dim) !important;
+  --md-footer-fg-color--lighter: #5a7a60 !important;
+  --md-footer-bg-color: var(--bg-alt) !important;
+  --md-footer-bg-color--dark: var(--bg) !important;
+
+  /* Shadow - keep subtle */
+  --md-shadow-z1: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3) !important;
+  --md-shadow-z2: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4) !important;
+  --md-shadow-z3: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5) !important;
+
+  /* Hue for hsla-based colors */
+  --md-hue: 140 !important;
+}
+
+/* Additional specificity for slate scheme */
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: var(--cyan) !important;
+}
+
+/* Override the body data attributes that Material adds */
+body[data-md-color-scheme],
+body[data-md-color-primary],
+body[data-md-color-accent] {
+  --md-primary-fg-color: var(--deep-green) !important;
+  --md-accent-fg-color: var(--phosphor) !important;
+  --md-typeset-a-color: var(--cyan) !important;
 }
 
 /* =========================
    CRT / Scanline Effects
    ========================= */
 
-/* Subtle scanline overlay */
 body::before {
   content: "";
   position: fixed;
@@ -68,7 +161,6 @@ body::before {
   z-index: 9999;
 }
 
-/* Instrument panel grid */
 body::after {
   content: "";
   position: fixed;
@@ -87,28 +179,35 @@ body::after {
    ========================= */
 
 body {
-  background-color: var(--bg);
-  color: var(--fg);
+  background-color: var(--bg) !important;
+  color: var(--fg) !important;
   font-family: "JetBrains Mono", "Fira Code", "IBM Plex Mono",
                ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   line-height: 1.7;
 }
 
-/* Phosphor glow on selection */
 ::selection {
-  background: var(--phosphor);
-  color: var(--bg);
+  background: var(--phosphor) !important;
+  color: var(--bg) !important;
 }
 
 /* =========================
    Header / Navigation
    ========================= */
 
-.md-header,
+.md-header {
+  background-color: var(--bg-alt) !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.md-header[data-md-state="shadow"] {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6) !important;
+}
+
 .md-tabs {
   background-color: var(--bg-alt) !important;
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--border) !important;
 }
 
 .md-header__title {
@@ -120,8 +219,14 @@ body {
 }
 
 .md-header__button,
-.md-header__topic {
+.md-header__topic,
+.md-header__option {
   color: var(--fg) !important;
+}
+
+.md-header__button:hover,
+.md-header__button:focus {
+  color: var(--phosphor) !important;
 }
 
 .md-tabs__link {
@@ -129,9 +234,23 @@ body {
 }
 
 .md-tabs__link--active,
-.md-tabs__link:hover {
+.md-tabs__link:hover,
+.md-tabs__link:focus {
   color: var(--phosphor) !important;
   text-shadow: 0 0 8px var(--phosphor-glow);
+}
+
+/* Icons */
+.md-header svg,
+.md-tabs svg,
+.md-header .md-icon svg {
+  fill: currentColor !important;
+}
+
+/* Focus rings */
+:focus-visible {
+  outline: 2px solid var(--phosphor) !important;
+  outline-offset: 2px !important;
 }
 
 .md-nav__title {
@@ -143,64 +262,70 @@ body {
   font-size: 0.75rem;
 }
 
-/* Icons */
-.md-header svg,
-.md-tabs svg {
-  fill: currentColor !important;
-}
-
-:focus-visible {
-  outline: 2px solid var(--phosphor);
-  outline-offset: 2px;
-}
-
 /* =========================
    Sidebar
    ========================= */
 
 .md-main__inner {
-  background-color: var(--bg);
+  background-color: var(--bg) !important;
+}
+
+.md-sidebar {
+  background-color: var(--bg-alt) !important;
 }
 
 @media (min-width: 76.1875em) {
   .md-sidebar {
-    background-color: var(--bg-alt);
-    border-right: 1px solid var(--border);
+    border-right: 1px solid var(--border) !important;
   }
 }
 
+.md-sidebar__scrollwrap,
+.md-sidebar__inner {
+  background-color: var(--bg-alt) !important;
+}
+
+.md-nav {
+  background-color: transparent !important;
+}
+
+.md-nav__list {
+  background-color: transparent !important;
+}
+
 .md-nav__link {
-  color: var(--fg-dim);
+  color: var(--fg-dim) !important;
   transition: all 0.2s ease;
 }
 
-.md-nav__item .md-nav__link--active {
+.md-nav__link:hover,
+.md-nav__link:focus {
+  color: var(--phosphor) !important;
   background: none !important;
   box-shadow: none !important;
+}
+
+.md-nav__link--active,
+.md-nav__item .md-nav__link--active {
   color: var(--phosphor) !important;
-  border-left: 2px solid var(--phosphor);
-  padding-left: calc(1rem - 2px);
+  background: none !important;
+  box-shadow: none !important;
+  border-left: 2px solid var(--phosphor) !important;
+  padding-left: calc(1rem - 2px) !important;
   text-shadow: 0 0 8px var(--phosphor-glow);
 }
 
-.md-nav__item .md-nav__link:hover {
-  background: none !important;
-  box-shadow: none !important;
-  color: var(--phosphor) !important;
-}
-
-.md-nav__link[for]:hover,
-.md-nav__link[for]:focus,
-.md-nav__link[href]:hover,
-.md-nav__link[href]:focus {
-  color: var(--phosphor) !important;
-  background: none !important;
-  box-shadow: none !important;
-}
-
+/* Remove Material's active link indicators */
 .md-nav__link--active::before,
-.md-nav__link--active::after {
+.md-nav__link--active::after,
+.md-nav__link--passed::before,
+.md-nav__link--passed::after {
   display: none !important;
+}
+
+/* Active nav item background removal */
+.md-nav__item--active > .md-nav__link {
+  background: none !important;
 }
 
 /* =========================
@@ -208,14 +333,14 @@ body {
    ========================= */
 
 .md-typeset {
-  color: var(--fg);
+  color: var(--fg) !important;
   font-size: 0.92rem;
   letter-spacing: 0.01em;
 }
 
-/* Headings with terminal prompt style */
+/* Headings */
 .md-typeset h1 {
-  color: var(--phosphor);
+  color: var(--phosphor) !important;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -225,74 +350,88 @@ body {
 }
 
 .md-typeset h1::before {
-  content: "» ";
+  content: "\00BB ";
   color: var(--phosphor-dim);
 }
 
 .md-typeset h2 {
-  color: var(--accent-dim);
+  color: var(--accent-dim) !important;
   font-weight: 600;
   letter-spacing: 0.03em;
   margin-top: 2rem;
 }
 
 .md-typeset h2::before {
-  content: "› ";
+  content: "\203A ";
   color: var(--phosphor-dim);
 }
 
 .md-typeset h3,
 .md-typeset h4 {
-  color: var(--fg);
+  color: var(--fg) !important;
   font-weight: 600;
   letter-spacing: 0.02em;
 }
 
 .md-typeset h3::before {
-  content: "▸ ";
+  content: "\25B8 ";
   color: var(--phosphor-dim);
 }
 
-/* Links with glow effect */
-.md-typeset a {
-  color: var(--cyan);
-  text-decoration: none;
+/* Links - THE CRITICAL FIX */
+.md-typeset a,
+.md-typeset a:link,
+.md-typeset a:visited,
+.md-content a,
+.md-content a:link,
+.md-content a:visited {
+  color: var(--cyan) !important;
+  text-decoration: none !important;
   transition: all 0.2s ease;
 }
 
 .md-typeset a:hover,
-.md-typeset a:focus {
+.md-typeset a:focus,
+.md-content a:hover,
+.md-content a:focus {
   color: var(--phosphor) !important;
   text-shadow: 0 0 8px var(--phosphor-glow);
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
-/* Emphasis and metadata */
+/* Link code */
+.md-typeset a code,
+.md-typeset a:hover code {
+  color: inherit !important;
+  background-color: rgba(179, 255, 1, 0.1) !important;
+}
+
+/* Emphasis */
 .md-typeset em {
-  color: var(--lavender);
+  color: var(--lavender) !important;
   font-style: italic;
 }
 
 .md-typeset strong {
-  color: var(--phosphor);
+  color: var(--phosphor) !important;
   font-weight: 600;
 }
 
 .md-typeset small {
-  color: var(--fg-dim);
+  color: var(--fg-dim) !important;
 }
 
 .md-typeset figcaption {
-  color: var(--lavender);
+  color: var(--lavender) !important;
   font-size: 0.85em;
   letter-spacing: 0.02em;
   font-style: italic;
 }
 
-/* Horizontal rules — electron beam divider */
+/* Horizontal rules */
 .md-typeset hr {
-  border: none;
-  height: 1px;
+  border: none !important;
+  height: 1px !important;
   background: linear-gradient(
     to right,
     transparent,
@@ -300,29 +439,27 @@ body {
     var(--phosphor) 50%,
     var(--phosphor-dim) 80%,
     transparent
-  );
-  margin: 2rem 0;
+  ) !important;
+  margin: 2rem 0 !important;
   box-shadow: 0 0 10px var(--phosphor-glow);
 }
 
 /* =========================
-   Code Blocks — Terminal Style
+   Code Blocks
    ========================= */
 
-/* Code block container */
 .md-typeset pre {
-  background-color: var(--bg-code);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--phosphor);
-  border-radius: 4px;
+  background-color: var(--bg-code) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 3px solid var(--phosphor) !important;
+  border-radius: 4px !important;
   box-shadow:
     inset 0 0 30px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(0, 0, 0, 0.3);
+    0 0 20px rgba(0, 0, 0, 0.3) !important;
   position: relative;
   overflow: hidden;
 }
 
-/* Terminal header effect */
 .md-typeset pre::before {
   content: "terminal";
   position: absolute;
@@ -339,46 +476,62 @@ body {
 }
 
 .md-typeset pre > code {
-  padding-top: 2rem;
+  padding-top: 2rem !important;
   display: block;
+  background-color: transparent !important;
+  color: var(--fg) !important;
 }
 
 /* Inline code */
 .md-typeset code {
-  background-color: rgba(179, 255, 1, 0.1);
-  color: var(--phosphor);
-  padding: 0.15em 0.4em;
-  border-radius: 3px;
-  border: 1px solid var(--border);
-  font-size: 0.9em;
+  background-color: rgba(179, 255, 1, 0.1) !important;
+  color: var(--phosphor) !important;
+  padding: 0.15em 0.4em !important;
+  border-radius: 3px !important;
+  border: 1px solid var(--border) !important;
+  font-size: 0.9em !important;
 }
 
-/* Syntax highlighting colors */
+/* Code in pre blocks should not have inline styles */
+.md-typeset pre code {
+  border: none !important;
+  padding: 1rem !important;
+  padding-top: 2rem !important;
+}
+
+/* Syntax highlighting */
 .highlight .c,
 .highlight .c1,
-.highlight .cm { color: #6a9955; }          /* comments — dim green */
+.highlight .cm { color: #6a9955 !important; }
 .highlight .k,
 .highlight .kn,
-.highlight .kd { color: var(--magenta); }   /* keywords — magenta */
+.highlight .kd { color: var(--magenta) !important; }
 .highlight .s,
 .highlight .s1,
-.highlight .s2 { color: var(--amber); }     /* strings — amber */
-.highlight .n { color: var(--fg); }          /* names */
+.highlight .s2 { color: var(--amber) !important; }
+.highlight .n { color: var(--fg) !important; }
 .highlight .nf,
-.highlight .nb { color: var(--cyan); }      /* functions — cyan */
-.highlight .nn { color: var(--lavender); }  /* namespaces — lavender */
+.highlight .nb { color: var(--cyan) !important; }
+.highlight .nn { color: var(--lavender) !important; }
 .highlight .mi,
-.highlight .mf { color: var(--phosphor); }  /* numbers — phosphor */
-.highlight .o { color: var(--fg-dim); }      /* operators */
-.highlight .p { color: var(--fg-dim); }      /* punctuation */
+.highlight .mf { color: var(--phosphor) !important; }
+.highlight .o { color: var(--fg-dim) !important; }
+.highlight .p { color: var(--fg-dim) !important; }
 
 /* Copy button */
 .md-clipboard {
   color: var(--fg-dim) !important;
 }
 
-.md-clipboard:hover {
+.md-clipboard:hover,
+.md-clipboard:focus {
   color: var(--phosphor) !important;
+}
+
+/* Code annotations */
+.md-annotation__index {
+  background-color: var(--phosphor) !important;
+  color: var(--bg) !important;
 }
 
 /* =========================
@@ -386,11 +539,11 @@ body {
    ========================= */
 
 .md-typeset blockquote {
-  border-left: 3px solid var(--lavender);
-  background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%);
-  padding: 1rem 1.5rem;
-  margin: 1.5rem 0;
-  color: var(--fg-dim);
+  border-left: 3px solid var(--lavender) !important;
+  background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%) !important;
+  padding: 1rem 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  color: var(--fg-dim) !important;
   font-style: italic;
   position: relative;
 }
@@ -406,172 +559,254 @@ body {
 }
 
 /* =========================
-   Tables — Data Readout Style
+   Tables
    ========================= */
 
-.md-typeset table {
-  border: 1px solid var(--border);
-  border-radius: 4px;
+.md-typeset table:not([class]) {
+  border: 1px solid var(--border) !important;
+  border-radius: 4px !important;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  background-color: var(--bg) !important;
 }
 
-.md-typeset th {
-  background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
-  color: var(--phosphor);
+.md-typeset table:not([class]) th {
+  background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%) !important;
+  color: var(--phosphor) !important;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: 0.8rem;
-  border-bottom: 2px solid var(--phosphor);
+  border-bottom: 2px solid var(--phosphor) !important;
 }
 
-.md-typeset td {
-  border-top: 1px solid var(--border);
-  background-color: var(--bg);
-  color: var(--fg);
+.md-typeset table:not([class]) td {
+  border-top: 1px solid var(--border) !important;
+  background-color: var(--bg) !important;
+  color: var(--fg) !important;
   font-size: 0.9rem;
 }
 
-.md-typeset tbody tr:hover td {
-  background-color: var(--bg-alt);
-  color: var(--phosphor);
+.md-typeset table:not([class]) tbody tr:hover td {
+  background-color: var(--bg-alt) !important;
+  color: var(--phosphor) !important;
 }
 
 /* =========================
-   Admonitions — Instrument Panels
+   Admonitions
    ========================= */
 
 .md-typeset .admonition,
 .md-typeset details {
-  background: linear-gradient(135deg, #0a120e 0%, #060a08 100%);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--phosphor);
-  border-radius: 4px;
+  background: linear-gradient(135deg, #0a120e 0%, #060a08 100%) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 4px solid var(--phosphor) !important;
+  border-radius: 4px !important;
   box-shadow:
     inset 0 0 20px rgba(0, 0, 0, 0.3),
-    0 4px 15px rgba(0, 0, 0, 0.2);
-  color: var(--fg);
-  margin: 1.5rem 0;
+    0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  color: var(--fg) !important;
+  margin: 1.5rem 0 !important;
   overflow: hidden;
 }
 
 .md-typeset .admonition-title,
 .md-typeset details summary {
-  background: var(--bg-alt);
-  color: var(--phosphor);
+  background: var(--bg-alt) !important;
+  color: var(--phosphor) !important;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 0.8rem;
-  padding: 0.6rem 1rem;
-  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 1rem !important;
+  border-bottom: 1px solid var(--border) !important;
   text-shadow: 0 0 10px var(--phosphor-glow);
 }
 
 .md-typeset .admonition-title::before,
 .md-typeset details summary::before {
-  margin-right: 0.5rem;
+  background-color: var(--phosphor) !important;
 }
 
 /* Admonition content */
 .md-typeset .admonition > :not(.admonition-title),
 .md-typeset details > :not(summary) {
-  padding: 0 1rem;
+  padding: 0 1rem !important;
 }
 
-/* Search box */
-.md-search__input {
-  background-color: var(--bg);
-  color: var(--fg);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-}
-
-.md-search__input:focus {
-  border-color: var(--phosphor);
-  box-shadow: 0 0 10px var(--phosphor-glow);
-}
-
-/* Footer */
-.md-footer {
-  background-color: var(--bg-alt);
-  border-top: 1px solid var(--border);
-  color: var(--fg-dim);
-}
-
-
-/* =========================
-   Admonition Type Colors
-   ========================= */
-
-/* Note — cyan data readout */
+/* Admonition types */
 .md-typeset .admonition.note {
-  border-left-color: var(--cyan);
+  border-left-color: var(--cyan) !important;
 }
-.md-typeset .admonition.note .admonition-title {
-  color: var(--cyan);
+.md-typeset .admonition.note > .admonition-title {
+  color: var(--cyan) !important;
   text-shadow: 0 0 10px rgba(0, 255, 213, 0.4);
 }
+.md-typeset .admonition.note > .admonition-title::before {
+  background-color: var(--cyan) !important;
+}
 
-/* Tip — phosphor success */
 .md-typeset .admonition.tip {
-  border-left-color: var(--phosphor);
+  border-left-color: var(--phosphor) !important;
 }
-.md-typeset .admonition.tip .admonition-title {
-  color: var(--phosphor);
+.md-typeset .admonition.tip > .admonition-title {
+  color: var(--phosphor) !important;
 }
 
-/* Info — lavender */
-.md-typeset .admonition.info {
-  border-left-color: var(--lavender);
+.md-typeset .admonition.info,
+.md-typeset .admonition.abstract {
+  border-left-color: var(--lavender) !important;
 }
-.md-typeset .admonition.info .admonition-title {
-  color: var(--lavender);
+.md-typeset .admonition.info > .admonition-title,
+.md-typeset .admonition.abstract > .admonition-title {
+  color: var(--lavender) !important;
   text-shadow: 0 0 10px rgba(198, 183, 255, 0.4);
 }
+.md-typeset .admonition.info > .admonition-title::before,
+.md-typeset .admonition.abstract > .admonition-title::before {
+  background-color: var(--lavender) !important;
+}
 
-/* Warning — amber caution */
 .md-typeset .admonition.warning,
 .md-typeset .admonition.caution {
-  border-left-color: var(--amber);
+  border-left-color: var(--amber) !important;
 }
-.md-typeset .admonition.warning .admonition-title,
-.md-typeset .admonition.caution .admonition-title {
-  color: var(--amber);
+.md-typeset .admonition.warning > .admonition-title,
+.md-typeset .admonition.caution > .admonition-title {
+  color: var(--amber) !important;
   text-shadow: 0 0 10px rgba(255, 184, 0, 0.4);
 }
+.md-typeset .admonition.warning > .admonition-title::before,
+.md-typeset .admonition.caution > .admonition-title::before {
+  background-color: var(--amber) !important;
+}
 
-/* Danger — red alert */
 .md-typeset .admonition.danger,
 .md-typeset .admonition.error {
-  border-left-color: var(--danger);
+  border-left-color: var(--danger) !important;
 }
-.md-typeset .admonition.danger .admonition-title,
-.md-typeset .admonition.error .admonition-title {
-  color: var(--danger);
+.md-typeset .admonition.danger > .admonition-title,
+.md-typeset .admonition.error > .admonition-title {
+  color: var(--danger) !important;
   text-shadow: 0 0 10px rgba(255, 92, 92, 0.4);
 }
-
-/* Abstract / Summary — magenta */
-.md-typeset .admonition.abstract,
-.md-typeset .admonition.summary {
-  border-left-color: var(--magenta);
-}
-.md-typeset .admonition.abstract .admonition-title,
-.md-typeset .admonition.summary .admonition-title {
-  color: var(--magenta);
-  text-shadow: 0 0 10px rgba(255, 0, 170, 0.4);
+.md-typeset .admonition.danger > .admonition-title::before,
+.md-typeset .admonition.error > .admonition-title::before {
+  background-color: var(--danger) !important;
 }
 
-/* Example / Quote */
 .md-typeset .admonition.example,
 .md-typeset .admonition.quote {
-  border-left-color: var(--fg-dim);
+  border-left-color: var(--fg-dim) !important;
 }
-.md-typeset .admonition.example .admonition-title,
-.md-typeset .admonition.quote .admonition-title {
-  color: var(--fg);
+.md-typeset .admonition.example > .admonition-title,
+.md-typeset .admonition.quote > .admonition-title {
+  color: var(--fg) !important;
+}
+.md-typeset .admonition.example > .admonition-title::before,
+.md-typeset .admonition.quote > .admonition-title::before {
+  background-color: var(--fg-dim) !important;
+}
+
+/* =========================
+   Search
+   ========================= */
+
+.md-search__input {
+  background-color: var(--bg) !important;
+  color: var(--fg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 4px !important;
+}
+
+.md-search__input::placeholder {
+  color: var(--fg-dim) !important;
+}
+
+.md-search__input:focus,
+.md-search__input:hover {
+  border-color: var(--phosphor) !important;
+  box-shadow: 0 0 10px var(--phosphor-glow) !important;
+}
+
+.md-search__icon {
+  color: var(--fg-dim) !important;
+}
+
+.md-search__output {
+  background-color: var(--bg-alt) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.md-search-result {
+  background-color: var(--bg-alt) !important;
+}
+
+.md-search-result__meta {
+  color: var(--fg-dim) !important;
+  background-color: var(--bg) !important;
+}
+
+.md-search-result__item {
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.md-search-result__link {
+  background-color: transparent !important;
+}
+
+.md-search-result__link:hover,
+.md-search-result__link:focus {
+  background-color: var(--bg) !important;
+}
+
+.md-search-result__article {
+  background-color: transparent !important;
+}
+
+.md-search-result__title {
+  color: var(--phosphor) !important;
+}
+
+.md-search-result__teaser {
+  color: var(--fg-dim) !important;
+}
+
+mark,
+.md-search-result mark {
+  background-color: rgba(179, 255, 1, 0.3) !important;
+  color: var(--fg) !important;
+}
+
+/* =========================
+   Footer
+   ========================= */
+
+.md-footer {
+  background-color: var(--bg-alt) !important;
+  border-top: 1px solid var(--border) !important;
+  color: var(--fg-dim) !important;
+}
+
+.md-footer-meta {
+  background-color: var(--bg) !important;
+}
+
+.md-footer__link {
+  color: var(--fg-dim) !important;
+}
+
+.md-footer__link:hover,
+.md-footer__link:focus {
+  color: var(--phosphor) !important;
+}
+
+.md-footer__title {
+  color: var(--fg-dim) !important;
+}
+
+.md-footer__direction {
+  color: var(--fg-dim) !important;
 }
 
 /* =========================
@@ -584,7 +819,6 @@ body {
   padding: 1rem;
 }
 
-/* Override Mermaid's default colors */
 .mermaid .node rect,
 .mermaid .node circle,
 .mermaid .node ellipse,
@@ -627,17 +861,16 @@ body {
 }
 
 mjx-container[jax="CHTML"] {
-  color: var(--phosphor);
+  color: var(--phosphor) !important;
 }
 
-/* Block math — centered with subtle glow */
 .md-typeset .arithmatex > .MathJax,
 mjx-container[display="true"] {
-  padding: 1rem;
-  background: var(--bg-code);
-  border-radius: 4px;
-  border-left: 3px solid var(--lavender);
-  margin: 1.5rem 0;
+  padding: 1rem !important;
+  background: var(--bg-code) !important;
+  border-radius: 4px !important;
+  border-left: 3px solid var(--lavender) !important;
+  margin: 1.5rem 0 !important;
   overflow-x: auto;
 }
 
@@ -646,15 +879,15 @@ mjx-container[display="true"] {
    ========================= */
 
 .md-typeset img {
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border-radius: 4px !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
   transition: all 0.3s ease;
 }
 
 .md-typeset img:hover {
-  border-color: var(--phosphor);
-  box-shadow: 0 0 20px var(--phosphor-glow);
+  border-color: var(--phosphor) !important;
+  box-shadow: 0 0 20px var(--phosphor-glow) !important;
 }
 
 /* =========================
@@ -663,31 +896,30 @@ mjx-container[display="true"] {
 
 .md-typeset ul,
 .md-typeset ol {
-  color: var(--fg);
+  color: var(--fg) !important;
 }
 
 .md-typeset li::marker {
-  color: var(--phosphor-dim);
+  color: var(--phosphor-dim) !important;
 }
 
-/* Task lists */
 .md-typeset .task-list-item input[type="checkbox"] {
-  accent-color: var(--phosphor);
+  accent-color: var(--phosphor) !important;
 }
 
 /* =========================
-   Keyboard keys
+   Keyboard Keys
    ========================= */
 
 .md-typeset kbd {
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-bottom: 3px solid var(--border);
-  border-radius: 4px;
-  color: var(--phosphor);
+  background: var(--bg-alt) !important;
+  border: 1px solid var(--border) !important;
+  border-bottom: 3px solid var(--border) !important;
+  border-radius: 4px !important;
+  color: var(--phosphor) !important;
   font-size: 0.85em;
-  padding: 0.2em 0.5em;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 0.2em 0.5em !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* =========================
@@ -695,10 +927,10 @@ mjx-container[display="true"] {
    ========================= */
 
 .md-typeset mark {
-  background: rgba(179, 255, 1, 0.3);
-  color: var(--fg);
-  padding: 0.1em 0.3em;
-  border-radius: 2px;
+  background: rgba(179, 255, 1, 0.3) !important;
+  color: var(--fg) !important;
+  padding: 0.1em 0.3em !important;
+  border-radius: 2px !important;
 }
 
 /* =========================
@@ -706,16 +938,43 @@ mjx-container[display="true"] {
    ========================= */
 
 .md-typeset del {
-  color: var(--fg-dim);
-  text-decoration-color: var(--danger);
+  color: var(--fg-dim) !important;
+  text-decoration-color: var(--danger) !important;
 }
 
-
 /* =========================
-   Mobile layout + nav fixes
+   Buttons
    ========================= */
 
-/* Reset desktop sidebar assumptions on mobile */
+.md-typeset .md-button {
+  color: var(--phosphor) !important;
+  border-color: var(--phosphor) !important;
+  background-color: transparent !important;
+}
+
+.md-typeset .md-button:hover,
+.md-typeset .md-button:focus {
+  color: var(--bg) !important;
+  background-color: var(--phosphor) !important;
+  border-color: var(--phosphor) !important;
+}
+
+.md-typeset .md-button--primary {
+  color: var(--bg) !important;
+  background-color: var(--phosphor) !important;
+  border-color: var(--phosphor) !important;
+}
+
+.md-typeset .md-button--primary:hover,
+.md-typeset .md-button--primary:focus {
+  background-color: var(--phosphor-dim) !important;
+  border-color: var(--phosphor-dim) !important;
+}
+
+/* =========================
+   Mobile Layout
+   ========================= */
+
 @media (max-width: 76.1875em) {
   .md-main__inner {
     margin-left: 0 !important;
@@ -725,95 +984,160 @@ mjx-container[display="true"] {
   .md-container {
     padding-left: 0 !important;
   }
-}
 
-/* Hamburger / drawer toggle — instrument-style button */
-.md-header__button.md-icon {
-  background-color: var(--bg-alt) !important;
-  color: var(--fg) !important;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  opacity: 1 !important;
-}
-
-.md-header__button.md-icon:hover,
-.md-header__button.md-icon:focus-visible {
-  background-color: var(--bg);
-  border-color: var(--accent-dim);
-}
-
-/* Ensure hamburger SVG is visible */
-.md-header__button.md-icon svg {
-  fill: currentColor !important;
-  opacity: 1 !important;
-}
-
-/* Fix mobile drawer background (was translucent white) */
-@media (max-width: 76.1875em) {
   .md-sidebar--primary {
     background-color: var(--bg-alt) !important;
   }
-}
 
-/* Sidebar container wrapper background (Material inner container) */
-@media (max-width: 76.1875em) {
+  .md-sidebar--primary .md-sidebar__scrollwrap,
   .md-sidebar--primary .md-sidebar__inner,
-  .md-sidebar--primary .md-nav {
-    background-color: var(--bg-alt) !important;
-  }
-}
-
-@media (min-width: 76.1875em) {
-  .md-sidebar .md-sidebar__inner {
-    background-color: var(--bg-alt);
-  }
-}
-
-/* Remove unintended translucent overlay artifacts */
-.md-overlay {
-  background-color: rgba(0, 0, 0, 0.45) !important;
-}
-
-
-/* Desktop: keep custom sidebar styling */
-@media (min-width: 76.1875em) {
-  .md-sidebar {
-    width: var(--md-sidebar-width, 15rem);
-  }
-}
-
-/* Mobile drawer: allow Material to control layout, only style visuals */
-@media (max-width: 76.1875em) {
-  .md-sidebar--primary {
-    background-color: var(--bg-alt);
-  }
-}
-
-/* Ensure nav links can lay out */
-.md-nav {
-  width: 100%;
-}
-/* Sidebar scroll wrapper and logo section background */
-@media (max-width: 76.1875em) {
-  .md-sidebar--primary .md-sidebar__scrollwrap {
-    background-color: var(--bg-alt) !important;
-  }
-}
-
-@media (min-width: 76.1875em) {
-  .md-sidebar .md-sidebar__scrollwrap {
-    background-color: var(--bg-alt);
-  }
-}
-/* Sidebar link list background */
-@media (max-width: 76.1875em) {
+  .md-sidebar--primary .md-nav,
   .md-sidebar--primary .md-nav__list {
     background-color: var(--bg-alt) !important;
   }
 }
 
+/* Hamburger button */
+.md-header__button.md-icon {
+  background-color: var(--bg-alt) !important;
+  color: var(--fg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 4px !important;
+  opacity: 1 !important;
+}
+
+.md-header__button.md-icon:hover,
+.md-header__button.md-icon:focus-visible {
+  background-color: var(--bg) !important;
+  border-color: var(--accent-dim) !important;
+}
+
+.md-header__button.md-icon svg {
+  fill: currentColor !important;
+  opacity: 1 !important;
+}
+
+/* Overlay */
+.md-overlay {
+  background-color: rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Desktop sidebar */
 @media (min-width: 76.1875em) {
-  .md-sidebar .md-nav__list {
-    background-color: var(--bg-alt);
+  .md-sidebar {
+    width: var(--md-sidebar-width, 15rem) !important;
   }
+
+  .md-sidebar .md-sidebar__scrollwrap,
+  .md-sidebar .md-sidebar__inner,
+  .md-sidebar .md-nav__list {
+    background-color: var(--bg-alt) !important;
+  }
+}
+
+.md-nav {
+  width: 100% !important;
+}
+
+/* =========================
+   TOC (Table of Contents)
+   ========================= */
+
+.md-nav--secondary .md-nav__link {
+  color: var(--fg-dim) !important;
+}
+
+.md-nav--secondary .md-nav__link:hover,
+.md-nav--secondary .md-nav__link:focus {
+  color: var(--phosphor) !important;
+}
+
+.md-nav--secondary .md-nav__link--active {
+  color: var(--phosphor) !important;
+}
+
+/* =========================
+   Content Area
+   ========================= */
+
+.md-content {
+  background-color: var(--bg) !important;
+}
+
+.md-content__inner {
+  background-color: var(--bg) !important;
+}
+
+/* =========================
+   Dialog / Modal
+   ========================= */
+
+.md-dialog {
+  background-color: var(--bg-alt) !important;
+  color: var(--fg) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* =========================
+   Tooltips
+   ========================= */
+
+.md-tooltip {
+  background-color: var(--bg-alt) !important;
+  color: var(--fg) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* =========================
+   Source/Edit links
+   ========================= */
+
+.md-source {
+  color: var(--fg-dim) !important;
+}
+
+.md-source:hover {
+  color: var(--phosphor) !important;
+}
+
+/* =========================
+   Version selector
+   ========================= */
+
+.md-version {
+  color: var(--fg-dim) !important;
+}
+
+.md-version:hover {
+  color: var(--phosphor) !important;
+}
+
+/* =========================
+   Tabs (content tabs)
+   ========================= */
+
+.md-typeset .tabbed-labels > label {
+  color: var(--fg-dim) !important;
+  border-bottom-color: transparent !important;
+}
+
+.md-typeset .tabbed-labels > label:hover {
+  color: var(--phosphor) !important;
+}
+
+.md-typeset .tabbed-labels > .tabbed-input:checked + label {
+  color: var(--phosphor) !important;
+  border-bottom-color: var(--phosphor) !important;
+}
+
+.md-typeset .tabbed-content {
+  border-color: var(--border) !important;
+}
+
+/* =========================
+   Progress bar
+   ========================= */
+
+.md-progress__inner {
+  background-color: var(--phosphor) !important;
 }

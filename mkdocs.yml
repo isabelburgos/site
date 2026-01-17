@@ -3,6 +3,7 @@ extra_css: ["styles.css"]
 
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.expand
     - toc.integrate
@@ -11,7 +12,9 @@ theme:
   logo: icon.png
   favicon: icon.png
   palette:
-    scheme: default
+    scheme: slate
+    primary: custom
+    accent: custom
 
 plugins:
   - search
