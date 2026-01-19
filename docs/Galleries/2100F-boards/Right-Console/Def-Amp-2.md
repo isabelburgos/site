@@ -1,0 +1,1 @@
+../../../../../Galleries/2100F-boards/Right-Console/Def-Amp-2.md

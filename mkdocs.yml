@@ -1,6 +1,22 @@
 site_name: "beam/shift"
 extra_css: ["styles.css"]
 
+hooks:
+  - overrides/hooks.py
+
+watch:
+  - docs
+  - ../shared  # Watch token CSS files for live reload
+
+# Security: Exclude patterns (defense in depth)
+exclude_docs: |
+  .obsidian/
+  *.private.md
+  *.secret.*
+  drafts/
+  _private/
+  .env
+
 theme:
   name: material
   custom_dir: overrides
@@ -20,7 +36,7 @@ plugins:
   - search
   - roamlinks
   - mermaid2
-  - minify
+  # - minify  # Disabled during development - prevents livereload from working
   - include_dir_to_nav:
       flat: false
       include_empty_dir: true

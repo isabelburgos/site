@@ -1,0 +1,1 @@
+../../../../../Galleries/2100F-boards/Right-Console/Mag-Al.md
