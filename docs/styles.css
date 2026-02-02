@@ -163,8 +163,7 @@ body::before {
 .md-nav {
   font-size: var(--token-font-size-sm);
 }
-
-
+/* mobile / small browser window */
 @media (max-width: 76.1875em) {
   .md-sidebar--primary .md-nav__list {
     background-color: var(--bg-alt) !important;
@@ -173,7 +172,17 @@ body::before {
   .md-nav--primary {
     background-color: var(--bg-alt) !important;
 }
+}
 
+/* fullscreen */
+@media (min-width:76.25em) {
+  /* Remove the border on active - conflicts with tree aesthetic */
+  .md-nav--integrated>.md-nav__list>.md-nav__item--active .md-nav--secondary {
+    border-left: none !important;
+  }
+  .md-nav--primary .md-nav__list {
+    padding-left: 0px !important;
+  }
 }
 
 .md-nav__title {
@@ -193,52 +202,29 @@ body::before {
 .md-nav__link {
   color: var(--fg-dim);
   transition: all var(--token-transition-fast);
-  padding-left: 1.5rem;
+  /* padding-left: 1.5rem; */
   position: relative;
 }
 
-/* Add tree branch characters before links */
-.md-nav__list > .md-nav__item > .md-nav__link::before {
-  content: "├── ";
-  position: absolute;
-  left: 0;
+/* Nested items - add vertical line and branch */
+.md-nav__item .md-nav__list .md-nav__item > .md-nav__link ::before{
+  content: "├─ ";
   color: var(--border);
-  font-weight: normal;
 }
-
 /* Last item gets different character */
-.md-nav__list > .md-nav__item:last-child > .md-nav__link::before {
-  content: "└── ";
+.md-nav__item .md-nav__list .md-nav__item:last-child > .md-nav__link ::before{
+  content: "└─ "
 }
 
 /* Nested items - add vertical line and branch */
-.md-nav__item .md-nav__list .md-nav__item > .md-nav__link {
-  padding-left: 3rem;
+.md-nav__item .md-nav__list .md-nav__item .md-nav__list .md-nav__item > .md-nav__link ::before{
+  content: "│ ├─ "
+}
+/* Last item gets different character */
+.md-nav__item .md-nav__list .md-nav__item .md-nav__list .md-nav__item:last-child > .md-nav__link ::before{
+  content: "│ └─ "
 }
 
-.md-nav__item .md-nav__list .md-nav__item > .md-nav__link::before {
-  content: "│   ├── ";
-  left: 0;
-  color: var(--border);
-}
-
-.md-nav__item .md-nav__list .md-nav__item:last-child > .md-nav__link::before {
-  content: "│   └── ";
-}
-
-/* Third level nesting */
-.md-nav__item .md-nav__list .md-nav__item .md-nav__list .md-nav__item > .md-nav__link {
-  padding-left: 4.5rem;
-}
-
-.md-nav__item .md-nav__list .md-nav__item .md-nav__list .md-nav__item > .md-nav__link::before {
-  content: "│   │   ├── ";
-  color: var(--border);
-}
-
-.md-nav__item .md-nav__list .md-nav__item .md-nav__list .md-nav__item:last-child > .md-nav__link::before {
-  content: "│   │   └── ";
-}
 
 /* Folders/sections get trailing slash */
 .md-nav__item--nested > .md-nav__link::after {
@@ -256,16 +242,13 @@ body::before {
   color: var(--token-accent) !important;
   font-weight: 600;
 }
-
-/* Remove the border on active - conflicts with tree aesthetic */
-.md-nav__link--active {
-  border-left: none !important;
+.md-nav__link--active ::before {
+  color: var(--border) !important;
+}
+.md-nav__link:hover ::before {
+  text-shadow: none !important;
 }
 
-/* Nested nav items */
-.md-nav__item--nested > .md-nav__link {
-  color: var(--fg);
-}
 
 /* =========================
    Typography — Monospace Terminal
@@ -412,18 +395,18 @@ body::before {
 .md-typeset summary {
   background: var(--bg-code);
   font-weight: 600;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: var(--token-letter-spacing-wide);
   font-size: var(--token-font-size-sm);
   padding: 0.6em 1em;
 }
 
 /* Callout type colors */
-.md-typeset .admonition.note      { border-left-color: var(--token-cyan); }
-.md-typeset .admonition.tip       { border-left-color: var(--accent); }
-.md-typeset .admonition.info      { border-left-color: var(--token-lavender); }
-.md-typeset .admonition.warning   { border-left-color: var(--token-amber); }
-.md-typeset .admonition.danger    { border-left-color: var(--token-danger); }
+.md-typeset .admonition.note      { border-color: var(--token-cyan);}
+.md-typeset .admonition.tip       { border-color: var(--accent); }
+.md-typeset .admonition.info      { border-color: var(--token-lavender); }
+.md-typeset .admonition.warning   { border-color: var(--token-amber); }
+.md-typeset .admonition.danger    { border-color: var(--token-danger); }
 
 /* =========================
    Tables — Data Grid

@@ -5,8 +5,8 @@ hooks:
   - overrides/hooks.py
 
 watch:
-  - docs
-  - ../shared  # Watch token CSS files for live reload
+  - docs  # Main content and styles
+  - ../.obsidian/snippets  # Token CSS files (source of truth)
 
 # Security: Exclude patterns (defense in depth)
 exclude_docs: |
