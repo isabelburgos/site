@@ -97,7 +97,6 @@ body::before {
 .md-header,
 .md-tabs {
   background-color: var(--bg-alt) !important;
-  box-shadow: 0 0 0.5rem rgba(179, 255, 1, 0.1);
 }
 
 .md-header__title,
@@ -106,13 +105,24 @@ body::before {
   color: var(--fg) !important;
 }
 
-/* Header site title - phosphor green glow */
+/* Header site title */
 .md-header__title {
   color: var(--accent) !important;
   font-weight: 700;
   text-transform: lowercase;
-  letter-spacing: var(--token-letter-spacing-wider);
-  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Header / top nav */
+.md-header {
+  background-color: var(--bg-alt);
+  /* border-bottom: 1px solid var(--fg-dim); */
+}
+
+/* Footer */
+.md-footer {
+  background-color: var(--bg-alt);
+  /* border-top: 1px solid var(--fg-dim); */
+  color: var(--fg-dim);
 }
 
 /* Icons in header */
@@ -138,10 +148,6 @@ body::before {
    Layout
    ========================= */
 
-.md-footer {
-  background: var(--bg-alt);
-  border-top: 1px solid var(--border);
-}
 
 .md-sidebar {
   background: var(--bg-alt);
@@ -194,37 +200,6 @@ body::before {
   letter-spacing: var(--token-letter-spacing-wide);
 }
 
-/* Base nav items - add tree structure */
-.md-nav__item {
-  position: relative;
-}
-
-.md-nav__link {
-  color: var(--fg-dim);
-  transition: all var(--token-transition-fast);
-  /* padding-left: 1.5rem; */
-  position: relative;
-}
-
-/* Nested items - add vertical line and branch */
-.md-nav__item .md-nav__list .md-nav__item > .md-nav__link ::before{
-  content: "├─ ";
-  color: var(--border);
-}
-/* Last item gets different character */
-.md-nav__item .md-nav__list .md-nav__item:last-child > .md-nav__link ::before{
-  content: "└─ "
-}
-
-/* Nested items - add vertical line and branch */
-.md-nav__item .md-nav__list .md-nav__item .md-nav__list .md-nav__item > .md-nav__link ::before{
-  content: "│ ├─ "
-}
-/* Last item gets different character */
-.md-nav__item .md-nav__list .md-nav__item .md-nav__list .md-nav__item:last-child > .md-nav__link ::before{
-  content: "│ └─ "
-}
-
 
 /* Folders/sections get trailing slash */
 .md-nav__item--nested > .md-nav__link::after {
@@ -263,18 +238,16 @@ body::before {
 /* Headings with phosphor glow */
 .md-typeset h1 {
   color: var(--accent);
-  /* text-transform: uppercase; */
   letter-spacing: var(--token-letter-spacing-wide);
-  border-bottom: 2px solid var(--border);
-  padding-bottom: 0.5rem;
-  /* margin-top: 2rem; */
-  text-shadow: 0 0 15px var(--accent-glow);
   font-weight: 700;
 }
 
+
 .md-typeset h1::before {
-  content: "‣ "
+  content: "✧ ";
+  text-shadow: 0 0 15px var(--accent-glow);
 }
+
 
 .md-typeset h2 {
   color: var(--accent-dim);
@@ -378,7 +351,6 @@ body::before {
   margin: var(--token-blockquote-margin) 0;
   background: rgba(198, 183, 255, 0.05);
   color: var(--fg-dim);
-  font-style: italic;
 }
 
 .md-typeset .admonition,
@@ -453,10 +425,7 @@ mjx-container {
 mjx-container[display="true"] {
   padding: var(--token-math-block-padding);
   margin: var(--token-math-block-margin) 0;
-  background: var(--bg-code);
-  border-left: 3px solid var(--token-lavender);
-  border-radius: var(--token-radius-md);
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+  background: var(--bg-alt)
 }
 
 /* =========================
@@ -491,6 +460,7 @@ mjx-container[display="true"] {
 .md-search__input::placeholder {
   color: var(--fg-dim);
 }
+
 
 .md-search__input:focus {
   border-color: var(--accent);
@@ -582,16 +552,6 @@ mjx-container[display="true"] {
 }
 
 /* =========================
-   Footer
-   ========================= */
-
-.md-footer__link:hover,
-.md-source:hover {
-  color: var(--accent);
-  text-shadow: 0 0 8px var(--accent-glow);
-}
-
-/* =========================
    Buttons
    ========================= */
 
@@ -622,30 +582,6 @@ mjx-container[display="true"] {
 .md-typeset .md-button--primary:hover {
   background: var(--accent-dim);
   box-shadow: 0 0 20px var(--accent-glow);
-}
-
-/* =========================
-   Scrollbars — Terminal Style
-   ========================= */
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-alt);
-  border-left: 1px solid var(--border);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--accent-deep);
-  border-radius: var(--token-radius-sm);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-dim);
-  box-shadow: 0 0 5px var(--accent-glow);
 }
 
 /* =========================

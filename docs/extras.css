@@ -1,0 +1,73 @@
+/* Index numbers - circled style from manual */
+.md-typeset ol {
+  counter-reset: technical-counter;
+  list-style: none;
+  padding-left: 0;
+}
+
+.md-typeset ol > li {
+  counter-increment: technical-counter;
+  position: relative;
+  padding-left: 3rem;
+  /* margin: 1.5rem 0; */
+}
+
+.md-typeset ol > li::before {
+  content: counter(technical-counter);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--token-font-size-sm);
+  font-weight: 700;
+  color: var(--accent);
+  background: transparent;
+}
+
+/* Nested lists return to normal */
+.md-typeset ol ol {
+  list-style: lower-alpha;
+  padding-left: 2rem;
+  margin-top: 0.5rem;
+}
+
+.md-typeset ol ol > li::before {
+  display: none;
+}
+
+/* Base nav items - add tree structure */
+.md-nav__item {
+  position: relative;
+}
+
+.md-nav__link {
+  color: var(--fg-dim);
+  transition: all var(--token-transition-fast);
+  /* padding-left: 1.5rem; */
+  position: relative;
+}
+
+/* Nested items - add vertical line and branch */
+.md-nav__item .md-nav__list .md-nav__item > .md-nav__link ::before{
+  content: "├─ ";
+  color: var(--border);
+}
+/* Last item gets different character */
+.md-nav__item .md-nav__list .md-nav__item:last-child > .md-nav__link ::before{
+  content: "└─ "
+}
+
+/* Nested items - add vertical line and branch */
+.md-nav__item .md-nav__list .md-nav__item .md-nav__list .md-nav__item > .md-nav__link ::before{
+  content: "│ ├─ "
+}
+/* Last item gets different character */
+.md-nav__item .md-nav__list .md-nav__item .md-nav__list .md-nav__item:last-child > .md-nav__link ::before{
+  content: "│ └─ "
+}

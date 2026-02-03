@@ -1,5 +1,5 @@
 site_name: "beam/shift"
-extra_css: ["styles.css"]
+extra_css: ["styles.css", "extras.css"]
 
 hooks:
   - overrides/hooks.py
