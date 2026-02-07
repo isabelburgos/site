@@ -1,0 +1,131 @@
+/* ===============================
+   beam/shift Layout Tokens
+   Shared spacing, typography, and structure
+   =============================== */
+
+:root {
+  /* =========================
+     Font Stacks
+     ========================= */
+  --token-font-mono: "JetBrains Mono", "Fira Code", "SF Mono",
+                     ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --token-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                     Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+  /* =========================
+     Typography Scale
+     ========================= */
+  --token-font-size-xs: 0.7rem;
+  --token-font-size-sm: 0.8rem;
+  --token-font-size-base: 0.92rem;
+  --token-font-size-md: 1rem;
+  --token-font-size-lg: 1.2rem;
+  --token-font-size-xl: 1.5rem;
+  --token-font-size-2xl: 2rem;
+
+  --token-line-height: 1.7;
+  --token-letter-spacing-tight: 0.01em;
+  --token-letter-spacing-normal: 0.02em;
+  --token-letter-spacing-wide: 0.05em;
+  --token-letter-spacing-wider: 0.08em;
+
+  /* =========================
+     Spacing Scale
+     ========================= */
+  --token-space-xs: 0.25rem;
+  --token-space-sm: 0.5rem;
+  --token-space-md: 1rem;
+  --token-space-lg: 1.5rem;
+  --token-space-xl: 2rem;
+  --token-space-2xl: 3rem;
+
+  /* =========================
+     Border Radius
+     ========================= */
+  --token-radius-none: 0;
+  --token-radius-xs: 1px;
+  --token-radius-sm: 2px;
+  --token-radius-md: 4px;
+  --token-radius-lg: 8px;
+  --token-radius-xl: 12px;
+
+  /* =========================
+     Borders
+     ========================= */
+  --token-border-width-sm: 1px;
+  --token-border-width-md: 2px;
+  --token-border-width-lg: 3px;
+
+  /* =========================
+     Transitions
+     ========================= */
+  --token-transition-fast: 0.15s ease;
+  --token-transition-normal: 0.2s ease;
+  --token-transition-slow: 0.3s ease;
+
+  /* =========================
+     Shadows (opacity values)
+     ========================= */
+  --token-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --token-shadow-md: 0 4px 15px rgba(0, 0, 0, 0.2);
+  --token-shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --token-shadow-inset: inset 0 0 20px rgba(0, 0, 0, 0.3);
+
+  /* Crisp directional shadows (bottom-right offset) */
+  --token-shadow-crisp-sm: 2px 2px 0px rgba(0, 0, 0, 0.3);
+  --token-shadow-crisp-md: 3px 3px 0px rgba(0, 0, 0, 0.25);
+  --token-shadow-crisp-lg: 4px 4px 0px rgba(0, 0, 0, 0.3);
+
+  /* =========================
+     Layout
+     ========================= */
+  --token-sidebar-width: 15rem;
+  --token-content-max-width: 50rem;
+
+  /* =========================
+     Code Block Layout
+     ========================= */
+  --token-code-padding: 1rem;
+  --token-code-header-height: 2rem;
+
+  /* =========================
+     LaTeX Layout
+     ========================= */
+  --token-math-padding-inline: 0.5rem;
+  --token-math-padding-block: 0.1rem;
+  --token-math-margin: 0.2rem;
+  --token-math-border-radius: 0.2rem;
+  --token-math-block-padding: 1rem;
+  --token-math-block-margin: 1.5rem;
+
+  /* =========================
+     Mermaid Layout
+     ========================= */
+  --token-mermaid-padding: 1rem;
+  --token-mermaid-stroke-width: 2px;
+
+  /* =========================
+     Callout Layout
+     ========================= */
+  --token-callout-margin: 1em;
+  --token-callout-padding: 0.6rem 1rem;
+  --token-callout-border-left: 3px;
+  --token-callout-radius: var(--token-radius-sm);
+  --token-callout-shadow: var(--token-shadow-crisp-md);
+  --token-callout-border-all: 1px;
+
+  /* =========================
+     Table Layout
+     ========================= */
+  --token-table-cell-padding: 0.5rem 1rem;
+
+  /* =========================
+     Blockquote Layout
+     ========================= */
+  --token-blockquote-padding: 1rem 1.5rem;
+  --token-blockquote-margin: 1.5rem;
+  --token-blockquote-border-left: 3px;
+  --token-blockquote-radius: var(--token-radius-sm);
+  --token-blockquote-shadow: 0 0 0; /*var(--token-shadow-crisp-md);*/
+  --token-blockquote-border-all: 1px;
+}

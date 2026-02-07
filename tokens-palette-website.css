@@ -1,0 +1,113 @@
+/* ===============================
+   beam/shift Color Palette — Website
+   Phosphor green accent theme
+   =============================== */
+
+:root {
+  /* =========================
+     Primary Accent (Phosphor Green)
+     ========================= */
+  --token-accent: #B3FF01;
+  --token-accent-dim: #7ab800;
+  --token-accent-glow: rgba(179, 255, 1, 0.4);
+  --token-accent-deep: #2E5F04;
+
+  /* =========================
+     Secondary Accents
+     ========================= */
+  --token-lavender: #c6b7ff;
+  --token-cyan: #62D4FB;
+  --token-amber: #ffb800;
+  --token-magenta: #ff00aa;
+  --token-phosphor: #B3FF01;
+
+  /* =========================
+     Semantic Colors
+     ========================= */
+  --token-warning: #ffd166;
+  --token-danger: #ff5c5c;
+  --token-info: #00b4d8;
+  --token-success: #B3FF01;
+
+  /* =========================
+     Dark Mode Palette
+     ========================= */
+  --token-bg-dark: #050808;
+  --token-bg-dark-alt: #0a1110;
+  --token-bg-dark-code: #060908;
+  --token-fg-dark: #d8f0ed;
+  --token-fg-dark-dim: #8fa8a4;
+  --token-border-dark: #1a2b28;
+
+  /* =========================
+     Light Mode Palette
+     ========================= */
+  --token-bg-light: #f8fafa;
+  --token-bg-light-alt: #eef4f3;
+  --token-bg-light-code: #f0f5f4;
+  --token-fg-light: #1a2b28;
+  --token-fg-light-dim: #4a6a66;
+  --token-border-light: #c8d8d5;
+
+  /* =========================
+     Light Mode Accent Adjustments
+     ========================= */
+  --token-accent-light: #2E5F04;
+  --token-accent-light-hover: #1a4a00;
+  --token-link-light: #008a70;
+  --token-lavender-light: #7a5af5;
+
+  /* =========================
+     Callout Colors (RGB for transparency)
+     ========================= */
+  /* Todo - coral */
+  --token-callout-todo-r: 255;
+  --token-callout-todo-g: 107;
+  --token-callout-todo-b: 107;
+
+  /* Target - purple */
+  --token-callout-target-r: 180;
+  --token-callout-target-g: 130;
+  --token-callout-target-b: 255;
+
+  /* Calendar - cyan */
+  --token-callout-calendar-r: 80;
+  --token-callout-calendar-g: 220;
+  --token-callout-calendar-b: 220;
+
+  /* Success/done - green */
+  --token-callout-success-r: 80;
+  --token-callout-success-g: 220;
+  --token-callout-success-b: 120;
+
+  /* Note - teal */
+  --token-callout-note-r: 80;
+  --token-callout-note-g: 200;
+  --token-callout-note-b: 180;
+
+  /* Tip/idea - yellow */
+  --token-callout-tip-r: 255;
+  --token-callout-tip-g: 210;
+  --token-callout-tip-b: 80;
+
+  /* Warning - orange */
+  --token-callout-warning-r: 255;
+  --token-callout-warning-g: 150;
+  --token-callout-warning-b: 80;
+
+  /* Question - indigo */
+  --token-callout-question-r: 130;
+  --token-callout-question-g: 150;
+  --token-callout-question-b: 255;
+
+  /* =========================
+     Syntax Highlighting
+     ========================= */
+  --token-syntax-comment: #6a9955;
+  --token-syntax-keyword: #ff00aa;   /* magenta */
+  --token-syntax-string: #ffb800;    /* amber */
+  --token-syntax-function: #00ffd5;  /* cyan */
+  --token-syntax-constant: #c6b7ff;  /* lavender */
+  --token-syntax-number: #B3FF01;    /* accent/phosphor */
+  --token-syntax-operator: #8fa8a4;
+}
