@@ -17,6 +17,9 @@ exclude_docs: |
   _private/
   .env
 
+draft_docs:
+  test.md
+
 theme:
   name: material
   custom_dir: overrides
@@ -67,4 +70,3 @@ extra_javascript:
 nav:
   - ✸: index.md
   - 2100F: JEM-2100F.md
-  - test: test.md

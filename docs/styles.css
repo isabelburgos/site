@@ -275,7 +275,7 @@ body::before {
 .md-typeset a {
   color: var(--accent);
   text-decoration: none;
-  transition: all var(--token-transition-fast);
+  transition: text-shadow 1s ease;
   border-bottom: 1px solid transparent;
 }
 
@@ -480,6 +480,10 @@ mjx-container[display="true"] {
 
 .md-search-result__item:hover {
   background: rgba(179, 255, 1, 0.1);
+}
+
+.md-search__input+.md-search__icon {
+  color: var(--fg-dim);
 }
 
 /* =========================
