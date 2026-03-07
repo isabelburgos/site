@@ -91,7 +91,7 @@
   /* =========================
      LaTeX Layout
      ========================= */
-  --token-math-padding-inline: 0.5rem;
+  --token-math-padding-inline: 0.2rem;
   --token-math-padding-block: 0.1rem;
   --token-math-margin: 0.2rem;
   --token-math-border-radius: 0.2rem;
