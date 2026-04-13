@@ -1,0 +1,1075 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Camera - beam/shift</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../styles.css">
+    
+      <link rel="stylesheet" href="../../../extras.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#camera" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="beam/shift" class="md-header__button md-logo" aria-label="beam/shift" data-md-component="logo">
+      
+  <img src="../../../icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            beam/shift
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Camera
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="beam/shift" class="md-nav__button md-logo" aria-label="beam/shift" data-md-component="logo">
+      
+  <img src="../../../icon.png" alt="logo">
+
+    </a>
+    beam/shift
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ✸
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2100F
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2100F
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../JEM-2100F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2100F%20Vacuum%20System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vacuum System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Galleries/2100F-boards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Circuit Boards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#photos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Photos
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+
+<p>&lt; <a href="../../../2100F%20Vacuum%20System/">2100F Vacuum System</a></p>
+<h1 id="camera">Camera</h1>
+<p>The lower section of the microscope where the electron image is projected onto the phosphor screen and detectors (or in years past, Polaroid film). Connects upward to the <a href="../Column%20Pipe/">column</a> via <a href="../../Valves/V2/">V2</a> and to the high-vacuum <a href="../DP%20Manifold/">DP manifold</a> via <a href="../../Valves/V8/">V8</a>. Can be roughed through <a href="../RP2%20Manifold/">RP2</a> or vented with N2 via <a href="../../Valves/V31/">V31</a>.</p>
+<div class="vacuum-diagram-embed has-highlight">
+<svg width="658" height="662" viewBox="0 0 658 662" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="658" height="662" fill="#F5F5F5"/>
+<g id="2100F-Vacuum-System-Diagram">
+<path id="Microscope-Outline" d="M361 152H308.5V203H361L360.5 315.5L353 332.5V359H464V332.67L457 315.884V1H361V152Z" stroke="black" stroke-width="2"/>
+<a data-href="/2100F-Vacuum-System/Pumps/DP.html" style="cursor:pointer;pointer-events:all;"><g id="DP">
+<path id="DP_2" d="M250 530.5V639.5H199V530.5H250Z" stroke="black" stroke-width="2"/>
+<text id="DP_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="213" y="577.853">DP</tspan></text>
+<path id="DP-pipe" d="M218.5 530V504H229.5V530H218.5Z" stroke="black"/>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold.html" style="cursor:pointer;pointer-events:all;"><g id="DP-Manifold">
+<path d="M218.5 476V460.692H178.5V449.692H218.5V395H229.5V414.692H258.5V425.692H229.5V449.692L526.5 449.692V356H537.5V460.692H487.5V484H476.5V460.692H229.5V476H218.5Z" stroke="black"/>
+<path d="M255.5 336.192H229.5V282L218.5 282V384H229.5V347.192H255.5V336.192Z" stroke="black"/>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Manifolds/Camera.html" style="cursor:pointer;pointer-events:all;"><path id="Cam" d="M361 283L360.568 315.432L353 332.682V338H331.5V304H320.5V338H284V349H293.5V384H176.5V395H304.5V349H320.5V359H331.5V349H353V359H464V332.682L457 315.873V283H423C421.668 292.68 418.087 295.606 408.5 298C398.221 295.775 395.203 292.365 394 283H361Z" stroke="black" class="vd-highlighted"/></a>
+<a data-href="/2100F-Vacuum-System/Pumps/RP2.html" style="cursor:pointer;pointer-events:all;"><g id="RP2">
+<a data-href="/2100F-Vacuum-System/Pumps/RP2.html" style="cursor:pointer;pointer-events:all;"><g id="RP2_2">
+<rect id="RP2_3" x="56" y="577.5" width="65" height="65" stroke="black" stroke-width="2"/>
+<text id="RP2_4" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="72" y="615.699">RP2</tspan></text>
+</g></a>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Manifolds/RP2%20Manifold.html" style="cursor:pointer;pointer-events:all;"><path id="RP2-Manifold" d="M82.5 577V535H63.5V524H82.5V228H150.5V239H93.5V384H148.5V395H93.5V452H150.5V463H93.5V577H82.5Z" stroke="black"/></a>
+<a data-href="/2100F-Vacuum-System/Manifolds/Stage.html" style="cursor:pointer;pointer-events:all;"><path id="Stage" d="M218.5 228H178.5V239H218.5V254H229.5V183H255.25V172H229.5V140H218.5V172H180.5V183H218.5V228Z" stroke="black"/></a>
+<a data-href="/2100F-Vacuum-System/Manifolds/Column%20Pipe.html" style="cursor:pointer;pointer-events:all;"><g id="Column-Pipe">
+<path id="Pipe" d="M536.5 78V95.5H564V111.5H596V121.5H564V245.5H596V255.5H564V271.5H537V328H527V271.5H491.5V219.5H457V210.5H491.5V178.5H457V168.5H491.5V136.5H457V126.5H491.5V95.5H525.5V78H536.5Z" stroke="black"/>
+<path id="Column" d="M393.582 91C394.373 95.3827 396.003 99.0847 398.513 101.72C401.112 104.449 404.621 106 409 106H409.015L409.029 105.999C413.437 105.74 417.059 103.535 419.569 100.573C421.952 97.7631 423.357 94.2458 423.489 91H457V283H423.417C422.541 278.143 421.456 274.645 419.353 272.241C417.168 269.744 413.961 268.505 409.051 268.003L409.005 267.998L408.959 268.002C403.627 268.437 400.099 269.677 397.731 272.189C395.444 274.617 394.32 278.151 393.571 283H361V191.931C366.031 191.191 369.579 190.086 372.029 187.868C374.562 185.575 375.837 182.173 376.496 177.064L376.507 176.981L376.49 176.9C375.429 171.673 374.03 168.14 371.552 165.816C369.142 163.558 365.791 162.518 361 162.047V91H393.582Z" stroke="black"/>
+<a data-href="/2100F-Vacuum-System/Pumps/SIP1.html" style="cursor:pointer;pointer-events:all;"><g id="SIP1">
+<rect id="SIP1_2" x="521" y="132.5" width="42" height="89" stroke="black" stroke-width="2"/>
+<text id="SIP" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="524.757" y="178.699">SIP</tspan></text>
+</g></a>
+</g></a>
+<g id="Gun">
+<rect id="SIP3-Gun-Pipe" x="353.5" y="45" width="7" height="11" stroke="black"/>
+<path id="Gun_2" d="M457 1V91H423.422C422.613 86.2642 421.445 82.9782 419.274 80.7109C417.033 78.3699 413.8 77.1929 409.072 76.5049L409.017 76.4971L408.96 76.502C403.669 76.9274 400.169 78.0495 397.805 80.4404C395.517 82.7544 394.377 86.1762 393.576 91H361V1H457Z" stroke="black"/>
+<g id="SIP2-Manifold">
+<rect id="SIP2" x="466" y="7.5" width="45" height="36" stroke="black" stroke-width="2"/>
+<text id="SIP1_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="470" y="30.6992">SIP1</tspan></text>
+<rect id="SIP2-Gun-Pipe" x="457.5" y="20" width="8" height="11" stroke="black"/>
+<path id="SIP2-Gun-Pipe_2" d="M525.5 50H536.5V20L511 20V31H525.5V50Z" stroke="black"/>
+</g>
+</g>
+<g id="SIP2_2">
+<rect id="SIP2_3" x="307" y="34.5" width="46" height="31" stroke="black" stroke-width="2"/>
+<text id="SIP2_4" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="311" y="55.6992">SIP2</tspan></text>
+</g>
+<path id="Load-Lock" d="M309 152.5H361.5V161.814C351.593 164.563 348.39 167.762 347 176.5C348.526 186.686 351.89 189.889 361.5 192V202.5H309V183H283.5V172H309V152.5Z" stroke="black"/>
+<a data-href="/2100F-Vacuum-System/Manifolds/Buffer%20Tank.html" style="cursor:pointer;pointer-events:all;"><g id="Buffer">
+<path id="Buffer-Pi5" d="M367.5 568.5L391 568.5L391 556.5L367.5 556.5L367.5 568.5Z" stroke="black"/>
+<path id="DP-Buffer" d="M250 615.5L302 615.5L302 627.5L250 627.5L250 615.5Z" stroke="black"/>
+<path id="RP-Buffer" d="M367 627.5L460 627.5L460 615.5L367 615.5L367 627.5Z" stroke="black"/>
+<rect id="Buffer-Tank" x="302" y="550.5" width="65" height="89" stroke="black" stroke-width="2"/>
+<text id="Buffer-Tank_2" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="307.773" y="591.699">Buffer&#10;</tspan><tspan x="312.492" y="609.699">Tank</tspan></text>
+</g></a>
+<g id="Air Vent">
+<path id="Rectangle 17" d="M537 550.688L535 562.5L526 562.5L524 550.688L530.5 545.625L537 550.688Z" fill="#B2B0EE"/>
+</g>
+<g id="Air Vent_2">
+<path id="Rectangle 17_2" d="M56 503.688L54 515.5L45 515.5L43 503.688L49.5 498.625L56 503.688Z" fill="#B2B0EE"/>
+</g>
+<g id="N2 Vent">
+<path id="Rectangle 17_3" d="M475 523.312L477 511.5L486 511.5L488 523.313L481.5 528.375L475 523.312Z" fill="#0C04F2"/>
+</g>
+<g id="N2 Vent_2">
+<path id="Rectangle 17_4" d="M319 398.312L321 386.5L330 386.5L332 398.313L325.5 403.375L319 398.312Z" fill="#0C04F2"/>
+</g>
+<g id="N2 Vent_3">
+<path id="Rectangle 17_5" d="M141.188 170.5L153 172.5L153 181.5L141.188 183.5L136.125 177L141.188 170.5Z" fill="#0C04F2"/>
+</g>
+<a data-href="/2100F-Vacuum-System/Valves/V10.html" style="cursor:pointer;pointer-events:all;"><g id="V10">
+<a data-href="/2100F-Vacuum-System/Valves/V10.html" style="cursor:pointer;pointer-events:all;"><g id="V10_2">
+<circle id="Ellipse 3" cx="531.5" cy="342" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed" d="M542 331.5L520.96 352.5M521.5 331.5L542 352.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V10_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="551" y="347.699">V10</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V2.html" style="cursor:pointer;pointer-events:all;"><g id="V2">
+<a data-href="/2100F-Vacuum-System/Valves/V2.html" style="cursor:pointer;pointer-events:all;"><g id="V2_2">
+<circle id="Ellipse 3_2" cx="408.5" cy="283" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_2" d="M419 272.5L397.96 293.5M398.5 272.5L419 293.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V2_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="399" y="262.699">V2</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V1.html" style="cursor:pointer;pointer-events:all;"><g id="V1">
+<a data-href="/2100F-Vacuum-System/Valves/V1.html" style="cursor:pointer;pointer-events:all;"><g id="V1_2">
+<circle id="Ellipse 3_3" cx="408.5" cy="91" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_3" d="M419 80.5L397.96 101.5M398.5 80.5L419 101.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V1_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="399" y="72.6992">V1</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V5.html" style="cursor:pointer;pointer-events:all;"><g id="V5">
+<a data-href="/2100F-Vacuum-System/Valves/V5.html" style="cursor:pointer;pointer-events:all;"><g id="V5_2">
+<circle id="Ellipse 3_4" cx="361.5" cy="177" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_4" d="M372 166.5L350.96 187.5M351.5 166.5L372 187.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V5_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="325" y="182.699">V5</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Gauges/Pi5.html" style="cursor:pointer;pointer-events:all;"><g id="Pi5">
+<a data-href="/2100F-Vacuum-System/Gauges/Pi5.html" style="cursor:pointer;pointer-events:all;"><g id="Pi5_2">
+<path id="Polygon 1" d="M390.211 569.673L390.211 554.328L403.5 546.655L416.789 554.328L416.789 569.673L403.5 577.346L390.211 569.673Z" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="Pi5_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="426" y="565.699">Pi5</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Pumps/RP1.html" style="cursor:pointer;pointer-events:all;"><g id="RP1">
+<rect id="RP1_2" x="592" y="574.5" width="65" height="65" stroke="black" stroke-width="2"/>
+<text id="RP1_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="610" y="612.699">RP1</tspan></text>
+<path id="RP1-Manifold" d="M487 627.5L592 627.5L592 615.5L536 615.5L536 591L525 591L525 615.5L487 615.5L487 627.5Z" stroke="black"/>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Gauges/Pi6.html" style="cursor:pointer;pointer-events:all;"><g id="Pi6">
+<a data-href="/2100F-Vacuum-System/Gauges/Pi6.html" style="cursor:pointer;pointer-events:all;"><g id="Pi6_2">
+<path id="Polygon 1_2" d="M259.211 412.827L259.211 428.172L272.5 435.845L285.789 428.172L285.789 412.827L272.5 405.154L259.211 412.827Z" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="Pi6_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="291" y="426.199">Pi6</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Gauges/Pi3.html" style="cursor:pointer;pointer-events:all;"><g id="Pi3">
+<a data-href="/2100F-Vacuum-System/Gauges/Pi3.html" style="cursor:pointer;pointer-events:all;"><g id="Pi3_2">
+<path id="Polygon 1_3" d="M333.673 303.289L318.328 303.289L310.655 290L318.328 276.711L333.673 276.711L341.346 290L333.673 303.289Z" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="Pi3_3" transform="translate(314.5 256.5)" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="0" y="14.1992">Pi3</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Gauges/Pi4.html" style="cursor:pointer;pointer-events:all;"><g id="Pi4">
+<a data-href="/2100F-Vacuum-System/Gauges/Pi4.html" style="cursor:pointer;pointer-events:all;"><g id="Pi4_2">
+<path id="Polygon 1_4" d="M231.673 139.289L216.328 139.289L208.655 126L216.328 112.711L231.673 112.711L239.346 126L231.673 139.289Z" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="Pi4_3" transform="translate(212.5 92.5)" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="0" y="14.1992">Pi4</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V17.html" style="cursor:pointer;pointer-events:all;"><g id="V17">
+<a data-href="/2100F-Vacuum-System/Valves/V17.html" style="cursor:pointer;pointer-events:all;"><g id="V17_2">
+<circle id="Ellipse 3_5" cx="473.5" cy="621" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_5" d="M484 610.5L462.96 631.5M463.5 610.5L484 631.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V17_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="460" y="657.699">V17</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V8.html" style="cursor:pointer;pointer-events:all;"><g id="V8">
+<a data-href="/2100F-Vacuum-System/Valves/V8.html" style="cursor:pointer;pointer-events:all;"><g id="V8_2">
+<circle id="Ellipse 3_6" cx="269.5" cy="343" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_6" d="M280 332.5L258.96 353.5M259.5 332.5L280 353.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V8_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="260" y="378.699">V8</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V9.html" style="cursor:pointer;pointer-events:all;"><g id="V9">
+<a data-href="/2100F-Vacuum-System/Valves/V9.html" style="cursor:pointer;pointer-events:all;"><g id="V9_2">
+<circle id="Ellipse 3_7" cx="223.5" cy="490" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_7" d="M234 479.5L212.96 500.5M213.5 479.5L234 500.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V9_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="248" y="495.699">V9</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V27.html" style="cursor:pointer;pointer-events:all;"><g id="V27">
+<a data-href="/2100F-Vacuum-System/Valves/V27.html" style="cursor:pointer;pointer-events:all;"><g id="V27_2">
+<circle id="Ellipse 3_8" cx="164.5" cy="457" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_8" d="M175 446.5L153.96 467.5M154.5 446.5L175 467.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V27_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="149" y="490.699">V27</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V34.html" style="cursor:pointer;pointer-events:all;"><g id="V34">
+<a data-href="/2100F-Vacuum-System/Valves/V34.html" style="cursor:pointer;pointer-events:all;"><g id="V34_2">
+<circle id="Ellipse 3_9" cx="166.5" cy="177" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_9" d="M177 166.5L155.96 187.5M156.5 166.5L177 187.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V34_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="151" y="155.699">V34</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V24.html" style="cursor:pointer;pointer-events:all;"><g id="V24">
+<a data-href="/2100F-Vacuum-System/Valves/V24.html" style="cursor:pointer;pointer-events:all;"><g id="V24_2">
+<circle id="Ellipse 3_10" cx="164.5" cy="233" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_10" d="M175 222.5L153.96 243.5M154.5 222.5L175 243.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V24_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="149" y="211.699">V24</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V28.html" style="cursor:pointer;pointer-events:all;"><g id="V28">
+<a data-href="/2100F-Vacuum-System/Valves/V28.html" style="cursor:pointer;pointer-events:all;"><g id="V28_2">
+<circle id="Ellipse 3_11" cx="162.5" cy="389" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_11" d="M173 378.5L151.96 399.5M152.5 378.5L173 399.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V28_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="147" y="367.699">V28</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V37.html" style="cursor:pointer;pointer-events:all;"><g id="V37">
+<a data-href="/2100F-Vacuum-System/Valves/V37.html" style="cursor:pointer;pointer-events:all;"><g id="V37_2">
+<circle id="Ellipse 3_12" cx="530.5" cy="577" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_12" d="M541 566.5L519.96 587.5M520.5 566.5L541 587.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V37_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="550" y="579.699">V37</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V38.html" style="cursor:pointer;pointer-events:all;"><g id="V38">
+<a data-href="/2100F-Vacuum-System/Valves/V38.html" style="cursor:pointer;pointer-events:all;"><g id="V38_2">
+<circle id="Ellipse 3_13" cx="49.5" cy="529" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_13" d="M60 518.5L38.9601 539.5M39.5 518.5L60 539.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V38_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="0" y="534.699">V38</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V31.html" style="cursor:pointer;pointer-events:all;"><g id="V31">
+<a data-href="/2100F-Vacuum-System/Valves/V31.html" style="cursor:pointer;pointer-events:all;"><g id="V31_2">
+<circle id="Ellipse 3_14" cx="325.5" cy="373" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_14" d="M336 362.5L314.96 383.5M315.5 362.5L336 383.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V31_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="345" y="378.699">V31</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V35.html" style="cursor:pointer;pointer-events:all;"><g id="V35">
+<a data-href="/2100F-Vacuum-System/Valves/V35.html" style="cursor:pointer;pointer-events:all;"><g id="V35_2">
+<circle id="Ellipse 3_15" cx="481.5" cy="498" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_15" d="M492 487.5L470.96 508.5M471.5 487.5L492 508.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V35_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="501" y="503.699">V35</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V26.html" style="cursor:pointer;pointer-events:all;"><g id="V26">
+<a data-href="/2100F-Vacuum-System/Valves/V26.html" style="cursor:pointer;pointer-events:all;"><g id="V26_2">
+<circle id="Ellipse 3_16" cx="223.5" cy="268" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_16" d="M234 257.5L212.96 278.5M213.5 257.5L234 278.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V26_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="174" y="273.699">V26</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Gauges/Pi1.html" style="cursor:pointer;pointer-events:all;"><g id="Pi1">
+<a data-href="/2100F-Vacuum-System/Gauges/Pi1.html" style="cursor:pointer;pointer-events:all;"><g id="Pi1_2">
+<path id="Polygon 1_5" d="M596.211 257.673L596.211 242.328L609.5 234.655L622.789 242.328L622.789 257.673L609.5 265.346L596.211 257.673Z" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="Pi1_3" transform="translate(629 242.5)" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="0" y="14.1992">Pi1</tspan></text>
+</g></a>
+<g id="Pe">
+<g id="Pe_2">
+<path id="Polygon 1_6" d="M596.211 124.673L596.211 109.328L609.5 101.655L622.789 109.328L622.789 124.673L609.5 132.346L596.211 124.673Z" stroke="black" stroke-width="2"/>
+</g>
+<text id="Pe_3" transform="translate(630 106.5)" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="0" y="14.1992">Pe</tspan></text>
+</g>
+<a data-href="/2100F-Vacuum-System/Valves/V50.html" style="cursor:pointer;pointer-events:all;"><g id="V50">
+<a data-href="/2100F-Vacuum-System/Valves/V50.html" style="cursor:pointer;pointer-events:all;"><g id="V50_2">
+<circle id="Ellipse 3_17" cx="531.5" cy="64" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_17" d="M542 53.5L520.96 74.5M521.5 53.5L542 74.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V50_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="551" y="69.6992">V50</tspan></text>
+</g></a>
+<a data-href="/2100F-Vacuum-System/Valves/V21.html" style="cursor:pointer;pointer-events:all;"><g id="V21">
+<a data-href="/2100F-Vacuum-System/Valves/V21.html" style="cursor:pointer;pointer-events:all;"><g id="V21_2">
+<circle id="Ellipse 3_18" cx="269.5" cy="177" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_18" d="M280 166.5L258.96 187.5M259.5 166.5L280 187.5" stroke="black" stroke-width="2"/>
+</g></a>
+<text id="V21_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="254" y="210.699">V21</tspan></text>
+</g></a>
+<g id="Air Vent_3">
+<path id="Rectangle 17_6" d="M97 19.6875L95 31.5L86 31.5L84 19.6875L90.5 14.625L97 19.6875Z" fill="#B2B0EE"/>
+</g>
+<g id="N2 Vent_4">
+<path id="Rectangle 17_7" d="M97 44.6875L95 56.5L86 56.5L84 44.6875L90.5 39.625L97 44.6875Z" fill="#0C04F2"/>
+</g>
+<g id="N2 Vent_5">
+<path id="Rectangle 17_8" d="M84 95.3125L86 83.5L95 83.5L97 95.3125L90.5 100.375L84 95.3125Z" fill="#0C04F2"/>
+</g>
+<g id="V36">
+<g id="V36_2">
+<circle id="Ellipse 3_19" cx="90.5" cy="70" r="14.5" stroke="black" stroke-width="2"/>
+<path id="Closed_19" d="M101 59.5L79.9601 80.5M80.5 59.5L101 80.5" stroke="black" stroke-width="2"/>
+</g>
+<text id="V36_3" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="109" y="75.6992">V36</tspan></text>
+</g>
+<text id="Air Vent_4" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="100" y="28.6992">Air Vent</tspan></text>
+<text id="N2 Vent_6" fill="black" style="white-space: pre" xml:space="preserve" font-family="Times" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="102" y="54.6992">N2 Vent</tspan></text>
+</g>
+</svg>
+
+</div>
+
+<h2 id="connects">Connects</h2>
+<ul>
+<li><a href="../../Valves/V2/">V2</a> ↔ <a href="../Column%20Pipe/">Column Pipe</a></li>
+<li><a href="../../Valves/V8/">V8</a> ↔ <a href="../DP%20Manifold/">DP Manifold</a></li>
+<li><a href="../../Valves/V28/">V28</a> ↔ <a href="../RP2%20Manifold/">RP2 Manifold</a></li>
+<li><a href="../../Valves/V31/">V31</a> ↔ N2 Vent</li>
+</ul>
+<h2 id="photos">Photos</h2>
+<div class="ann-backlinks">
+<div class="ann-backlink-card">
+<div class="sam-annotated">
+<div class="sam-img-stack">
+<img src="/Attachments/2100F%20Vacuum%20System-1.jpeg">
+<svg viewBox="0 0 3823 2866" xmlns="http://www.w3.org/2000/svg">
+<g id="Pi6" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Gauges/Pi6/" title="Pi6"><path class="ann-hit" d="M 3550,566 L 3518,482 L 3445,438 L 3385,480 L 2997,481 L 2947,418 L 2807,420 L 2717,519 L 1389,543 L 1026,579 L 947,657 L 650,699 L 597,736 L 635,788 L 877,763 L 1391,809 L 2765,747 L 2779,829 L 2917,833 L 2993,770 L 3370,745 L 3399,787 L 3472,785 L 3548,651 Z"/></a>
+  <path class="ann-fill" d="M 3550,566 L 3518,482 L 3445,438 L 3385,480 L 2997,481 L 2947,418 L 2807,420 L 2717,519 L 1389,543 L 1026,579 L 947,657 L 650,699 L 597,736 L 635,788 L 877,763 L 1391,809 L 2765,747 L 2779,829 L 2917,833 L 2993,770 L 3370,745 L 3399,787 L 3472,785 L 3548,651 Z"/>
+  <a data-href="/2100F-Vacuum-System/Gauges/Pi6/"><circle class="ann-dot" cx="2158.221729490022" cy="641.7603550295859" r="34"/></a>
+  <a data-href="/2100F-Vacuum-System/Gauges/Pi6/" class="ann-label" transform="rotate(-2,2158.221729490022,641.7603550295859)">
+    <rect class="ann-badge-rect" x="1991.221729490022" y="561.7603550295859" width="335" height="161" rx="7"/>
+    <text class="ann-badge-text" x="2158.221729490022" y="641.7603550295859" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="124" font-weight="700">Pi6</text>
+  </a>
+</g>
+<g id="DP Manifold" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold/" title="DP Manifold"><path class="ann-hit" d="M 2308,792 L 2309,792 L 2310,791 L 2313,791 L 2314,790 L 2317,790 L 2311,790 L 2310,791 L 2309,791 Z M 3822,151 L 3525,179 L 3400,237 L 3393,473 L 3459,585 L 3386,745 L 3377,1021 L 2933,1016 L 2806,938 L 2655,912 L 2685,905 L 2269,837 L 2103,923 L 1982,1156 L 2248,990 L 2275,1021 L 1954,1271 L 2002,1458 L 2121,1596 L 2171,1577 L 2175,1637 L 1814,1646 L 1768,1720 L 1773,1840 L 2126,1876 L 2094,1925 L 2462,2003 L 3060,2004 L 3022,1948 L 2886,1914 L 2889,1739 L 3822,1695 Z"/></a>
+  <path class="ann-fill" d="M 2308,792 L 2309,792 L 2310,791 L 2313,791 L 2314,790 L 2317,790 L 2311,790 L 2310,791 L 2309,791 Z M 3822,151 L 3525,179 L 3400,237 L 3393,473 L 3459,585 L 3386,745 L 3377,1021 L 2933,1016 L 2806,938 L 2655,912 L 2685,905 L 2269,837 L 2103,923 L 1982,1156 L 2248,990 L 2275,1021 L 1954,1271 L 2002,1458 L 2121,1596 L 2171,1577 L 2175,1637 L 1814,1646 L 1768,1720 L 1773,1840 L 2126,1876 L 2094,1925 L 2462,2003 L 3060,2004 L 3022,1948 L 2886,1914 L 2889,1739 L 3822,1695 Z"/>
+  <a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold/"><circle class="ann-dot" cx="3235.294161123429" cy="1371.472386587771" r="34"/></a>
+  <a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold/" class="ann-label">
+    <rect class="ann-badge-rect" x="2823.294161123429" y="1300.472386587771" width="825" height="143" rx="7"/>
+    <text class="ann-badge-text" x="3235.294161123429" y="1371.472386587771" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="110" font-weight="700">DP Manifold</text>
+  </a>
+</g>
+<g id="V9" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V9/" title="V9"><path class="ann-hit" d="M 1606,2308 L 1600,2502 L 1648,2585 L 1818,2582 L 1877,2593 L 1916,2575 L 2015,2571 L 2109,2586 L 2158,2581 L 2177,2591 L 2219,2564 L 2265,2576 L 2304,2666 L 2425,2675 L 2511,2667 L 2380,2601 L 2197,2534 L 2024,2453 L 1977,2443 L 1874,2391 L 1627,2304 Z M 1646,2039 L 1632,2230 L 1651,2210 L 1665,2235 L 1840,2227 L 1863,2321 L 2069,2378 L 2168,2438 L 2194,2426 L 2764,2681 L 3156,2665 L 3190,2626 L 3205,2521 L 3822,2510 L 3819,2391 L 1991,2034 Z M 3739,2266 L 3723,2186 L 3636,1977 L 3560,1975 L 3519,1991 L 3470,1978 L 3414,1998 L 3158,2005 L 3121,2017 L 3100,2006 L 2983,2004 L 2565,2024 L 2641,2055 L 2873,2106 L 3197,2158 L 3211,2171 L 3723,2279 Z"/></a>
+  <path class="ann-fill" d="M 1606,2308 L 1600,2502 L 1648,2585 L 1818,2582 L 1877,2593 L 1916,2575 L 2015,2571 L 2109,2586 L 2158,2581 L 2177,2591 L 2219,2564 L 2265,2576 L 2304,2666 L 2425,2675 L 2511,2667 L 2380,2601 L 2197,2534 L 2024,2453 L 1977,2443 L 1874,2391 L 1627,2304 Z M 1646,2039 L 1632,2230 L 1651,2210 L 1665,2235 L 1840,2227 L 1863,2321 L 2069,2378 L 2168,2438 L 2194,2426 L 2764,2681 L 3156,2665 L 3190,2626 L 3205,2521 L 3822,2510 L 3819,2391 L 1991,2034 Z M 3739,2266 L 3723,2186 L 3636,1977 L 3560,1975 L 3519,1991 L 3470,1978 L 3414,1998 L 3158,2005 L 3121,2017 L 3100,2006 L 2983,2004 L 2565,2024 L 2641,2055 L 2873,2106 L 3197,2158 L 3211,2171 L 3723,2279 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V9/"><circle class="ann-dot" cx="2584.3071364046973" cy="2316.710278325663" r="34"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V9/" class="ann-label">
+    <rect class="ann-badge-rect" x="2436.3071364046973" y="2225.710278325663" width="296" height="183" rx="7"/>
+    <text class="ann-badge-text" x="2584.3071364046973" y="2316.710278325663" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="141" font-weight="700">V9</text>
+  </a>
+</g>
+<g id="V28" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V28/" title="V28"><path class="ann-hit" d="M 98,1662 L 113,1703 L 81,1705 L 68,1682 L 31,1717 L 31,1748 L 0,1764 L 0,2429 L 167,2502 L 363,2505 L 393,2469 L 440,2457 L 452,2323 L 483,2446 L 537,2474 L 551,2517 L 605,2515 L 648,2549 L 665,2502 L 708,2497 L 742,2392 L 855,2367 L 926,2245 L 912,2213 L 751,2211 L 770,2106 L 747,2083 L 752,1995 L 842,1954 L 869,1892 L 800,1870 L 946,1878 L 958,1830 L 825,1796 L 796,1818 L 785,1796 Z"/></a>
+  <path class="ann-fill" d="M 98,1662 L 113,1703 L 81,1705 L 68,1682 L 31,1717 L 31,1748 L 0,1764 L 0,2429 L 167,2502 L 363,2505 L 393,2469 L 440,2457 L 452,2323 L 483,2446 L 537,2474 L 551,2517 L 605,2515 L 648,2549 L 665,2502 L 708,2497 L 742,2392 L 855,2367 L 926,2245 L 912,2213 L 751,2211 L 770,2106 L 747,2083 L 752,1995 L 842,1954 L 869,1892 L 800,1870 L 946,1878 L 958,1830 L 825,1796 L 796,1818 L 785,1796 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V28/"><circle class="ann-dot" cx="356.2738359201775" cy="1876.9023668639052" r="34"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V28/" class="ann-label">
+    <rect class="ann-badge-rect" x="179.27383592017748" y="1791.9023668639052" width="354" height="170" rx="7"/>
+    <text class="ann-badge-text" x="356.2738359201775" y="1876.9023668639052" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="131" font-weight="700">V28</text>
+  </a>
+</g>
+<g id="RP2 Manifold" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Manifolds/RP2%20Manifold/" title="RP2 Manifold"><path class="ann-hit" d="M 619,2310 L 665,2366 L 829,2374 L 891,2319 L 904,2229 L 916,2258 L 935,2214 L 1198,2217 L 1324,2205 L 1360,2172 L 1408,2088 L 1458,2085 L 1530,2054 L 1570,2022 L 1604,1962 L 1223,1889 L 955,1893 L 955,1825 L 804,1792 L 671,1782 L 624,1884 L 591,2006 L 594,2221 Z M 1189,1735 L 1200,1750 L 1306,1772 L 1333,1783 L 1381,1789 L 1418,1803 L 1494,1818 L 1518,1814 L 1613,1835 L 1626,1834 L 1632,1826 L 1625,1740 L 1590,1708 L 1563,1658 L 1538,1648 L 1525,1631 L 1440,1606 L 1403,1605 L 1354,1613 L 1288,1636 L 1264,1650 L 1234,1685 L 1204,1705 Z M 0,447 L 0,769 L 15,763 L 109,760 L 170,788 L 195,787 L 203,773 L 203,737 L 182,719 L 170,686 L 174,657 L 157,618 L 160,573 L 144,564 L 111,562 L 104,550 L 108,527 L 94,507 L 57,505 L 47,499 L 54,468 L 43,450 L 35,446 Z"/></a>
+  <path class="ann-fill" d="M 619,2310 L 665,2366 L 829,2374 L 891,2319 L 904,2229 L 916,2258 L 935,2214 L 1198,2217 L 1324,2205 L 1360,2172 L 1408,2088 L 1458,2085 L 1530,2054 L 1570,2022 L 1604,1962 L 1223,1889 L 955,1893 L 955,1825 L 804,1792 L 671,1782 L 624,1884 L 591,2006 L 594,2221 Z M 1189,1735 L 1200,1750 L 1306,1772 L 1333,1783 L 1381,1789 L 1418,1803 L 1494,1818 L 1518,1814 L 1613,1835 L 1626,1834 L 1632,1826 L 1625,1740 L 1590,1708 L 1563,1658 L 1538,1648 L 1525,1631 L 1440,1606 L 1403,1605 L 1354,1613 L 1288,1636 L 1264,1650 L 1234,1685 L 1204,1705 Z M 0,447 L 0,769 L 15,763 L 109,760 L 170,788 L 195,787 L 203,773 L 203,737 L 182,719 L 170,686 L 174,657 L 157,618 L 160,573 L 144,564 L 111,562 L 104,550 L 108,527 L 94,507 L 57,505 L 47,499 L 54,468 L 43,450 L 35,446 Z"/>
+  <a data-href="/2100F-Vacuum-System/Manifolds/RP2%20Manifold/"><circle class="ann-dot" cx="1065.6447803308283" cy="2080.2306092882773" r="34"/></a>
+  <a data-href="/2100F-Vacuum-System/Manifolds/RP2%20Manifold/" class="ann-label">
+    <rect class="ann-badge-rect" x="786.6447803308283" y="2035.2306092882773" width="559" height="90" rx="7"/>
+    <text class="ann-badge-text" x="1065.6447803308283" y="2080.2306092882773" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="69" font-weight="700">RP2 Manifold</text>
+  </a>
+</g>
+<g id="Camera" class="ann-group" data-highlight>
+  <a data-href="/2100F-Vacuum-System/Manifolds/Camera/" title="Camera"><path class="ann-hit" d="M 840,1328 L 841,1492 L 846,1515 L 855,1527 L 977,1523 L 990,1516 L 1014,1528 L 1218,1523 L 1226,1529 L 1232,1551 L 1295,1556 L 1313,1546 L 1277,1513 L 1242,1491 L 1124,1435 L 1084,1410 L 1038,1395 L 964,1354 L 889,1333 L 858,1313 Z M 2119,1602 L 2030,1506 L 1994,1439 L 1972,1377 L 1951,1257 L 1934,1262 L 1891,1298 L 1853,1314 L 1803,1352 L 1697,1406 L 1629,1421 L 1616,1432 L 1617,1516 L 1624,1542 L 1637,1551 L 1770,1558 L 1798,1590 L 1824,1603 L 1895,1600 L 1915,1610 L 2095,1613 Z M 239,1125 L 235,1205 L 247,1319 L 261,1326 L 319,1326 L 336,1317 L 379,1313 L 425,1326 L 518,1326 L 570,1306 L 581,1293 L 579,1153 L 573,1135 L 561,1125 L 535,1119 L 264,1120 Z M 837,1259 L 968,1302 L 1012,1339 L 1409,1544 L 1419,1472 L 1408,1376 L 1493,1329 L 1586,1327 L 1612,1345 L 1633,1387 L 1680,1366 L 1705,1337 L 1732,1334 L 1706,1320 L 1760,1323 L 1801,1307 L 1891,1219 L 1910,1226 L 1970,1170 L 2002,1065 L 1948,1047 L 1347,1065 L 1002,1010 L 922,1093 Z M 661,810 L 595,798 L 489,838 L 484,872 L 475,835 L 441,857 L 382,863 L 256,926 L 236,944 L 241,1116 L 490,1113 L 495,1094 L 509,1113 L 544,1117 L 569,1111 L 640,969 L 646,914 L 665,886 Z M 244,718 L 238,722 L 229,724 L 215,737 L 210,747 L 210,771 L 209,772 L 210,804 L 229,842 L 233,842 L 234,838 L 247,823 L 252,813 L 250,810 L 249,765 L 247,762 L 248,725 Z M 224,364 L 181,439 L 165,503 L 164,570 L 173,589 L 164,623 L 178,650 L 174,684 L 192,711 L 216,723 L 299,676 L 505,599 L 545,619 L 534,661 L 446,705 L 436,728 L 465,737 L 631,687 L 637,666 L 594,494 L 506,352 L 429,309 L 351,290 Z"/></a>
+  <path class="ann-fill" d="M 840,1328 L 841,1492 L 846,1515 L 855,1527 L 977,1523 L 990,1516 L 1014,1528 L 1218,1523 L 1226,1529 L 1232,1551 L 1295,1556 L 1313,1546 L 1277,1513 L 1242,1491 L 1124,1435 L 1084,1410 L 1038,1395 L 964,1354 L 889,1333 L 858,1313 Z M 2119,1602 L 2030,1506 L 1994,1439 L 1972,1377 L 1951,1257 L 1934,1262 L 1891,1298 L 1853,1314 L 1803,1352 L 1697,1406 L 1629,1421 L 1616,1432 L 1617,1516 L 1624,1542 L 1637,1551 L 1770,1558 L 1798,1590 L 1824,1603 L 1895,1600 L 1915,1610 L 2095,1613 Z M 239,1125 L 235,1205 L 247,1319 L 261,1326 L 319,1326 L 336,1317 L 379,1313 L 425,1326 L 518,1326 L 570,1306 L 581,1293 L 579,1153 L 573,1135 L 561,1125 L 535,1119 L 264,1120 Z M 837,1259 L 968,1302 L 1012,1339 L 1409,1544 L 1419,1472 L 1408,1376 L 1493,1329 L 1586,1327 L 1612,1345 L 1633,1387 L 1680,1366 L 1705,1337 L 1732,1334 L 1706,1320 L 1760,1323 L 1801,1307 L 1891,1219 L 1910,1226 L 1970,1170 L 2002,1065 L 1948,1047 L 1347,1065 L 1002,1010 L 922,1093 Z M 661,810 L 595,798 L 489,838 L 484,872 L 475,835 L 441,857 L 382,863 L 256,926 L 236,944 L 241,1116 L 490,1113 L 495,1094 L 509,1113 L 544,1117 L 569,1111 L 640,969 L 646,914 L 665,886 Z M 244,718 L 238,722 L 229,724 L 215,737 L 210,747 L 210,771 L 209,772 L 210,804 L 229,842 L 233,842 L 234,838 L 247,823 L 252,813 L 250,810 L 249,765 L 247,762 L 248,725 Z M 224,364 L 181,439 L 165,503 L 164,570 L 173,589 L 164,623 L 178,650 L 174,684 L 192,711 L 216,723 L 299,676 L 505,599 L 545,619 L 534,661 L 446,705 L 436,728 L 465,737 L 631,687 L 637,666 L 594,494 L 506,352 L 429,309 L 351,290 Z"/>
+  <a data-href="/2100F-Vacuum-System/Manifolds/Camera/"><circle class="ann-dot" cx="1406.5593567882584" cy="1159.341545792533" r="34"/></a>
+  <a data-href="/2100F-Vacuum-System/Manifolds/Camera/" class="ann-label" transform="rotate(4,1406.5593567882584,1159.341545792533)">
+    <rect class="ann-badge-rect" x="1197.5593567882584" y="1099.341545792533" width="418" height="121" rx="7"/>
+    <text class="ann-badge-text" x="1406.5593567882584" y="1159.341545792533" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="93" font-weight="700">Camera</text>
+  </a>
+</g>
+<g id="V31" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V31/" title="V31"><path class="ann-hit" d="M 0,1620 L 0,1684 L 24,1685 L 35,1679 L 64,1676 L 90,1665 L 95,1660 L 99,1652 L 97,1648 L 92,1644 L 70,1634 L 27,1622 Z M 250,1347 L 241,1424 L 254,1532 L 337,1561 L 373,1564 L 393,1577 L 436,1579 L 455,1592 L 496,1597 L 559,1574 L 567,1540 L 553,1349 L 546,1326 L 377,1335 L 363,1322 L 354,1335 L 260,1340 Z M 0,774 L 0,1497 L 66,1493 L 64,1501 L 84,1514 L 241,1540 L 250,1531 L 248,1499 L 236,1477 L 237,1416 L 223,1401 L 240,1383 L 238,1331 L 224,1320 L 234,1310 L 240,1227 L 227,937 L 213,831 L 196,805 L 128,774 Z"/></a>
+  <path class="ann-fill" d="M 0,1620 L 0,1684 L 24,1685 L 35,1679 L 64,1676 L 90,1665 L 95,1660 L 99,1652 L 97,1648 L 92,1644 L 70,1634 L 27,1622 Z M 250,1347 L 241,1424 L 254,1532 L 337,1561 L 373,1564 L 393,1577 L 436,1579 L 455,1592 L 496,1597 L 559,1574 L 567,1540 L 553,1349 L 546,1326 L 377,1335 L 363,1322 L 354,1335 L 260,1340 Z M 0,774 L 0,1497 L 66,1493 L 64,1501 L 84,1514 L 241,1540 L 250,1531 L 248,1499 L 236,1477 L 237,1416 L 223,1401 L 240,1383 L 238,1331 L 224,1320 L 234,1310 L 240,1227 L 227,937 L 213,831 L 196,805 L 128,774 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V31/"><circle class="ann-dot" cx="103.53656274039554" cy="1117.2103006883228" r="34"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V31/" class="ann-label">
+    <rect class="ann-badge-rect" x="-12.463437259604461" y="1061.2103006883228" width="232" height="112" rx="7"/>
+    <text class="ann-badge-text" x="103.53656274039554" y="1117.2103006883228" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="86" font-weight="700">V31</text>
+  </a>
+</g>
+<g id="V27" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V27/" title="V27"><path class="ann-hit" d="M 714,1561 L 713,1622 L 725,1635 L 986,1697 L 983,1709 L 1111,1737 L 1118,1722 L 1144,1743 L 1272,1775 L 1705,1849 L 1780,1845 L 1768,1722 L 1797,1697 L 1803,1659 L 1778,1620 L 1767,1561 L 1648,1564 L 1622,1590 L 1565,1548 L 1433,1549 L 1373,1577 L 1321,1556 L 1230,1558 L 1215,1540 L 1202,1549 L 1202,1531 L 1188,1527 L 861,1531 L 759,1542 Z"/></a>
+  <path class="ann-fill" d="M 714,1561 L 713,1622 L 725,1635 L 986,1697 L 983,1709 L 1111,1737 L 1118,1722 L 1144,1743 L 1272,1775 L 1705,1849 L 1780,1845 L 1768,1722 L 1797,1697 L 1803,1659 L 1778,1620 L 1767,1561 L 1648,1564 L 1622,1590 L 1565,1548 L 1433,1549 L 1373,1577 L 1321,1556 L 1230,1558 L 1215,1540 L 1202,1549 L 1202,1531 L 1188,1527 L 861,1531 L 759,1542 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V27/"><circle class="ann-dot" cx="1036.784823697905" cy="1651.3752465483237" r="34"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V27/" class="ann-label" transform="rotate(11,1036.784823697905,1651.3752465483237)">
+    <rect class="ann-badge-rect" x="943.784823697905" y="1606.3752465483237" width="186" height="90" rx="7"/>
+    <text class="ann-badge-text" x="1036.784823697905" y="1651.3752465483237" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="69" font-weight="700">V27</text>
+  </a>
+</g>
+<g id="V35" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V35/" title="V35"><path class="ann-hit" d="M 1411,1374 L 1406,1386 L 1407,1427 L 1421,1480 L 1415,1496 L 1416,1513 L 1427,1543 L 1446,1544 L 1470,1539 L 1537,1541 L 1575,1546 L 1606,1557 L 1610,1535 L 1610,1477 L 1605,1425 L 1607,1406 L 1614,1389 L 1612,1353 L 1608,1347 L 1576,1331 L 1488,1331 L 1430,1356 Z"/></a>
+  <path class="ann-fill" d="M 1411,1374 L 1406,1386 L 1407,1427 L 1421,1480 L 1415,1496 L 1416,1513 L 1427,1543 L 1446,1544 L 1470,1539 L 1537,1541 L 1575,1546 L 1606,1557 L 1610,1535 L 1610,1477 L 1605,1425 L 1607,1406 L 1614,1389 L 1612,1353 L 1608,1347 L 1576,1331 L 1488,1331 L 1430,1356 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V35/"><circle class="ann-dot" cx="1520.9068736141905" cy="1464.6775147929" r="34"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V35/" class="ann-label">
+    <rect class="ann-badge-rect" x="1427.9068736141905" y="1419.6775147929" width="186" height="90" rx="7"/>
+    <text class="ann-badge-text" x="1520.9068736141905" y="1464.6775147929" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="69" font-weight="700">V35</text>
+  </a>
+</g>
+</svg>
+</div>
+</div>
+<div class="ann-backlink-footer"><span class="ann-backlink-hint">[hover] to interact</span><a class="ann-backlink-filename" href="/Attachments/2100F%20Vacuum%20System-1.jpeg">2100F Vacuum System-1.jpeg</a></div>
+</div>
+<div class="ann-backlink-card">
+<div class="sam-annotated">
+<div class="sam-img-stack">
+<img src="/Attachments/2100F%20Vacuum%20System-2.jpeg">
+<svg viewBox="0 0 2048 1536" xmlns="http://www.w3.org/2000/svg">
+<g id="Pi3" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Gauges/Pi3/" title="Pi3"><path class="ann-hit" d="M 1859,327 L 1756,329 L 1719,308 L 1559,338 L 1485,338 L 999,434 L 948,454 L 948,435 L 927,416 L 908,421 L 912,452 L 900,474 L 867,483 L 895,588 L 953,589 L 973,568 L 970,539 L 1098,531 L 1385,474 L 1517,463 L 1689,420 L 1713,429 L 1758,386 L 1837,380 L 1871,364 Z"/></a>
+  <path class="ann-fill" d="M 1859,327 L 1756,329 L 1719,308 L 1559,338 L 1485,338 L 999,434 L 948,454 L 948,435 L 927,416 L 908,421 L 912,452 L 900,474 L 867,483 L 895,588 L 953,589 L 973,568 L 970,539 L 1098,531 L 1385,474 L 1517,463 L 1689,420 L 1713,429 L 1758,386 L 1837,380 L 1871,364 Z"/>
+  <a data-href="/2100F-Vacuum-System/Gauges/Pi3/"><circle class="ann-dot" cx="1231.7003329633742" cy="451.2662721893491" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Gauges/Pi3/" class="ann-label" transform="rotate(-8,1231.7003329633742,451.2662721893491)">
+    <rect class="ann-badge-rect" x="1141.7003329633742" y="408.2662721893491" width="181" height="87" rx="7"/>
+    <text class="ann-badge-text" x="1231.7003329633742" y="451.2662721893491" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="67" font-weight="700">Pi3</text>
+  </a>
+</g>
+<g id="V8" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V8/" title="V8"><path class="ann-hit" d="M 507,699 L 488,706 L 461,706 L 457,708 L 454,712 L 455,717 L 468,723 L 476,734 L 476,778 L 475,779 L 475,820 L 476,821 L 482,814 L 486,812 L 504,771 L 510,737 L 509,703 Z M 483,339 L 472,351 L 226,398 L 215,409 L 288,430 L 195,418 L 61,446 L 19,475 L 0,502 L 0,877 L 34,892 L 52,916 L 196,921 L 330,900 L 336,728 L 286,684 L 279,635 L 317,596 L 411,577 L 447,588 L 473,582 L 454,567 L 550,517 L 555,494 Z"/></a>
+  <path class="ann-fill" d="M 507,699 L 488,706 L 461,706 L 457,708 L 454,712 L 455,717 L 468,723 L 476,734 L 476,778 L 475,779 L 475,820 L 476,821 L 482,814 L 486,812 L 504,771 L 510,737 L 509,703 Z M 483,339 L 472,351 L 226,398 L 215,409 L 288,430 L 195,418 L 61,446 L 19,475 L 0,502 L 0,877 L 34,892 L 52,916 L 196,921 L 330,900 L 336,728 L 286,684 L 279,635 L 317,596 L 411,577 L 447,588 L 473,582 L 454,567 L 550,517 L 555,494 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V8/"><circle class="ann-dot" cx="145.96459218754225" cy="642.1922355318228" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V8/" class="ann-label">
+    <rect class="ann-badge-rect" x="61.96459218754225" y="590.1922355318228" width="168" height="104" rx="7"/>
+    <text class="ann-badge-text" x="145.96459218754225" y="642.1922355318228" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="80" font-weight="700">V8</text>
+  </a>
+</g>
+<g id="V9" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V9/" title="V9"><path class="ann-hit" d="M 474,1236 L 474,1258 L 509,1373 L 520,1389 L 529,1440 L 557,1485 L 572,1458 L 562,1498 L 579,1533 L 687,1535 L 694,1521 L 696,1535 L 850,1532 L 857,1492 L 890,1474 L 901,1452 L 899,1409 L 893,1391 L 876,1374 L 784,1376 L 759,1387 L 748,1401 L 747,1387 L 599,1390 L 596,1398 L 600,1362 L 595,1348 L 567,1311 L 515,1262 Z M 0,1089 L 0,1499 L 79,1527 L 120,1533 L 454,1525 L 461,1535 L 508,1532 L 492,1487 L 484,1480 L 476,1486 L 480,1474 L 441,1374 L 394,1184 L 163,1102 L 85,1089 Z"/></a>
+  <path class="ann-fill" d="M 474,1236 L 474,1258 L 509,1373 L 520,1389 L 529,1440 L 557,1485 L 572,1458 L 562,1498 L 579,1533 L 687,1535 L 694,1521 L 696,1535 L 850,1532 L 857,1492 L 890,1474 L 901,1452 L 899,1409 L 893,1391 L 876,1374 L 784,1376 L 759,1387 L 748,1401 L 747,1387 L 599,1390 L 596,1398 L 600,1362 L 595,1348 L 567,1311 L 515,1262 Z M 0,1089 L 0,1499 L 79,1527 L 120,1533 L 454,1525 L 461,1535 L 508,1532 L 492,1487 L 484,1480 L 476,1486 L 480,1474 L 441,1374 L 394,1184 L 163,1102 L 85,1089 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V9/"><circle class="ann-dot" cx="215.09186762183438" cy="1316.4533351264122" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V9/" class="ann-label" transform="rotate(18,215.09186762183438,1316.4533351264122)">
+    <rect class="ann-badge-rect" x="117.09186762183438" y="1255.4533351264122" width="197" height="122" rx="7"/>
+    <text class="ann-badge-text" x="215.09186762183438" y="1316.4533351264122" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="94" font-weight="700">V9</text>
+  </a>
+</g>
+<g id="V35" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V35/" title="V35"><path class="ann-hit" d="M 954,697 L 947,694 L 916,720 L 856,749 L 867,759 L 837,757 L 802,796 L 749,814 L 716,858 L 709,878 L 712,905 L 730,936 L 759,960 L 790,973 L 846,973 L 875,959 L 888,940 L 898,899 L 926,835 L 920,809 L 925,821 L 933,826 L 953,772 L 963,726 L 962,710 Z"/></a>
+  <path class="ann-fill" d="M 954,697 L 947,694 L 916,720 L 856,749 L 867,759 L 837,757 L 802,796 L 749,814 L 716,858 L 709,878 L 712,905 L 730,936 L 759,960 L 790,973 L 846,973 L 875,959 L 888,940 L 898,899 L 926,835 L 920,809 L 925,821 L 933,826 L 953,772 L 963,726 L 962,710 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V35/"><circle class="ann-dot" cx="798.2971632266193" cy="903.7689176161527" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V35/" class="ann-label">
+    <rect class="ann-badge-rect" x="746.2971632266193" y="878.7689176161527" width="105" height="51" rx="7"/>
+    <text class="ann-badge-text" x="798.2971632266193" y="903.7689176161527" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="39" font-weight="700">V35</text>
+  </a>
+</g>
+<g id="V27" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V27/" title="V27"><path class="ann-hit" d="M 1055,964 L 1048,990 L 1085,1063 L 1101,1167 L 1118,1203 L 1137,1358 L 1134,1442 L 1147,1482 L 1189,1457 L 1201,1473 L 1252,1484 L 1275,1500 L 1290,1490 L 1301,1502 L 1313,1464 L 1297,1335 L 1319,1324 L 1323,1336 L 1393,1350 L 1436,1347 L 1446,1334 L 1456,1294 L 1451,1198 L 1464,1168 L 1460,1106 L 1441,1047 L 1420,1027 L 1419,1045 L 1406,987 L 1387,949 L 1365,930 L 1280,927 L 1105,947 Z M 913,892 L 900,897 L 894,934 L 881,956 L 886,968 L 788,974 L 766,965 L 718,1032 L 717,1053 L 707,1054 L 707,1067 L 717,1070 L 730,1100 L 711,1092 L 697,1162 L 703,1238 L 726,1290 L 746,1300 L 834,1297 L 853,1305 L 901,1359 L 931,1374 L 982,1380 L 1023,1365 L 1050,1337 L 1047,1329 L 1072,1325 L 1087,1332 L 1098,1325 L 1090,1294 L 1094,1219 L 1085,1202 L 1085,1170 L 1068,1137 L 1065,1089 L 1050,1059 L 1042,1068 L 1041,1036 L 1024,1004 L 1018,964 L 966,904 L 946,894 Z"/></a>
+  <path class="ann-fill" d="M 1055,964 L 1048,990 L 1085,1063 L 1101,1167 L 1118,1203 L 1137,1358 L 1134,1442 L 1147,1482 L 1189,1457 L 1201,1473 L 1252,1484 L 1275,1500 L 1290,1490 L 1301,1502 L 1313,1464 L 1297,1335 L 1319,1324 L 1323,1336 L 1393,1350 L 1436,1347 L 1446,1334 L 1456,1294 L 1451,1198 L 1464,1168 L 1460,1106 L 1441,1047 L 1420,1027 L 1419,1045 L 1406,987 L 1387,949 L 1365,930 L 1280,927 L 1105,947 Z M 913,892 L 900,897 L 894,934 L 881,956 L 886,968 L 788,974 L 766,965 L 718,1032 L 717,1053 L 707,1054 L 707,1067 L 717,1070 L 730,1100 L 711,1092 L 697,1162 L 703,1238 L 726,1290 L 746,1300 L 834,1297 L 853,1305 L 901,1359 L 931,1374 L 982,1380 L 1023,1365 L 1050,1337 L 1047,1329 L 1072,1325 L 1087,1332 L 1098,1325 L 1090,1294 L 1094,1219 L 1085,1202 L 1085,1170 L 1068,1137 L 1065,1089 L 1050,1059 L 1042,1068 L 1041,1036 L 1024,1004 L 1018,964 L 966,904 L 946,894 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V27/"><circle class="ann-dot" cx="1260.5835823444036" cy="1097.800295857988" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V27/" class="ann-label" transform="rotate(-5,1260.5835823444036,1097.800295857988)">
+    <rect class="ann-badge-rect" x="1128.5835823444036" y="1034.800295857988" width="265" height="127" rx="7"/>
+    <text class="ann-badge-text" x="1260.5835823444036" y="1097.800295857988" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="98" font-weight="700">V27</text>
+  </a>
+</g>
+<g id="DP Manifold" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold/" title="DP Manifold"><path class="ann-hit" d="M 368,912 L 320,907 L 189,925 L 186,929 L 191,939 L 206,951 L 238,993 L 241,1014 L 251,1021 L 234,1023 L 187,1059 L 150,1076 L 147,1084 L 170,1103 L 257,1128 L 265,1128 L 295,1103 L 323,1088 L 357,1093 L 372,1106 L 379,1099 L 375,1016 L 367,1009 L 373,1005 L 374,986 Z M 531,683 L 510,701 L 508,770 L 468,849 L 469,889 L 433,907 L 448,1133 L 460,1165 L 479,1158 L 472,1200 L 483,1226 L 504,1242 L 649,1240 L 670,1230 L 682,1263 L 711,1295 L 701,1284 L 705,1244 L 693,1154 L 706,1095 L 719,1088 L 717,1058 L 700,1055 L 684,1083 L 650,1080 L 682,1073 L 720,1017 Z"/></a>
+  <path class="ann-fill" d="M 368,912 L 320,907 L 189,925 L 186,929 L 191,939 L 206,951 L 238,993 L 241,1014 L 251,1021 L 234,1023 L 187,1059 L 150,1076 L 147,1084 L 170,1103 L 257,1128 L 265,1128 L 295,1103 L 323,1088 L 357,1093 L 372,1106 L 379,1099 L 375,1016 L 367,1009 L 373,1005 L 374,986 Z M 531,683 L 510,701 L 508,770 L 468,849 L 469,889 L 433,907 L 448,1133 L 460,1165 L 479,1158 L 472,1200 L 483,1226 L 504,1242 L 649,1240 L 670,1230 L 682,1263 L 711,1295 L 701,1284 L 705,1244 L 693,1154 L 706,1095 L 719,1088 L 717,1058 L 700,1055 L 684,1083 L 650,1080 L 682,1073 L 720,1017 Z"/>
+  <a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold/"><circle class="ann-dot" cx="587.6448390677024" cy="913.1005917159765" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold/" class="ann-label" transform="rotate(59,587.6448390677024,913.1005917159765)">
+    <rect class="ann-badge-rect" x="448.6448390677024" y="889.1005917159765" width="278" height="48" rx="7"/>
+    <text class="ann-badge-text" x="587.6448390677024" y="913.1005917159765" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="37" font-weight="700">DP Manifold</text>
+  </a>
+</g>
+<g id="Camera" class="ann-group" data-highlight>
+  <a data-href="/2100F-Vacuum-System/Manifolds/Camera/" title="Camera"><path class="ann-hit" d="M 923,853 L 923,854 L 922,855 L 921,858 L 918,861 L 918,862 L 917,863 L 917,866 L 916,867 L 916,869 L 915,870 L 915,871 L 913,874 L 913,876 L 912,877 L 912,879 L 913,880 L 913,890 L 914,891 L 926,891 L 927,892 L 936,892 L 939,890 L 939,886 L 940,885 L 939,884 L 939,882 L 937,879 L 937,877 L 936,876 L 936,875 L 933,870 L 933,868 L 932,867 L 932,865 L 931,864 L 931,863 L 929,861 L 929,860 L 926,857 L 925,854 L 924,853 Z M 1371,833 L 1367,812 L 1348,787 L 1306,771 L 1263,769 L 1182,778 L 1114,793 L 1099,790 L 1085,800 L 1068,798 L 1061,807 L 1044,801 L 1034,811 L 1018,806 L 1004,817 L 987,813 L 980,820 L 962,818 L 941,830 L 939,842 L 955,872 L 1003,908 L 1021,904 L 1035,910 L 1062,910 L 1164,894 L 1202,881 L 1272,877 L 1281,880 L 1316,917 L 1361,873 Z M 789,596 L 777,597 L 728,621 L 707,624 L 680,634 L 648,654 L 630,660 L 637,674 L 640,694 L 660,734 L 677,746 L 685,763 L 699,779 L 708,784 L 711,794 L 717,798 L 717,786 L 709,781 L 715,772 L 705,766 L 704,756 L 697,746 L 698,740 L 684,718 L 700,693 L 690,675 L 691,666 L 701,655 L 729,641 L 743,641 L 761,652 L 769,669 L 792,675 L 794,668 L 803,659 L 803,648 L 790,621 Z M 938,420 L 926,416 L 908,421 L 912,442 L 910,455 L 888,472 L 849,490 L 852,496 L 864,495 L 867,498 L 867,514 L 835,539 L 810,582 L 825,584 L 832,580 L 844,581 L 850,577 L 874,575 L 887,568 L 893,587 L 907,595 L 950,590 L 965,583 L 973,568 L 972,546 L 961,537 L 957,528 L 949,526 L 943,517 L 938,459 L 946,450 L 945,441 L 948,436 Z M 1343,26 L 1330,0 L 0,10 L 0,452 L 429,358 L 476,334 L 468,310 L 484,301 L 516,322 L 511,351 L 647,604 L 782,547 L 793,484 L 704,483 L 593,277 L 631,306 L 911,236 L 951,174 L 1207,115 L 1240,34 L 1275,49 L 1288,90 Z"/></a>
+  <path class="ann-fill" d="M 923,853 L 923,854 L 922,855 L 921,858 L 918,861 L 918,862 L 917,863 L 917,866 L 916,867 L 916,869 L 915,870 L 915,871 L 913,874 L 913,876 L 912,877 L 912,879 L 913,880 L 913,890 L 914,891 L 926,891 L 927,892 L 936,892 L 939,890 L 939,886 L 940,885 L 939,884 L 939,882 L 937,879 L 937,877 L 936,876 L 936,875 L 933,870 L 933,868 L 932,867 L 932,865 L 931,864 L 931,863 L 929,861 L 929,860 L 926,857 L 925,854 L 924,853 Z M 1371,833 L 1367,812 L 1348,787 L 1306,771 L 1263,769 L 1182,778 L 1114,793 L 1099,790 L 1085,800 L 1068,798 L 1061,807 L 1044,801 L 1034,811 L 1018,806 L 1004,817 L 987,813 L 980,820 L 962,818 L 941,830 L 939,842 L 955,872 L 1003,908 L 1021,904 L 1035,910 L 1062,910 L 1164,894 L 1202,881 L 1272,877 L 1281,880 L 1316,917 L 1361,873 Z M 789,596 L 777,597 L 728,621 L 707,624 L 680,634 L 648,654 L 630,660 L 637,674 L 640,694 L 660,734 L 677,746 L 685,763 L 699,779 L 708,784 L 711,794 L 717,798 L 717,786 L 709,781 L 715,772 L 705,766 L 704,756 L 697,746 L 698,740 L 684,718 L 700,693 L 690,675 L 691,666 L 701,655 L 729,641 L 743,641 L 761,652 L 769,669 L 792,675 L 794,668 L 803,659 L 803,648 L 790,621 Z M 938,420 L 926,416 L 908,421 L 912,442 L 910,455 L 888,472 L 849,490 L 852,496 L 864,495 L 867,498 L 867,514 L 835,539 L 810,582 L 825,584 L 832,580 L 844,581 L 850,577 L 874,575 L 887,568 L 893,587 L 907,595 L 950,590 L 965,583 L 973,568 L 972,546 L 961,537 L 957,528 L 949,526 L 943,517 L 938,459 L 946,450 L 945,441 L 948,436 Z M 1343,26 L 1330,0 L 0,10 L 0,452 L 429,358 L 476,334 L 468,310 L 484,301 L 516,322 L 511,351 L 647,604 L 782,547 L 793,484 L 704,483 L 593,277 L 631,306 L 911,236 L 951,174 L 1207,115 L 1240,34 L 1275,49 L 1288,90 Z"/>
+  <a data-href="/2100F-Vacuum-System/Manifolds/Camera/"><circle class="ann-dot" cx="226.88468962472288" cy="135.8833224864539" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Manifolds/Camera/" class="ann-label" transform="rotate(-18,226.88468962472288,135.8833224864539)">
+    <rect class="ann-badge-rect" x="30.88468962472288" y="79.88332248645389" width="392" height="113" rx="7"/>
+    <text class="ann-badge-text" x="226.88468962472288" y="135.8833224864539" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="87" font-weight="700">Camera</text>
+  </a>
+</g>
+<g id="N2" class="ann-group">
+  <path class="ann-hit" d="M 930,643 L 947,682 L 961,665 L 990,667 L 1100,635 L 1248,628 L 1341,642 L 1372,659 L 1355,664 L 1438,694 L 1512,801 L 1537,858 L 1557,1001 L 1551,1158 L 1580,1197 L 1587,971 L 1567,821 L 1516,719 L 1451,658 L 1354,610 L 1250,592 L 1046,606 Z"/>
+  <path class="ann-fill" d="M 930,643 L 947,682 L 961,665 L 990,667 L 1100,635 L 1248,628 L 1341,642 L 1372,659 L 1355,664 L 1438,694 L 1512,801 L 1537,858 L 1557,1001 L 1551,1158 L 1580,1197 L 1587,971 L 1567,821 L 1516,719 L 1451,658 L 1354,610 L 1250,592 L 1046,606 Z"/>
+  <circle class="ann-dot" cx="1380.0375693673695" cy="651.8405325443788" r="18"/>
+  <g class="ann-label">
+    <rect class="ann-badge-rect" x="1341.0375693673695" y="627.8405325443788" width="78" height="48" rx="7"/>
+    <text class="ann-badge-text" x="1380.0375693673695" y="651.8405325443788" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="37" font-weight="700">N2</text>
+  </g>
+</g>
+<g id="RP2 Manifold" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Manifolds/RP2 Manifold/" title="RP2 Manifold"><path class="ann-hit" d="M 1065,1341 L 1057,1341 L 1044,1356 L 1029,1363 L 1017,1373 L 978,1386 L 987,1411 L 1010,1456 L 1024,1468 L 1041,1470 L 1052,1467 L 1063,1451 L 1080,1435 L 1087,1421 L 1090,1395 L 1090,1374 L 1088,1364 L 1084,1358 L 1075,1357 L 1068,1349 Z M 1487,851 L 1473,845 L 1453,841 L 1429,844 L 1386,871 L 1365,877 L 1352,895 L 1340,902 L 1329,916 L 1343,922 L 1356,923 L 1375,934 L 1391,955 L 1394,963 L 1406,975 L 1433,946 L 1465,920 L 1493,889 L 1496,883 L 1496,859 Z"/></a>
+  <path class="ann-fill" d="M 1065,1341 L 1057,1341 L 1044,1356 L 1029,1363 L 1017,1373 L 978,1386 L 987,1411 L 1010,1456 L 1024,1468 L 1041,1470 L 1052,1467 L 1063,1451 L 1080,1435 L 1087,1421 L 1090,1395 L 1090,1374 L 1088,1364 L 1084,1358 L 1075,1357 L 1068,1349 Z M 1487,851 L 1473,845 L 1453,841 L 1429,844 L 1386,871 L 1365,877 L 1352,895 L 1340,902 L 1329,916 L 1343,922 L 1356,923 L 1375,934 L 1391,955 L 1394,963 L 1406,975 L 1433,946 L 1465,920 L 1493,889 L 1496,883 L 1496,859 Z"/>
+  <line class="ann-connector" x1="1413" y1="900" x2="1558.4739178690345" y2="984.3431952662721"/>
+  <a data-href="/2100F-Vacuum-System/Manifolds/RP2 Manifold/"><circle class="ann-dot" cx="1558.4739178690345" cy="984.3431952662721" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Manifolds/RP2 Manifold/" class="ann-label">
+    <rect class="ann-badge-rect" x="1437.4739178690345" y="965.3431952662721" width="243" height="39" rx="7"/>
+    <text class="ann-badge-text" x="1558.4739178690345" y="984.3431952662721" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="30" font-weight="700">RP2 Manifold</text>
+  </a>
+</g>
+<g id="Exposure Meter" class="ann-group">
+  <path class="ann-hit" d="M 850,497 L 844,493 L 816,497 L 796,489 L 789,521 L 792,534 L 782,548 L 741,560 L 678,590 L 660,592 L 587,635 L 567,642 L 555,642 L 542,669 L 586,665 L 643,651 L 689,628 L 787,591 L 805,578 L 828,552 L 836,533 L 854,523 L 857,514 Z M 862,263 L 853,257 L 834,257 L 754,274 L 700,293 L 629,309 L 625,313 L 627,329 L 674,440 L 698,444 L 730,437 L 727,446 L 742,480 L 761,482 L 780,477 L 812,492 L 846,487 L 905,459 L 910,452 L 910,438 Z"/>
+  <path class="ann-fill" d="M 850,497 L 844,493 L 816,497 L 796,489 L 789,521 L 792,534 L 782,548 L 741,560 L 678,590 L 660,592 L 587,635 L 567,642 L 555,642 L 542,669 L 586,665 L 643,651 L 689,628 L 787,591 L 805,578 L 828,552 L 836,533 L 854,523 L 857,514 Z M 862,263 L 853,257 L 834,257 L 754,274 L 700,293 L 629,309 L 625,313 L 627,329 L 674,440 L 698,444 L 730,437 L 727,446 L 742,480 L 761,482 L 780,477 L 812,492 L 846,487 L 905,459 L 910,452 L 910,438 Z"/>
+  <circle class="ann-dot" cx="764.0887902330744" cy="355.00591715976327" r="18"/>
+  <g class="ann-label">
+    <rect class="ann-badge-rect" x="671.0887902330744" y="342.00591715976327" width="186" height="26" rx="7"/>
+    <text class="ann-badge-text" x="764.0887902330744" y="355.00591715976327" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="20" font-weight="700">Exposure Meter</text>
+  </g>
+</g>
+</svg>
+</div>
+</div>
+<div class="ann-backlink-footer"><span class="ann-backlink-hint">[hover] to interact</span><a class="ann-backlink-filename" href="/Attachments/2100F%20Vacuum%20System-2.jpeg">2100F Vacuum System-2.jpeg</a></div>
+</div>
+<div class="ann-backlink-card">
+<div class="sam-annotated">
+<div class="sam-img-stack">
+<img src="/Attachments/2100F%20Vacuum%20System-5.jpeg">
+<svg viewBox="0 0 2048 1536" xmlns="http://www.w3.org/2000/svg">
+<g id="V9" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V9/" title="V9"><path class="ann-hit" d="M 39,287 L 16,303 L 0,332 L 0,395 L 27,443 L 43,510 L 85,571 L 102,638 L 82,755 L 100,811 L 183,723 L 224,654 L 230,630 L 225,618 L 238,611 L 245,590 L 242,510 L 235,482 L 195,410 L 115,329 L 75,315 L 61,294 Z M 158,300 L 221,369 L 281,493 L 284,604 L 224,738 L 113,858 L 143,1001 L 241,1050 L 306,1013 L 326,892 L 358,828 L 441,798 L 570,910 L 695,879 L 735,848 L 755,855 L 733,868 L 811,859 L 821,840 L 1121,850 L 1095,703 L 1049,611 L 993,556 L 906,522 L 776,511 L 576,554 L 515,546 L 453,646 L 437,335 L 409,249 L 366,258 L 274,228 L 283,333 L 247,372 Z"/></a>
+  <path class="ann-fill" d="M 39,287 L 16,303 L 0,332 L 0,395 L 27,443 L 43,510 L 85,571 L 102,638 L 82,755 L 100,811 L 183,723 L 224,654 L 230,630 L 225,618 L 238,611 L 245,590 L 242,510 L 235,482 L 195,410 L 115,329 L 75,315 L 61,294 Z M 158,300 L 221,369 L 281,493 L 284,604 L 224,738 L 113,858 L 143,1001 L 241,1050 L 306,1013 L 326,892 L 358,828 L 441,798 L 570,910 L 695,879 L 735,848 L 755,855 L 733,868 L 811,859 L 821,840 L 1121,850 L 1095,703 L 1049,611 L 993,556 L 906,522 L 776,511 L 576,554 L 515,546 L 453,646 L 437,335 L 409,249 L 366,258 L 274,228 L 283,333 L 247,372 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V9/"><circle class="ann-dot" cx="355.32761951740866" cy="681.3174081379209" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V9/" class="ann-label">
+    <rect class="ann-badge-rect" x="278.32761951740866" y="633.3174081379209" width="155" height="96" rx="7"/>
+    <text class="ann-badge-text" x="355.32761951740866" y="681.3174081379209" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="74" font-weight="700">V9</text>
+  </a>
+</g>
+<g id="V8" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V8/" title="V8"><path class="ann-hit" d="M 1621,335 L 1577,383 L 1542,394 L 1505,367 L 1502,343 L 1389,316 L 1276,512 L 1247,497 L 1282,495 L 1329,411 L 1350,345 L 1333,290 L 1214,289 L 1249,375 L 1248,413 L 1234,419 L 1250,421 L 1198,438 L 1190,468 L 1247,496 L 1233,499 L 1216,598 L 1170,636 L 1097,664 L 1092,684 L 1123,739 L 1123,765 L 1158,718 L 1132,782 L 1155,794 L 1193,772 L 1259,775 L 1297,801 L 1332,852 L 1380,800 L 1436,799 L 1449,816 L 1476,803 L 1474,772 L 1528,709 L 1505,656 L 1511,635 L 1656,487 L 1642,485 L 1681,444 L 1663,381 Z"/></a>
+  <path class="ann-fill" d="M 1621,335 L 1577,383 L 1542,394 L 1505,367 L 1502,343 L 1389,316 L 1276,512 L 1247,497 L 1282,495 L 1329,411 L 1350,345 L 1333,290 L 1214,289 L 1249,375 L 1248,413 L 1234,419 L 1250,421 L 1198,438 L 1190,468 L 1247,496 L 1233,499 L 1216,598 L 1170,636 L 1097,664 L 1092,684 L 1123,739 L 1123,765 L 1158,718 L 1132,782 L 1155,794 L 1193,772 L 1259,775 L 1297,801 L 1332,852 L 1380,800 L 1436,799 L 1449,816 L 1476,803 L 1474,772 L 1528,709 L 1505,656 L 1511,635 L 1656,487 L 1642,485 L 1681,444 L 1663,381 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V8/"><circle class="ann-dot" cx="1406.3404912416158" cy="607.9003087213788" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V8/" class="ann-label" transform="rotate(19,1406.3404912416158,607.9003087213788)">
+    <rect class="ann-badge-rect" x="1336.3404912416158" y="564.9003087213788" width="141" height="87" rx="7"/>
+    <text class="ann-badge-text" x="1406.3404912416158" y="607.9003087213788" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="67" font-weight="700">V8</text>
+  </a>
+</g>
+<g id="DP Manifold" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold/" title="DP Manifold"><path class="ann-hit" d="M 415,243 L 414,286 L 446,368 L 453,566 L 466,583 L 524,530 L 581,549 L 753,512 L 907,522 L 916,510 L 928,525 L 991,540 L 1026,561 L 1072,632 L 1102,654 L 1182,627 L 1230,570 L 1242,517 L 1268,517 L 1190,471 L 1195,438 L 1247,404 L 1228,315 L 1199,291 Z"/></a>
+  <path class="ann-fill" d="M 415,243 L 414,286 L 446,368 L 453,566 L 466,583 L 524,530 L 581,549 L 753,512 L 907,522 L 916,510 L 928,525 L 991,540 L 1026,561 L 1072,632 L 1102,654 L 1182,627 L 1230,570 L 1242,517 L 1268,517 L 1190,471 L 1195,438 L 1247,404 L 1228,315 L 1199,291 Z"/>
+  <a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold/"><circle class="ann-dot" cx="870.1644006659269" cy="386.54314595660753" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold/" class="ann-label" transform="rotate(4,870.1644006659269,386.54314595660753)">
+    <rect class="ann-badge-rect" x="615.1644006659269" y="342.54314595660753" width="510" height="88" rx="7"/>
+    <text class="ann-badge-text" x="870.1644006659269" y="386.54314595660753" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="68" font-weight="700">DP Manifold</text>
+  </a>
+</g>
+<g id="Camera" class="ann-group" data-highlight>
+  <a data-href="/2100F-Vacuum-System/Manifolds/Camera/" title="Camera"><path class="ann-hit" d="M 2047,305 L 1963,336 L 1847,344 L 1671,298 L 1642,276 L 1624,332 L 1670,390 L 1684,442 L 1709,462 L 1661,471 L 1507,646 L 1532,703 L 1489,758 L 1486,799 L 1359,900 L 1407,1022 L 1392,1051 L 1413,1043 L 1454,1072 L 1610,1053 L 1706,991 L 1787,993 L 1819,1016 L 1904,844 L 2029,698 L 2010,670 L 2047,660 Z"/></a>
+  <path class="ann-fill" d="M 2047,305 L 1963,336 L 1847,344 L 1671,298 L 1642,276 L 1624,332 L 1670,390 L 1684,442 L 1709,462 L 1661,471 L 1507,646 L 1532,703 L 1489,758 L 1486,799 L 1359,900 L 1407,1022 L 1392,1051 L 1413,1043 L 1454,1072 L 1610,1053 L 1706,991 L 1787,993 L 1819,1016 L 1904,844 L 2029,698 L 2010,670 L 2047,660 Z"/>
+  <a data-href="/2100F-Vacuum-System/Manifolds/Camera/"><circle class="ann-dot" cx="1911.3400337074033" cy="424.3889984659215" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Manifolds/Camera/" class="ann-label" transform="rotate(4,1911.3400337074033,424.3889984659215)">
+    <rect class="ann-badge-rect" x="1749.3400337074033" y="377.3889984659215" width="324" height="94" rx="7"/>
+    <text class="ann-badge-text" x="1911.3400337074033" y="424.3889984659215" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="72" font-weight="700">Camera</text>
+  </a>
+</g>
+<g id="DP" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Pumps/DP/" title="DP"><path class="ann-hit" d="M 1485,1303 L 1332,950 L 1300,922 L 1326,927 L 1300,849 L 1235,782 L 1151,808 L 1161,844 L 1138,861 L 1152,870 L 807,867 L 570,925 L 469,820 L 392,817 L 330,897 L 326,1019 L 349,1018 L 226,1114 L 200,1168 L 187,1431 L 213,1470 L 300,1485 L 353,1535 L 515,1535 L 515,1500 L 538,1488 L 530,1533 L 1308,1533 L 1269,1384 L 1393,1421 L 1478,1387 Z"/></a>
+  <path class="ann-fill" d="M 1485,1303 L 1332,950 L 1300,922 L 1326,927 L 1300,849 L 1235,782 L 1151,808 L 1161,844 L 1138,861 L 1152,870 L 807,867 L 570,925 L 469,820 L 392,817 L 330,897 L 326,1019 L 349,1018 L 226,1114 L 200,1168 L 187,1431 L 213,1470 L 300,1485 L 353,1535 L 515,1535 L 515,1500 L 538,1488 L 530,1533 L 1308,1533 L 1269,1384 L 1393,1421 L 1478,1387 Z"/>
+  <a data-href="/2100F-Vacuum-System/Pumps/DP/"><circle class="ann-dot" cx="801.5483870967741" cy="1003.0920022905137" r="18"/></a>
+  <a data-href="/2100F-Vacuum-System/Pumps/DP/" class="ann-label" transform="rotate(-7,801.5483870967741,1003.0920022905137)">
+    <rect class="ann-badge-rect" x="710.5483870967741" y="947.0920022905137" width="183" height="113" rx="7"/>
+    <text class="ann-badge-text" x="801.5483870967741" y="1003.0920022905137" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="87" font-weight="700">DP</text>
+  </a>
+</g>
+</svg>
+</div>
+</div>
+<div class="ann-backlink-footer"><span class="ann-backlink-hint">[hover] to interact</span><a class="ann-backlink-filename" href="/Attachments/2100F%20Vacuum%20System-5.jpeg">2100F Vacuum System-5.jpeg</a></div>
+</div>
+<div class="ann-backlink-card">
+<div class="sam-annotated">
+<div class="sam-img-stack">
+<img src="/Attachments/2100F%20Vacuum%20System-6.jpeg">
+<svg viewBox="0 0 1536 2048" xmlns="http://www.w3.org/2000/svg">
+<g id="RP2 Manifold" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Manifolds/RP2%20Manifold/" title="RP2 Manifold"><path class="ann-hit" d="M 0,0 L 247,569 L 230,674 L 301,900 L 237,985 L 242,1082 L 296,1122 L 297,1198 L 499,1644 L 540,1643 L 582,1700 L 240,1962 L 171,1729 L 112,1709 L 14,1743 L 0,2047 L 747,2047 L 918,1831 L 939,1886 L 1099,1876 L 1177,1756 L 1176,1539 L 1004,1347 L 891,1335 L 820,1347 L 755,1419 L 731,1574 L 700,1442 L 465,1124 L 505,1099 L 519,986 L 477,952 L 512,646 L 481,587 L 511,549 L 478,523 L 503,473 L 413,187 L 438,176 L 301,0 Z"/></a>
+  <path class="ann-fill" d="M 0,0 L 247,569 L 230,674 L 301,900 L 237,985 L 242,1082 L 296,1122 L 297,1198 L 499,1644 L 540,1643 L 582,1700 L 240,1962 L 171,1729 L 112,1709 L 14,1743 L 0,2047 L 747,2047 L 918,1831 L 939,1886 L 1099,1876 L 1177,1756 L 1176,1539 L 1004,1347 L 891,1335 L 820,1347 L 755,1419 L 731,1574 L 700,1442 L 465,1124 L 505,1099 L 519,986 L 477,952 L 512,646 L 481,587 L 511,549 L 478,523 L 503,473 L 413,187 L 438,176 L 301,0 Z"/>
+  <a data-href="/2100F-Vacuum-System/Manifolds/RP2%20Manifold/"><circle class="ann-dot" cx="689.7386587771203" cy="1786.2408777120318" r="14"/></a>
+  <a data-href="/2100F-Vacuum-System/Manifolds/RP2%20Manifold/" class="ann-label" transform="rotate(-45,689.7386587771203,1786.2408777120318)">
+    <rect class="ann-badge-rect" x="381.73865877712035" y="1737.2408777120318" width="616" height="99" rx="7"/>
+    <text class="ann-badge-text" x="689.7386587771203" y="1786.2408777120318" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="76" font-weight="700">RP2 Manifold</text>
+  </a>
+</g>
+<g id="V28" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V28/" title="V28"><path class="ann-hit" d="M 0,960 L 3,1751 L 105,1708 L 141,1710 L 173,1727 L 192,1781 L 270,1736 L 317,1674 L 333,1622 L 287,1445 L 251,1415 L 210,1403 L 179,1344 L 178,1308 L 221,1223 L 215,1105 L 190,1045 L 110,978 L 71,961 Z"/></a>
+  <path class="ann-fill" d="M 0,960 L 3,1751 L 105,1708 L 141,1710 L 173,1727 L 192,1781 L 270,1736 L 317,1674 L 333,1622 L 287,1445 L 251,1415 L 210,1403 L 179,1344 L 178,1308 L 221,1223 L 215,1105 L 190,1045 L 110,978 L 71,961 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V28/"><circle class="ann-dot" cx="101.82622236063531" cy="1409.6122703207727" r="14"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V28/" class="ann-label" transform="rotate(-10,101.82622236063531,1409.6122703207727)">
+    <rect class="ann-badge-rect" x="3.826222360635313" y="1362.6122703207727" width="197" height="95" rx="7"/>
+    <text class="ann-badge-text" x="101.82622236063531" y="1409.6122703207727" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="73" font-weight="700">V28</text>
+  </a>
+</g>
+<g id="V27" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V27/" title="V27"><path class="ann-hit" d="M 721,943 L 671,969 L 590,1070 L 578,1161 L 731,1390 L 757,1403 L 781,1382 L 833,1385 L 901,1419 L 1022,1557 L 1113,1726 L 1125,1837 L 1165,1772 L 1171,1800 L 1316,1659 L 1427,1474 L 1473,1507 L 1367,1415 L 1375,1323 L 1347,1267 L 1262,1184 L 1224,1165 L 1108,1173 L 1011,1078 L 811,942 Z"/></a>
+  <path class="ann-fill" d="M 721,943 L 671,969 L 590,1070 L 578,1161 L 731,1390 L 757,1403 L 781,1382 L 833,1385 L 901,1419 L 1022,1557 L 1113,1726 L 1125,1837 L 1165,1772 L 1171,1800 L 1316,1659 L 1427,1474 L 1473,1507 L 1367,1415 L 1375,1323 L 1347,1267 L 1262,1184 L 1224,1165 L 1108,1173 L 1011,1078 L 811,942 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V27/"><circle class="ann-dot" cx="739.7452140619562" cy="1219.8995823181344" r="14"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V27/" class="ann-label" transform="rotate(45,739.7452140619562,1219.8995823181344)">
+    <rect class="ann-badge-rect" x="637.7452140619562" y="1170.8995823181344" width="205" height="99" rx="7"/>
+    <text class="ann-badge-text" x="739.7452140619562" y="1219.8995823181344" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="76" font-weight="700">V27</text>
+  </a>
+</g>
+<g id="V35" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Valves/V35/" title="V35"><path class="ann-hit" d="M 1307,1034 L 1282,1047 L 1268,1076 L 1233,1129 L 1230,1146 L 1255,1170 L 1253,1180 L 1262,1190 L 1295,1209 L 1348,1259 L 1355,1262 L 1381,1239 L 1444,1164 L 1453,1131 L 1437,1127 L 1396,1134 L 1386,1124 L 1380,1111 L 1387,1106 L 1394,1093 L 1392,1086 L 1380,1078 L 1363,1079 L 1347,1085 L 1346,1089 L 1331,1084 L 1309,1060 L 1317,1048 L 1322,1052 L 1325,1044 L 1318,1036 Z"/></a>
+  <path class="ann-fill" d="M 1307,1034 L 1282,1047 L 1268,1076 L 1233,1129 L 1230,1146 L 1255,1170 L 1253,1180 L 1262,1190 L 1295,1209 L 1348,1259 L 1355,1262 L 1381,1239 L 1444,1164 L 1453,1131 L 1437,1127 L 1396,1134 L 1386,1124 L 1380,1111 L 1387,1106 L 1394,1093 L 1392,1086 L 1380,1078 L 1363,1079 L 1347,1085 L 1346,1089 L 1331,1084 L 1309,1060 L 1317,1048 L 1322,1052 L 1325,1044 L 1318,1036 Z"/>
+  <a data-href="/2100F-Vacuum-System/Valves/V35/"><circle class="ann-dot" cx="1335.5510593624738" cy="1124.510784500859" r="14"/></a>
+  <a data-href="/2100F-Vacuum-System/Valves/V35/" class="ann-label" transform="rotate(27,1335.5510593624738,1124.510784500859)">
+    <rect class="ann-badge-rect" x="1268.5510593624738" y="1092.510784500859" width="135" height="65" rx="7"/>
+    <text class="ann-badge-text" x="1335.5510593624738" y="1124.510784500859" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="50" font-weight="700">V35</text>
+  </a>
+</g>
+<g id="DP Manifold" class="ann-group">
+  <a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold/" title="DP Manifold"><path class="ann-hit" d="M 1126,1173 L 1122,1202 L 1160,1222 L 1165,1245 L 1059,1343 L 1045,1371 L 1104,1397 L 1085,1402 L 1121,1422 L 1117,1436 L 1165,1492 L 1181,1539 L 1186,1726 L 1170,1851 L 1227,1857 L 1248,1897 L 1286,1918 L 1366,1872 L 1353,1900 L 1491,2047 L 1535,2047 L 1532,1646 L 1522,1653 L 1532,1555 L 1369,1418 L 1373,1317 L 1305,1222 L 1227,1168 L 1150,1163 Z"/></a>
+  <path class="ann-fill" d="M 1126,1173 L 1122,1202 L 1160,1222 L 1165,1245 L 1059,1343 L 1045,1371 L 1104,1397 L 1085,1402 L 1121,1422 L 1117,1436 L 1165,1492 L 1181,1539 L 1186,1726 L 1170,1851 L 1227,1857 L 1248,1897 L 1286,1918 L 1366,1872 L 1353,1900 L 1491,2047 L 1535,2047 L 1532,1646 L 1522,1653 L 1532,1555 L 1369,1418 L 1373,1317 L 1305,1222 L 1227,1168 L 1150,1163 Z"/>
+  <a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold/"><circle class="ann-dot" cx="1369.3254437869823" cy="1712.7041420118346" r="14"/></a>
+  <a data-href="/2100F-Vacuum-System/Manifolds/DP%20Manifold/" class="ann-label" transform="rotate(-45,1369.3254437869823,1712.7041420118346)">
+    <rect class="ann-badge-rect" x="1200.3254437869823" y="1683.7041420118346" width="338" height="58" rx="7"/>
+    <text class="ann-badge-text" x="1369.3254437869823" y="1712.7041420118346" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="45" font-weight="700">DP Manifold</text>
+  </a>
+</g>
+<g id="Camera" class="ann-group" data-highlight>
+  <a data-href="/2100F-Vacuum-System/Manifolds/Camera/" title="Camera"><path class="ann-hit" d="M 957,547 L 859,671 L 853,693 L 881,730 L 994,825 L 1013,827 L 1028,851 L 1058,862 L 1086,908 L 1152,928 L 1167,960 L 1189,963 L 1269,1042 L 1322,1033 L 1332,1078 L 1387,1078 L 1398,1091 L 1392,1116 L 1411,1130 L 1450,1126 L 1457,1164 L 1476,1181 L 1530,1169 L 1530,873 L 1502,878 L 1489,832 L 1462,817 L 1453,829 L 1421,836 L 1418,797 L 1397,776 L 1365,772 L 1344,750 L 1301,754 L 1289,720 L 1246,723 L 1239,696 L 1204,686 L 1195,666 L 1062,597 L 1056,581 L 1023,573 L 1002,550 Z M 305,0 L 304,11 L 322,41 L 372,83 L 406,156 L 445,179 L 458,216 L 496,257 L 512,291 L 545,326 L 600,414 L 618,428 L 626,445 L 652,448 L 672,416 L 717,305 L 747,192 L 754,130 L 751,86 L 721,28 L 717,0 Z"/></a>
+  <path class="ann-fill" d="M 957,547 L 859,671 L 853,693 L 881,730 L 994,825 L 1013,827 L 1028,851 L 1058,862 L 1086,908 L 1152,928 L 1167,960 L 1189,963 L 1269,1042 L 1322,1033 L 1332,1078 L 1387,1078 L 1398,1091 L 1392,1116 L 1411,1130 L 1450,1126 L 1457,1164 L 1476,1181 L 1530,1169 L 1530,873 L 1502,878 L 1489,832 L 1462,817 L 1453,829 L 1421,836 L 1418,797 L 1397,776 L 1365,772 L 1344,750 L 1301,754 L 1289,720 L 1246,723 L 1239,696 L 1204,686 L 1195,666 L 1062,597 L 1056,581 L 1023,573 L 1002,550 Z M 305,0 L 304,11 L 322,41 L 372,83 L 406,156 L 445,179 L 458,216 L 496,257 L 512,291 L 545,326 L 600,414 L 618,428 L 626,445 L 652,448 L 672,416 L 717,305 L 747,192 L 754,130 L 751,86 L 721,28 L 717,0 Z"/>
+  <a data-href="/2100F-Vacuum-System/Manifolds/Camera/"><circle class="ann-dot" cx="1247.8837209302326" cy="853.0" r="14"/></a>
+  <a data-href="/2100F-Vacuum-System/Manifolds/Camera/" class="ann-label">
+    <rect class="ann-badge-rect" x="1184.8837209302326" y="835.0" width="126" height="36" rx="7"/>
+    <text class="ann-badge-text" x="1247.8837209302326" y="853.0" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-size="28" font-weight="700">Camera</text>
+  </a>
+</g>
+</svg>
+</div>
+</div>
+<div class="ann-backlink-footer"><span class="ann-backlink-hint">[hover] to interact</span><a class="ann-backlink-filename" href="/Attachments/2100F%20Vacuum%20System-6.jpeg">2100F Vacuum System-6.jpeg</a></div>
+</div>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../fragment-scroll.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

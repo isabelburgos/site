@@ -1,0 +1,169 @@
+/* ── Component type colors ─────────────────────────────────────────────────── */
+/* Edit here — CSS selectors on the annotation id drive color everywhere.      */
+/* Longest-match prefix wins (DP/RP before V, Pi before P, etc.)               */
+
+.ann-group              { --ann-color: #ff6b6b; } /* default — red             */
+.ann-group[id^="V"]     { --ann-color: #4a9eff; } /* valves  — blue            */
+.ann-group[id^="Pi"]    { --ann-color: #ffb347; } /* gauges  — amber           */
+.ann-group[id^="DP"],
+.ann-group[id^="RP"]    { --ann-color: #7fff7f; } /* pumps   — green           */
+
+/* ── Annotated image container ────────────────────────────────────────────── */
+
+.sam-annotated {
+  display: inline-block;
+  max-width: 100%;
+}
+
+/* Nested wrapper isolates the img+svg stack from the ::after caption,
+   so height: 100% on the SVG matches the image height exactly. */
+.sam-img-stack {
+  position: relative;
+}
+
+.sam-img-stack > img {
+  display: block;
+  max-width: 100%;
+}
+
+.sam-img-stack > svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Transparent hit area — provides a large hover target over the exact polygon shape */
+.ann-hit {
+  fill: transparent;
+  pointer-events: all;
+}
+
+.sam-annotated::after {
+  content: '[hover] to interact';
+  display: block;
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--md-default-fg-color--light, rgba(0,0,0,0.5));
+  letter-spacing: 0.04em;
+  padding: 3px 0 0;
+}
+
+.ann-backlink-card .sam-annotated::after  { content: none; } /* JS renders footer */
+.sam-annotated--editable::after           { content: none; } /* JS renders [edit] */
+
+.ann-edit-link {
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  display: inline-block;
+  margin-top: 3px;
+  cursor: pointer;
+}
+.ann-edit-link:hover { color: var(--text-normal); }
+
+/* ── SAM annotation overlays ──────────────────────────────────────────────── */
+
+/* .ann-group .ann-glow  { stroke: var(--ann-color); opacity: 0.75;  transition: opacity 0.2s; } filter: blur(15px); */
+.ann-group .ann-fill  { fill: var(--ann-color); opacity: var(--ann-opacity-mid); transition: opacity 0.2s; pointer-events: none; }
+.ann-group .ann-label { opacity: 1; transition: opacity 0.2s; pointer-events: all; cursor: pointer; }
+
+/* :hover fires via the exact-polygon hit path inside each .ann-group */
+.ann-group:hover .ann-fill  { opacity: var(--ann-opacity-hi); }
+.ann-group:hover .ann-label { opacity: 1; }
+
+.ann-connector {
+  stroke: var(--ann-color);
+  stroke-width: 4;
+  stroke-linecap: round;
+  opacity: var(--ann-opacity-hi);
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+/* ── Badge styling ─────────────────────────────────────────────────────────── */
+
+body {
+  --label-bg: rgb(255, 242, 0);
+  --ann-opacity-dim: 0.1;   /* background / non-highlighted */
+  --ann-opacity-mid: 0.4;   /* resting fill / highlighted   */
+  --ann-opacity-hi:  0.75;  /* hover / bright               */
+}
+
+/* SVG badge elements (static export + website) */
+.ann-badge-rect { fill: var(--label-bg); }
+.ann-badge-text { fill: black; }
+.ann-note-text  { fill: var(--ann-color); }
+
+/* HTML badge (Obsidian code-block renderer).
+   Font size is set in JS as a fraction of viewBox width so badges are the
+   same relative size across resolutions and scale with the image. */
+.ann-badge {
+  display: inline-block;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  background: var(--label-bg);
+  color: black;
+  font-family: ui-monospace, monospace;
+  font-weight: 700;
+  padding: 0.15em 0.45em;
+  border-radius: 0.25em;
+}
+
+/* ── image-backlinks gallery ───────────────────────────────────────────────── */
+
+.ann-backlinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.ann-backlink-card {
+  display: inline-block;
+}
+
+.ann-backlink-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  margin-top: 3px;
+  gap: 8px;
+}
+
+.ann-backlink-hint   { color: var(--text-muted); text-decoration: none; cursor: pointer; }
+.ann-backlink-hint:hover { color: var(--text-normal); }
+.ann-backlink-filename { color: var(--text-muted); text-decoration: none; }
+.ann-backlink-filename:hover { color: var(--text-normal); }
+
+.ann-backlinks-empty {
+  color: var(--md-default-fg-color--light);
+  font-style: italic;
+}
+
+/* ── Backlink card: default state ──────────────────────────────────────────── */
+.ann-backlink-card .ann-group .ann-fill  { opacity: var(--ann-opacity-dim); }
+.ann-backlink-card .ann-group .ann-label { opacity: 0; pointer-events: all; cursor: pointer; }
+
+/* Dot indicator for non-highlighted annotations */
+.ann-backlink-card .ann-group .ann-dot {
+  fill: var(--label-bg);
+  pointer-events: all;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.ann-backlink-card .ann-group[data-highlight] .ann-dot { opacity: 0; }
+
+/* Highlighted annotation: brighter fill, full label, no dot */
+.ann-backlink-card .ann-group[data-highlight] .ann-fill  { opacity: var(--ann-opacity-mid); }
+.ann-backlink-card .ann-group[data-highlight] .ann-label { opacity: 1; }
+
+/* ── Backlink card: hover state ──────────────────────────────────────────────── */
+.ann-backlink-card .ann-group:hover .ann-fill  { opacity: var(--ann-opacity-mid); }
+.ann-backlink-card svg:hover .ann-group:hover .ann-dot   { opacity: 0; }
+.ann-backlink-card svg:hover .ann-group:hover .ann-label { opacity: 1; }

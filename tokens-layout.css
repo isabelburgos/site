@@ -128,4 +128,16 @@
   --token-blockquote-radius: var(--token-radius-sm);
   --token-blockquote-shadow: 0 0 0; /*var(--token-shadow-crisp-md);*/
   --token-blockquote-border-all: 1px;
+
+  /* =========================
+     Embed Layout
+     ========================= */
+  --token-embed-padding: 1rem 1.5rem;
+  --token-embed-margin: 1.5rem;
+  --token-embed-border-left: 3px;
+  --token-embed-border-all: 1px;
+  --token-embed-radius: var(--token-radius-sm);
+  --token-embed-shadow: var(--token-shadow-crisp-sm);
+  --token-embed-title-padding: 0.4rem 1.5rem;
+  --token-embed-title-font-size: var(--token-font-size-sm);
 }

@@ -1,0 +1,132 @@
+/* ── Vacuum diagram embed ──────────────────────────────────────────────────── */
+
+:root {
+  --var-text-normal-r: 209;
+  --var-text-normal-g: 209;
+  --var-text-normal-b: 209;
+
+  --vd-scale: 500px;
+
+  /* Vacuum state colors (rgb channels for opacity control) */
+
+  --vd-r-hi-vacuum:   96; --vd-g-hi-vacuum:   165; --vd-b-hi-vacuum:   250; /* blue */
+  --vd-r-dp-vacuum:    0; --vd-g-dp-vacuum:   200; --vd-b-dp-vacuum:   255; /* cyan */
+  --vd-r-roughing:   251; --vd-g-roughing:    146; --vd-b-roughing:     60; /* orange */
+  --vd-r-atmosphere: 209; --vd-g-atmosphere:  213; --vd-b-atmosphere:  219; /* grey */
+  --vd-r-foreline:   167; --vd-g-foreline:    139; --vd-b-foreline:    250; /* purple */
+
+  --vd-opacity: 0.4;
+
+  --vd-color-hi-vacuum:   rgba(var(--vd-r-hi-vacuum),   var(--vd-g-hi-vacuum),   var(--vd-b-hi-vacuum),   var(--vd-opacity));
+  --vd-color-dp-vacuum:   rgba(var(--vd-r-dp-vacuum),   var(--vd-g-dp-vacuum),   var(--vd-b-dp-vacuum),   var(--vd-opacity));
+  --vd-color-roughing:    rgba(var(--vd-r-roughing),    var(--vd-g-roughing),    var(--vd-b-roughing),    var(--vd-opacity));
+  --vd-color-atmosphere:  rgba(var(--vd-r-atmosphere),  var(--vd-g-atmosphere),  var(--vd-b-atmosphere),  var(--vd-opacity));
+  --vd-color-foreline:    rgba(var(--vd-r-foreline),    var(--vd-g-foreline),    var(--vd-b-foreline),    var(--vd-opacity));
+}
+
+
+
+/* Compensate for Obsidian's app-level zoom (zoom level 1 = ×1.2).
+   .markdown-preview-view only exists in Obsidian, not on the website. */
+.markdown-preview-view {
+  --vd-zoom: 1.2;
+}
+
+.vacuum-diagram-embed svg {
+  width: calc(var(--vd-scale) / var(--vd-zoom, 1)) !important;
+  height: auto !important;
+  display: block;
+  color: var(--text-normal); /* currentColor strokes inherit this */
+  fill: rgba(var(--var-text-normal-r), var(--var-text-normal-g), var(--var-text-normal-b), 0.05);
+}
+
+/* Prevent Material's link styles (color: accent !important) from polluting
+   currentColor on SVG paths that use stroke="black" → stroke: currentColor */
+.vacuum-diagram-embed svg a {
+  color: inherit !important;
+}
+
+/* .vacuum-diagram-embed svg {
+  path, rect, circle {
+    stroke: rgb(100,100,100);
+  }
+} */
+
+/* Figma background rect has no id — hide it instead of deleting it */
+.vacuum-diagram-embed svg > rect:not([id]):first-of-type {
+  display: none;
+}
+
+/* Override hardcoded Figma stroke/fill colours */
+.vacuum-diagram-embed [stroke="black"] { stroke: currentColor; }
+.vacuum-diagram-embed [fill="#0C04F2"] {fill: var(--color-blue)} /* Nitrogen */
+.vacuum-diagram-embed [fill="#B2B0EE"] {fill: var(--color-purple)} /* Air */
+
+
+/* Text labels */
+.vacuum-diagram-embed text,
+.vacuum-diagram-embed tspan {
+  fill: currentColor;
+  font-family: var(--font-monospace);
+}
+
+/* Dim components when a highlight is active — skip the highlighted element
+   and any ancestor g that contains it (filtering a parent composites its
+   children before child rules can restore them) */
+.vacuum-diagram-embed.has-highlight g[id]:not(.vd-highlighted):not(:has(.vd-highlighted)) {
+  filter: saturate(0.1) contrast(0.55);
+}
+
+.vacuum-diagram-embed .vd-highlighted circle,
+.vacuum-diagram-embed g.vd-highlighted,
+.vacuum-diagram-embed path.vd-highlighted,
+.vacuum-diagram-embed rect.vd-highlighted {
+  fill: var(--color-accent, var(--accent));
+}
+
+/* this makes text inside rectangles disappear but i don't hate it */
+.vacuum-diagram-embed text.vd-highlighted {
+  color: var(--color-accent, var(--accent));
+}
+
+
+
+
+/* Valve states */
+.vacuum-diagram-embed .vd-open circle   { fill: var(--vd-color-open, #4ade80); }
+.vacuum-diagram-embed .vd-closed circle { fill: var(--vd-color-closed, #fb923c); }
+.vacuum-diagram-embed .vd-closed [id^="Closed"] { display: block; stroke: white; }
+
+/* Vacuum region fills */
+.vacuum-diagram-embed .vd-hi-vacuum   circle,
+.vacuum-diagram-embed .vd-hi-vacuum   path,
+.vacuum-diagram-embed .vd-hi-vacuum   rect  { fill: var(--vd-color-hi-vacuum); }
+.vacuum-diagram-embed .vd-dp-vacuum   circle,
+.vacuum-diagram-embed .vd-dp-vacuum   path,
+.vacuum-diagram-embed .vd-dp-vacuum   rect  { fill: var(--vd-color-dp-vacuum); }
+.vacuum-diagram-embed .vd-roughing    circle,
+.vacuum-diagram-embed .vd-roughing    path,
+.vacuum-diagram-embed .vd-roughing    rect  { fill: var(--vd-color-roughing); }
+.vacuum-diagram-embed .vd-atmosphere  circle,
+.vacuum-diagram-embed .vd-atmosphere  path,
+.vacuum-diagram-embed .vd-atmosphere  rect  { fill: var(--vd-color-atmosphere); }
+.vacuum-diagram-embed .vd-foreline    circle,
+.vacuum-diagram-embed .vd-foreline    path,
+.vacuum-diagram-embed .vd-foreline    rect  { fill: var(--vd-color-foreline); }
+
+/* Clickable components */
+.vacuum-diagram-embed a {
+  cursor: pointer;
+}
+
+.vacuum-diagram-embed a:hover circle,
+.vacuum-diagram-embed a:hover path:not([id^="Closed"]),
+.vacuum-diagram-embed a:hover rect {
+  fill: color-mix(in srgb, var(--color-accent, var(--accent)) 25%, transparent);
+}
+
+/* Hide Closed "X" symbol paths by default; shown only when vd-closed is applied */
+.vacuum-diagram-embed [id^="Closed"] {
+  display: none;
+}
+

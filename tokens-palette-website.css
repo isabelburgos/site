@@ -22,6 +22,19 @@
   --token-phosphor: #B3FF01;
 
   /* =========================
+     Named Color Palette
+     (mirrors Minimal theme --color-* tokens for cross-context consistency)
+     ========================= */
+  --color-green:   #B3FF01;
+  --color-cyan:    #62D4FB;
+  --color-blue:    #4d9eff;
+  --color-purple:  #c6b7ff;
+  --color-pink:    #ff00aa;
+  --color-red:     #ff5c5c;
+  --color-orange:  #ff9950;
+  --color-yellow:  #ffb800;
+
+  /* =========================
      Semantic Colors
      ========================= */
   --token-warning: #ffd166;
