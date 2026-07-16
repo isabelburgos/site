@@ -13,7 +13,7 @@
   --vd-r-dp-vacuum:    0; --vd-g-dp-vacuum:   200; --vd-b-dp-vacuum:   255; /* cyan */
   --vd-r-roughing:   251; --vd-g-roughing:    146; --vd-b-roughing:     60; /* orange */
   --vd-r-atmosphere: 209; --vd-g-atmosphere:  213; --vd-b-atmosphere:  219; /* grey */
-  --vd-r-foreline:   167; --vd-g-foreline:    139; --vd-b-foreline:    250; /* purple */
+  --vd-r-monitor:   167; --vd-g-monitor:    139; --vd-b-monitor:    250; /* purple */
 
   --vd-opacity: 0.4;
 
@@ -21,7 +21,7 @@
   --vd-color-dp-vacuum:   rgba(var(--vd-r-dp-vacuum),   var(--vd-g-dp-vacuum),   var(--vd-b-dp-vacuum),   var(--vd-opacity));
   --vd-color-roughing:    rgba(var(--vd-r-roughing),    var(--vd-g-roughing),    var(--vd-b-roughing),    var(--vd-opacity));
   --vd-color-atmosphere:  rgba(var(--vd-r-atmosphere),  var(--vd-g-atmosphere),  var(--vd-b-atmosphere),  var(--vd-opacity));
-  --vd-color-foreline:    rgba(var(--vd-r-foreline),    var(--vd-g-foreline),    var(--vd-b-foreline),    var(--vd-opacity));
+  --vd-color-monitor:    rgba(var(--vd-r-monitor),    var(--vd-g-monitor),    var(--vd-b-monitor),    var(--vd-opacity));
 }
 
 
@@ -59,6 +59,14 @@
 
 /* Override hardcoded Figma stroke/fill colours */
 .vacuum-diagram-embed [stroke="black"] { stroke: currentColor; }
+
+/* Equipment boxes (RP1, RP2, SIP1, SIP2, Buffer-Tank) use rect+stroke in SVG
+   user coords. vector-effect: non-scaling-stroke pins the stroke width to
+   screen pixels so borders stay visible at any zoom level. */
+.vacuum-diagram-embed rect[stroke] {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1.5;
+}
 .vacuum-diagram-embed [fill="#0C04F2"] {fill: var(--color-blue)} /* Nitrogen */
 .vacuum-diagram-embed [fill="#B2B0EE"] {fill: var(--color-purple)} /* Air */
 
@@ -99,20 +107,26 @@
 
 /* Vacuum region fills */
 .vacuum-diagram-embed .vd-hi-vacuum   circle,
-.vacuum-diagram-embed .vd-hi-vacuum   path,
+.vacuum-diagram-embed .vd-hi-vacuum   path, 
+.vacuum-diagram-embed path.vd-hi-vacuum,
 .vacuum-diagram-embed .vd-hi-vacuum   rect  { fill: var(--vd-color-hi-vacuum); }
 .vacuum-diagram-embed .vd-dp-vacuum   circle,
 .vacuum-diagram-embed .vd-dp-vacuum   path,
+.vacuum-diagram-embed path.vd-dp-vacuum,
 .vacuum-diagram-embed .vd-dp-vacuum   rect  { fill: var(--vd-color-dp-vacuum); }
 .vacuum-diagram-embed .vd-roughing    circle,
 .vacuum-diagram-embed .vd-roughing    path,
+.vacuum-diagram-embed path.vd-roughing,
 .vacuum-diagram-embed .vd-roughing    rect  { fill: var(--vd-color-roughing); }
 .vacuum-diagram-embed .vd-atmosphere  circle,
 .vacuum-diagram-embed .vd-atmosphere  path,
+.vacuum-diagram-embed path.vd-atmosphere,
 .vacuum-diagram-embed .vd-atmosphere  rect  { fill: var(--vd-color-atmosphere); }
-.vacuum-diagram-embed .vd-foreline    circle,
-.vacuum-diagram-embed .vd-foreline    path,
-.vacuum-diagram-embed .vd-foreline    rect  { fill: var(--vd-color-foreline); }
+.vacuum-diagram-embed .vd-monitor    circle,
+.vacuum-diagram-embed path.vd-monitor,
+.vacuum-diagram-embed .vd-monitor    path,
+.vacuum-diagram-embed .vd-monitor    rect  { fill: var(--vd-color-monitor); }
+
 
 /* Clickable components */
 .vacuum-diagram-embed a {
